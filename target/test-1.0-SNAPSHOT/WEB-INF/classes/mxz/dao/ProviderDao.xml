@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ProviderDao">
+    <resultMap id="providerMap" type="entity.Provider">
+        <id column="uid" property="uid"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="is_deposit" property="isDeposit"/>
+        <result column="phone" property="phone"/>
+        <result column="birthday" property="birthday"/>
+        <result column="create_datetime" property="createDateTime"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <insert id="add" >
+        insert into provider values(#{uid},#{name},#{password},#{isDeposit},#{phone},#{birthday},#{createDateTime},#{remark})
+    </insert>
+
+    <update id="update">
+        update provider
+        <set>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday},
+            </if>
+            <if test="remark!=null">
+                remark=#{remark},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+
+    <select id="findByUid" resultMap="providerMap">
+        select * from provider where uid=#{uid}
+    </select>
+
+    <delete id="delete">
+        delete from provider where uid=#{uid}
+    </delete>
+
+    <select id="findByName" resultMap="providerMap">
+        select *
+        from provider
+        where name=#{name}
+    </select>
+</mapper>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/mvc
+                            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+<!--关联数据库配置文件-->
+    <context:property-placeholder location="classpath:database.properties"/>
+    <context:component-scan base-package="ln.dao"/>
+    <context:component-scan base-package="mxz.dao"/>
+<!--    <context:component-scan base-package="ljy.dao"/>-->
+<!--    <context:component-scan base-package="wzz.dao"/>-->
+    <context:component-scan base-package="gsh.dao"/>
+    <!--    连接池-->
+    <bean id="ln-dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${ln-url}"/>
+        <property name="username" value="${ln-name}"/>
+        <property name="password" value="${ln-password}"/>
+
+
+    </bean>
+    <bean id="mxz-dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${mxz-url}"/>
+        <property name="username" value="${mxz-name}"/>
+        <property name="password" value="${mxz-password}"/>
+
+    </bean>
+    <!--sqlSessionFactory-->
+    <bean id="ln-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="ln-dataSource"/>
+        <!--        绑定mybatis-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+<!--        <property name="mapperLocations" value="classpath*:Dao/*.xml"/>-->
+    </bean>
+    <bean id="mxz-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="mxz-dataSource"/>
+        <!--        绑定mybatis-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--        <property name="mapperLocations" value="classpath*:Dao/*.xml"/>-->
+    </bean>
+    <!--    配置dao接口扫描包-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--        注入sqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="ln-sqlSessionFactory"/>
+        <!--        要扫描的包-->
+        <property name="basePackage" value="ln.dao"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--        注入sqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="mxz-sqlSessionFactory"/>
+        <!--        要扫描的包-->
+        <property name="basePackage" value="mxz.dao"/>
+    </bean>
+</beans>

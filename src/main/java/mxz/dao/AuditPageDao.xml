@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mxz.dao.AuditPageDao">
+    <resultMap id="auditPageMap" type="mxz.entity.AuditPage">
+        <id column="audit_page_id" property="auditPageId"/>
+        <result column="uid" property="uid"/>
+        <result column="state" property="state"/>
+        <result column="type" property="type"/>
+        <result column="manager_id" property="managerId"/>
+        <result column="remark" property="remark"/>
+        <result column="create_datetime" property="createDateTime"/>
+        <result column="update_datetime" property="updateDateTime"/>
+    </resultMap>
+
+    <insert id="add">
+        insert into audit_page values (#{auditPageId},#{uid},#{state},#{type},#{managerId},#{remark},#{createDateTime},#{updateDateTime})
+    </insert>
+
+    <update id="update">
+        update audit_page
+        <set>
+            <if test="state!=null">
+                state=#{state},
+            </if>
+            <if test="managerId!=null">
+                manager_id=#{managerId},
+            </if>
+            <if test="remark!=null">
+                remark=#{remark},
+            </if>
+            <if test="updateDateTime!=null">
+                update_datetime=#{updateDateTime},
+            </if>
+        </set>
+        where audit_page_id=#{auditPageId}
+    </update>
+    <delete id="delete">
+
+    </delete>
+
+    <select id="findByPageState" resultMap="auditPageMap">
+        select * from  audit_page where state=#{state} order by audit_page_id limit 10
+    </select>
+
+    <select id="findPage" resultMap="auditPageMap">
+        select * from  audit_page
+        <where>
+            <if test="state != null">
+            and state=#{state}
+            </if>
+            <if test="type != null">
+                and type=#{type}
+            </if></where>
+        order by audit_page_id limit 10
+    </select>
+
+    <select id="findByUid" resultMap="auditPageMap">
+        select * from  audit_page where uid=#{uid}
+    </select>
+</mapper>

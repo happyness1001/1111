@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ln.dao.AddressDistanceDao">
+
+    <select id="getAddressDistanceList" resultType="pojo.address_distance" >
+        select * from storage.address_distance;
+    </select>
+    <select id="getAddressDistanceListByAddress" parameterType="string" resultType="pojo.address_distance">
+        select * from storage.address_distance where from_address = #{from_address} and to_address = #{to_address}
+    </select>
+
+
+    <insert id="addAddressDistance" parameterType="pojo.address_distance">
+        insert into storage.address_distance(from_address, to_address, distance) VALUES (#{from_address},#{to_address},#{distance});
+    </insert>
+
+    <update id="updateAddressDistance" parameterType="pojo.address_distance">
+        update storage.address_distance
+        set distance=#{distance}
+        where from_address = #{from_address} and to_address=#{to_address};
+
+
+    </update>
+
+
+    <delete id="deleteAddressDistance" parameterType="string">
+        delete from storage.address_distance WHERE from_address = #{from_address} and to_address=#{to_address};
+
+    </delete>
+</mapper>

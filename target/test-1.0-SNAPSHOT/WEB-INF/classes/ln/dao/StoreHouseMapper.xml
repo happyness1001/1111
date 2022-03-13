@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ln.dao.StoreHouseDao">
+
+    <select id="getStoreHouseList" resultType="pojo.StoreHouse" >
+        select * from storage.store_house;
+    </select>
+    <select id="getStoreHouseByID" parameterType="string" resultType="pojo.StoreHouse">
+        select * from storage.store_house where store_id = #{store_id}
+    </select>
+
+
+    <insert id="addStoreHouse" parameterType="pojo.StoreHouse">
+        insert into storage.store_house(store_id, store_name, store_location) VALUES (#{store_id},#{store_name},#{store_location})
+    </insert>
+
+    <update id="updateStoreHouse" parameterType="pojo.StoreHouse">
+        update storage.store_house
+        set store_name = #{store_name},store_location=#{store_location}
+        where store_id = #{store_id};
+
+    </update>
+
+
+    <delete id="deleteStoreHouse" parameterType="string">
+        delete from storage.`store_house` WHERE store_id = #{store_id}
+    </delete>
+</mapper>
