@@ -73,6 +73,7 @@ public class GroupBuyingToBStrategy implements Strategy<GroupBuyingOrderToB> {
                         System.out.println("已全部支付完毕");
 //                         支付成功之后调用发货,并补齐所有信息
                         for (GroupMemberOrderToB gB : memberOrders) {
+                            logistics.setOrderID(gB.getOrderId());
                             logistics.setDeliverAddress(gB.getDeliverAddress());
                             logistics.setQuantity(gB.getQuantity());
 //                            logistics.setTransportMode(gB.getTransportMode());

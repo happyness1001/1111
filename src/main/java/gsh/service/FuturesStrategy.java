@@ -19,7 +19,7 @@ public class FuturesStrategy implements Strategy<FuturesContract> {
 //        创建IsPay
         IsPay isPay = new IsPay();
 //        创建货运信息
-        Logistics logistics = new Logistics(futuresContract.getProductId(), futuresContract.getQuantity()/*, futuresContract.getTransportMode(), futuresContract.getSendAddress()*/);
+        Logistics logistics = new Logistics(futuresContract.getOrderId(),futuresContract.getProductId(), futuresContract.getQuantity()/*, futuresContract.getTransportMode(), futuresContract.getSendAddress()*/);
 //        提交合约单
         combinationStrategy.doCombinationStrategy(futuresContract);
 //        支付定金

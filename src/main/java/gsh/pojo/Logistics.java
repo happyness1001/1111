@@ -7,6 +7,7 @@ public class Logistics {
 //    private int transportMode;//配送方式
 //    private Address sendAddress;//签收地址
     private Address deliverAddress;//发货地址
+    private String orderID;//订单id
 
     public String getProductId() {
         return productId;
@@ -40,6 +41,13 @@ public class Logistics {
 //        this.sendAddress = sendAddress;
 //    }
 
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
     public Address getDeliverAddress() {
         return deliverAddress;
     }
@@ -48,14 +56,16 @@ public class Logistics {
         this.deliverAddress = deliverAddress;
     }
 
-    public Logistics(String productId, int quantity/*, int transportMode, Address sendAddress*/,Address deliverAddress) {
+    public Logistics(String orderID,String productId, int quantity/*, int transportMode, Address sendAddress*/,Address deliverAddress) {
+        this.orderID = orderID;
         this.productId = productId;
         this.quantity = quantity;
 //        this.transportMode = transportMode;
 //        this.sendAddress = sendAddress;
         this.deliverAddress = deliverAddress;
     }
-    public Logistics(String productId, int quantity/*, int transportMode, Address sendAddress*/) {
+    public Logistics(String orderID,String productId, int quantity/*, int transportMode, Address sendAddress*/) {
+        this.orderID = orderID;
         this.productId = productId;
         this.quantity = quantity;
 //        this.transportMode = transportMode;
@@ -66,7 +76,8 @@ public class Logistics {
         this.productId = productId;
 //        this.sendAddress = sendAddress;
     }
-    public Logistics(Address deliverAddress){
+    public Logistics(String orderID,Address deliverAddress){
+        this.orderID = orderID;
         this.deliverAddress=deliverAddress;
     }
 
