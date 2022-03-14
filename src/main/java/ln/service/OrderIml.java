@@ -4,6 +4,7 @@ import ln.dao.AddressDistanceDao;
 import ln.dao.CommodityDao;
 import ln.dao.OrderCommodityDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ln.pojo.Commodity;
 import ln.pojo.Order;
@@ -16,9 +17,11 @@ public class OrderIml  implements OrderService {
 
 
     @Autowired
+    @Qualifier("commodityDao")
     private CommodityDao commodityDao;
 
     @Autowired
+    @Qualifier("orderCommodityDao")
     private OrderCommodityDao orderCommodityDao;
 
 
@@ -75,7 +78,7 @@ public class OrderIml  implements OrderService {
                     //如果商品状态被改变，输出对应语句，结束处理
                 }
 
-                }
+            }
 
 
 
@@ -101,7 +104,7 @@ public class OrderIml  implements OrderService {
     public String dispatch(String receive_location, String order_id) {
         Commodity commodity = commodityDao.getCommodityByID(order_id);
         if (commodity != null)
-        System.out.println("分发订单给当前收货地址所属的仓库");
+            System.out.println("分发订单给当前收货地址所属的仓库");
 
         return null;
     }
@@ -145,5 +148,3 @@ public class OrderIml  implements OrderService {
 
 
 }
-
-

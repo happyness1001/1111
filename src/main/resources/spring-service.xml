@@ -21,20 +21,6 @@
 <!--    <context:component-scan base-package="ljy.service"/>-->
 <!--    <context:component-scan base-package="wzz.service"/>-->
     <import resource="spring-dao.xml"/>
-
-    <!--    将业务类注入到spring，通过配置或者注解实现-->
-    <bean id="commodityIml" class="ln.service.CommodityIml">
-        <property name="commodityDao" ref="commodityDao"/>
-    </bean>
-    <bean id="addressDistanceIml" class="ln.service.AddressDistanceIml">
-        <property name="addressDistanceDao" ref="addressDistanceDao"/>
-    </bean>
-    <bean id="orderIml" class="ln.service.OrderIml">
-        <property name="orderCommodityDao" ref="orderCommodityDao"/>
-        <property name="commodityDao" ref="commodityDao"/>
-    </bean>
-
-
     <!--声明式事务-->
     <bean id="ln-transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--        注入数据源-->

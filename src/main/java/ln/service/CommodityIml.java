@@ -4,21 +4,19 @@ package ln.service;
 import ln.dao.CommodityDao;
 import ln.dao.StoreHouseDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ln.pojo.Commodity;
 
 import java.util.List;
 
 @Service
-public class CommodityIml implements CommodityService {
-    @Autowired
-    private CommodityDao commodityDao;
-    @Autowired
-    private StoreHouseDao storeHouseDao;
+public class CommodityIml implements CommodityService{
 
-    public void setCommodityDao(CommodityDao commodityDao) {
-        this.commodityDao = commodityDao;
-    }
+    @Autowired
+    @Qualifier("commodityDao")
+    private CommodityDao commodityDao;
+
 
     @Override
     public List<Commodity> getCommodityList() {
@@ -60,3 +58,4 @@ public class CommodityIml implements CommodityService {
         return  timeStamp;
     }
 }
+

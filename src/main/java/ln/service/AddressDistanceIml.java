@@ -2,15 +2,17 @@ package ln.service;
 
 import ln.dao.AddressDistanceDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ln.pojo.address_distance;
 
 import java.util.List;
 
 @Service
-public class AddressDistanceIml implements AddressDistanceService {
+public class AddressDistanceIml implements AddressDistanceService{
 
     @Autowired
+    @Qualifier("addressDistanceDao")
     private AddressDistanceDao addressDistanceDao;
 
     @Override
