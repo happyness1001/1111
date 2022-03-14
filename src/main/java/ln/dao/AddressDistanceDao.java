@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AddressDistanceDao {
     //查询全部关系
+
     List<address_distance> getAddressDistanceList();
     //根据地名查询距离
     address_distance getAddressDistanceListByAddress(@Param("from_address") String from_address, @Param("to_address") String to_address);
