@@ -8,6 +8,7 @@
         </settings>-->
     <typeAliases>
         <package name="ln.pojo"/>
+        <package name="mxz.entity"/>
     </typeAliases>
 
     <mappers>
@@ -17,6 +18,7 @@
         <mapper resource="ln/dao/StationMapper.xml"/>
         <mapper resource="ln/dao/StoreHouseMapper.xml"/>
         <mapper resource="ln/dao/AddressDistanceMapper.xml"/>
+        <package name="mxz.dao"/>
        <!-- <package name="ln.dao"/>
         <package name="gsh.dao"/>
         <package name="mxz.dao"/>

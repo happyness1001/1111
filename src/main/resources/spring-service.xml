@@ -12,7 +12,7 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/context/spring-aop.xsd
        http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/context/spring-tx.xsd">
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--扫描service下的包-->
     <context:component-scan base-package="ln.service"/>
@@ -30,5 +30,6 @@
         <!--        注入数据源-->
         <property name="dataSource" ref="mxz-dataSource"/>
     </bean>
-
+    <!--开启事务注解驱动，告诉spring使用注解管理事务，创建代理对象-->
+    <tx:annotation-driven transaction-manager="mxz-transactionManager"/>
 </beans>
