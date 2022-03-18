@@ -23,7 +23,7 @@ public class CommodityController {
     public String list(Model model){
         List<Commodity> commodityList = commodityService.getCommodityList();
         model.addAttribute("commodityList",commodityList);
-        return "allCommodity";
+        return "jsp/allCommodity";
     }
     //跳转到查询商品界面
     @RequestMapping("/toQuery")
@@ -37,7 +37,7 @@ public class CommodityController {
         List<Commodity> commodityList = commodityService.getCommodityLike(name);
         System.out.println(commodityList);
         model.addAttribute("commodityList",commodityList);
-        return "commodityFromName";
+        return "jsp/commodityFromName";
     }
     //根据商品id查询商品详情
     @RequestMapping("/getCommodityById")
@@ -45,7 +45,7 @@ public class CommodityController {
 //        System.out.println(id);
         Commodity commodity = commodityService.getCommodityByID(id);
         model.addAttribute("commodity",commodity);
-        return "commodityFromId";
+        return "jsp/commodityFromId";
     }
     //跳转到添加商品界面
     @RequestMapping("/toCommodity")
@@ -64,7 +64,7 @@ public class CommodityController {
     public String toUpdate(String commodity_id ,Model model){
         Commodity commodity = commodityService.getCommodityByID(commodity_id);
         model.addAttribute("QCommodity",commodity);
-        return "updateCommodity";
+        return "jsp/updateCommodity";
     }
     //修改商品信息
     @RequestMapping("/update")

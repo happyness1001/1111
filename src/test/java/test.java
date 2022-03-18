@@ -1,17 +1,16 @@
 import gsh.controller.DoStrategyImpl;
-import gsh.controller.StrategyActivity;
 import gsh.pojo.Address;
 import gsh.pojo.Bill;
 import gsh.pojo.NormalBuyingToB;
 import gsh.pojo.NormalOrderToB;
-import gsh.service.StrategyFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static java.lang.Character.getName;
-
-public class test {
+public class test extends HttpServlet {
 
     public static void main(String[] args) {
 

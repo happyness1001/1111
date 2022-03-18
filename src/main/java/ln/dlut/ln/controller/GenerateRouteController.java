@@ -130,7 +130,7 @@ public class GenerateRouteController {
         distance_name.add(location_name1);
         distance_name.add(location_name2);
         model.addAttribute("distance_name",distance_name);
-        return "getDistance";
+        return "jsp/getDistance";
     }
 
     /*
@@ -229,7 +229,7 @@ public class GenerateRouteController {
         result.clear();
         finalRoute = "";
         count = 0;
-        return "route";
+        return "jsp/route";
     }
     @ResponseBody
 @RequestMapping("/getLngLat")

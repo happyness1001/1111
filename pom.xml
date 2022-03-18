@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.dlut</groupId>
-  <artifactId>test</artifactId>
+  <artifactId>ln.dlut.ln.controller.test</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
@@ -24,7 +24,7 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
-      <scope>test</scope>
+      <scope>ln.dlut.ln.controller.test</scope>
     </dependency>
     <!--servlet依赖-->
     <dependency>
