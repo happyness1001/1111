@@ -32,7 +32,7 @@ public class OrderController {
 
 @RequestMapping("map")
 public String map(){
-    return "jsp/GeoCode";
+    return "storage/GeoCode";
     }
 
 
@@ -44,13 +44,13 @@ public String map(){
         orderService.match(order);
 //        model.addAttribute("order",order);
         System.out.println("已确认收货，跳转页面");
-        return "jsp/map";
+        return "storage/map";
     }
     @RequestMapping("toMatch")
     public String toMatch(Model model){
         Order order = orderDao.getOrderByID("1");
         model.addAttribute("q_order",order);
-        return "jsp/orderUpdate";
+        return "storage/orderUpdate";
     }
 
 }
