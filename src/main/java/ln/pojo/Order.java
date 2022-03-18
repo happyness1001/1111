@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Order {
     private String order_id;//物流单号
-    private int order_type;//订单类型'1 代表进货 2 代表退货
+    private int order_type = 2;//订单类型'1 代表进货 2 代表退货
     private String sent_location;//发货地址
     private String receive_location;//收货地址
     private String sent_phone_number;//寄件方电话

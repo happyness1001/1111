@@ -1,7 +1,6 @@
 package ln.service;
 
 import ln.pojo.Commodity;
-import ln.pojo.Info;
 import ln.pojo.Order;
 
 import java.util.List;
