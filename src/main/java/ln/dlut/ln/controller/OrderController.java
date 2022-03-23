@@ -41,6 +41,7 @@ public String map(){
 //        order.getOrder_id()
 //        orderService.match(getOrderFromCenter(info));  获得中台传过来的信息，生成order
 //         order = orderDao.getOrderByID("1");
+        System.out.println(order);
         orderService.match(order);
 //        model.addAttribute("order",order);
         System.out.println("已确认收货，跳转页面");

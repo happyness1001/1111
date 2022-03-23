@@ -28,7 +28,7 @@ public class CommodityController {
     //跳转到查询商品界面
     @RequestMapping("/toQuery")
     public String toQuery(){
-        return "queryCommodity";
+        return "storage/queryCommodity";
     }
     //根据商品名称模糊查询商品
     @RequestMapping("/getCommodityLike")
@@ -50,7 +50,7 @@ public class CommodityController {
     //跳转到添加商品界面
     @RequestMapping("/toCommodity")
     public String toAdd(){
-        return "addCommodity";
+        return "storage/addCommodity";
     }
     //添加商品
     @RequestMapping("addCommodity")
