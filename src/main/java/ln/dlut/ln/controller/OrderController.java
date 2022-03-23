@@ -26,9 +26,9 @@ public class OrderController {
     public void getOrderFromCenter(gsh.pojo.Logistics info){
         System.out.println("解析info，生成order");
 
-        Order order = new Order(info.getOrderID(),2,"ddd",info.getDeliverAddress().getReceiver_address(),"111",info.getDeliverAddress().getReceiver_phone(),"15",15);
+        Order order = new Order(info.getOrderId(),2,"ddd",info.getDeliverAddress().getReceiver_address(),"111",info.getDeliverAddress().getReceiver_phone(),"15",15);
         match(order);
-    };//从中台接收订单信息 并解析之后生成运单
+    }//从中台接收订单信息 并解析之后生成运单
 
 @RequestMapping("map")
 public String map(){

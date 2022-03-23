@@ -1,5 +1,8 @@
 package gsh.pojo;
 
+import lombok.Data;
+
+@Data
 public class Address {
 
     private String shipping_name;// 物流名称
