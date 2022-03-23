@@ -1,8 +1,7 @@
-package gsh.controller;
+package gsh.pojo;
 
 import gsh.dao.Strategy;
 import gsh.pojo.AbstractOrder;
-import gsh.service.NormalBuyingToBStrategy;
 
 public class StrategyActivity {
 

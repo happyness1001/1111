@@ -3,19 +3,27 @@ package gsh.service;
 import gsh.dao.IsPay;
 import gsh.dao.Strategy;
 import gsh.pojo.NormalBuyingToC;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+@Service
 public class NormalBuyingToCStrategy implements Strategy<NormalBuyingToC> {
+    @Autowired
+    CombinationStrategy combinationStrategy;
+    @Autowired
+    IsPay isPay;
+
 
     @Override
     public void doStrategy(NormalBuyingToC normalBuyingToC) {
 
 //        构造组合策略
-        final CombinationStrategy combinationStrategy = new CombinationStrategy();
+//        CombinationStrategy combinationStrategy = new CombinationStrategy();
 //        创建IsPay
-        final IsPay isPay = new IsPay();
+//        IsPay isPay = new IsPay();
 //        创建Timer
         Timer timer = new Timer();
 

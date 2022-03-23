@@ -1,6 +1,9 @@
 package gsh.dao;
 
 import gsh.pojo.Bill;
+import org.springframework.stereotype.Repository;
+
+@Repository
 //进行支付
 public class DoPay {
 

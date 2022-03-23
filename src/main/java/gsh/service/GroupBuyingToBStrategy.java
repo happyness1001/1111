@@ -1,28 +1,41 @@
 package gsh.service;
 
-import gsh.dao.*;
-import gsh.pojo.*;
+import gsh.dao.IsArrive;
+import gsh.dao.IsPay;
+import gsh.dao.Strategy;
+import gsh.pojo.GroupBuyingOrderToB;
+import gsh.pojo.GroupMemberOrderToB;
+import gsh.pojo.Logistics;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
+@Service
 public class GroupBuyingToBStrategy implements Strategy<GroupBuyingOrderToB> {
+    @Autowired
+    CombinationStrategy combinationStrategy;
+    @Autowired
+    IsPay isPay;
+    @Autowired
+    IsArrive isArrive;
 
     @Override
     public void doStrategy(GroupBuyingOrderToB groupBuyingOrderToB) {
 
 //        构造组合策略
-        CombinationStrategy combinationStrategy = new CombinationStrategy();
+//        CombinationStrategy combinationStrategy = new CombinationStrategy();
 //        创建Timer
         Timer timer = new Timer();
 //        创建IsPay
-        IsPay isPay = new IsPay();
+//        IsPay isPay = new IsPay();
 //        创建货运信息
         Logistics logistics = new Logistics(groupBuyingOrderToB.getProductId()/*, groupBuyingOrderToB.getSendAddress()*/);
 //        创建IsArrive
-        IsArrive isArrive = new IsArrive();
+//        IsArrive isArrive = new IsArrive();
 
 //        提交合约单
         combinationStrategy.doCombinationStrategy(groupBuyingOrderToB);
@@ -73,9 +86,9 @@ public class GroupBuyingToBStrategy implements Strategy<GroupBuyingOrderToB> {
                         System.out.println("已全部支付完毕");
 //                         支付成功之后调用发货,并补齐所有信息
                         for (GroupMemberOrderToB gB : memberOrders) {
-                            logistics.setOrderID(gB.getOrderId());
                             logistics.setDeliverAddress(gB.getDeliverAddress());
                             logistics.setQuantity(gB.getQuantity());
+                            logistics.setOrderId(gB.getOrderId());
 //                            logistics.setTransportMode(gB.getTransportMode());
                             combinationStrategy.doCombinationStrategy(logistics);
                         }

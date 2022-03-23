@@ -1,24 +1,32 @@
 package gsh.service;
 
-import gsh.dao.*;
-import gsh.pojo.*;
-import gsh.utils.TimerUtil;
+import gsh.dao.IsPay;
+import gsh.dao.Strategy;
+import gsh.pojo.GroupBuyingOrderToC;
+import gsh.pojo.GroupMemberOrderToC;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+@Service
 public class GroupBuyingToCStrategy implements Strategy<GroupBuyingOrderToC> {
+    @Autowired
+    CombinationStrategy combinationStrategy;
+    @Autowired
+    IsPay isPay;
 
     @Override
     public void doStrategy(GroupBuyingOrderToC groupBuyingOrderToC) {
 
 //        构造组合策略
-        CombinationStrategy combinationStrategy = new CombinationStrategy();
+//        CombinationStrategy combinationStrategy = new CombinationStrategy();
 //        创建Timer
         Timer timer = new Timer();
 //        创建IsPay
-        IsPay isPay = new IsPay();
+//        IsPay isPay = new IsPay();
 
 
 //        提交合约单

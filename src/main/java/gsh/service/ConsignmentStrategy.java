@@ -1,22 +1,32 @@
 package gsh.service;
 
-import gsh.dao.*;
+import gsh.dao.IsArrive;
+import gsh.dao.IsPay;
+import gsh.dao.Strategy;
 import gsh.pojo.ConsignmentContract;
 import gsh.pojo.Logistics;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+@Service
 public class ConsignmentStrategy implements Strategy<ConsignmentContract> {
 
+    @Autowired
+    CombinationStrategy combinationStrategy;
+    @Autowired
+    IsPay isPay;
+    @Autowired
+    IsArrive isArrive;
 
     @Override
     public void doStrategy(ConsignmentContract consignmentContract) {
 
 //        构造组合策略
-        CombinationStrategy combinationStrategy = new CombinationStrategy();
+//        CombinationStrategy combinationStrategy = new CombinationStrategy();
 //        提交合约单
         combinationStrategy.doCombinationStrategy(consignmentContract);
 //        创建货运单
@@ -31,7 +41,7 @@ public class ConsignmentStrategy implements Strategy<ConsignmentContract> {
         TimerTask timerTask3 = new TimerTask() {
             @Override
             public void run() {
-                if (new IsPay().isPay(consignmentContract.getOrderId())) {
+                if (isPay.isPay(consignmentContract.getOrderId())) {
                     System.out.println("支付成功，订单结束");
                     this.cancel();
                     timer.cancel();
@@ -57,13 +67,13 @@ public class ConsignmentStrategy implements Strategy<ConsignmentContract> {
         TimerTask timerTask1 = new TimerTask() {
             @Override
             public void run() {
-                if (new IsArrive().isArrive(logistics.getProductId())) {
-                    System.out.println(logistics.getProductId() + "已经签收");
+                if (isArrive.isArrive(logistics.getOrderId())) {
+                    System.out.println(logistics.getOrderId() + "已经签收");
 //                    到达还款日调用还款
                     timer.schedule(timerTask2, new Date(Long.parseLong(consignmentContract.getBillingCycle())));
                     this.cancel();
                 } else {
-                    System.out.println(logistics.getProductId() + "还未签收");
+                    System.out.println(logistics.getOrderId() + "还未签收");
 
                 }
             }

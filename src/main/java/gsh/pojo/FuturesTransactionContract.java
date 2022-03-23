@@ -2,7 +2,7 @@ package gsh.pojo;
 
 import java.util.Date;
 
-public class FuturesTransactionContract extends AbstractOrder{
+public class FuturesTransactionContract extends AbstractOrder {
 
     private String orderId;//转手订单ID，flag+时间戳+MD5校验码
     private String futuresContractId;//期货合约ID

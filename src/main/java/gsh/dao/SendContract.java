@@ -1,6 +1,9 @@
 package gsh.dao;
 
 import gsh.pojo.AbstractOrder;
+import org.springframework.stereotype.Repository;
+
+@Repository
 //传送合约订单
 public class SendContract {
 

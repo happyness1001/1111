@@ -1,31 +1,44 @@
 package gsh.service;
 
-import gsh.dao.*;
+import gsh.dao.IsArrive;
+import gsh.dao.IsPay;
+import gsh.dao.Strategy;
 import gsh.pojo.Logistics;
 import gsh.pojo.NormalBuyingToB;
 import gsh.pojo.NormalOrderToB;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+@Service
 public class NormalBuyingToBStrategy implements Strategy<NormalBuyingToB> {
+
+    @Autowired
+    public CombinationStrategy combinationStrategy;
+    @Autowired
+    public IsPay isPay;
+    @Autowired
+    public IsArrive isArrive;
+
 
     @Override
     public void doStrategy(NormalBuyingToB normalBuyingToB) {
 
 //        构造组合策略
-        CombinationStrategy combinationStrategy = new CombinationStrategy();
+//        CombinationStrategy combinationStrategy = new CombinationStrategy();
 //        创建Timer
         Timer timer = new Timer();
 //        TimerManage timerManage = new TimerManage();
 //        Timer timer = TimerManage.getTimer();
 //        创建IsPay
-        IsPay isPay = new IsPay();
+//        IsPay isPay = new IsPay();
 //        创建货运信息
         Logistics logistics = new Logistics(normalBuyingToB.getOrderId(),normalBuyingToB.getDeliveryAddress());
 //        创建IsArrive
-        IsArrive isArrive = new IsArrive();
+//        IsArrive isArrive = new IsArrive();
 //        获取商品信息
         ArrayList<NormalOrderToB> normalOrderToB = normalBuyingToB.getNormalOrderToB();
 //        提交合约单
@@ -41,7 +54,7 @@ public class NormalBuyingToBStrategy implements Strategy<NormalBuyingToB> {
                 int i = 0;//统计签收次数
 //                若签收则i++
                 for (NormalOrderToB nB : normalOrderToB) {
-                    if (isArrive.isArrive(nB.getProductId())) i++;
+                    if (isArrive.isArrive(nB.getOrderId())) i++;
                 }
 //                若签收人数与订单人数相匹配则订单完成
                 if (i == normalOrderToB.size()) {
@@ -99,7 +112,6 @@ public class NormalBuyingToBStrategy implements Strategy<NormalBuyingToB> {
 
 //        确定是否全部支付完成       支付完成则调用发货。第一次等待时间delay 1秒，第一次过后每次等待时间intevalPeriod 1秒
         timer.scheduleAtFixedRate(timerTask1, 1000, 1000);
-
 
 
     }

@@ -12,6 +12,17 @@ public class GroupBuyingOrderToB extends AbstractOrder {
     private Address sendAddress;//发货地址
     private String productId;//商品Id
 
+    public GroupBuyingOrderToB(String orderId, ArrayList<GroupMemberOrderToB> memberOrders, Date groupSuccessTime, Address sendAddress, String productId) {
+        this.orderId = orderId;
+        this.memberOrders = memberOrders;
+        this.groupSuccessTime = groupSuccessTime;
+        this.sendAddress = sendAddress;
+        this.productId = productId;
+    }
+
+    public GroupBuyingOrderToB() {
+    }
+
     public ArrayList<GroupMemberOrderToB> getMemberOrders() {
         return memberOrders;
     }
@@ -50,16 +61,5 @@ public class GroupBuyingOrderToB extends AbstractOrder {
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
-    }
-
-    public GroupBuyingOrderToB(String orderId, ArrayList<GroupMemberOrderToB> memberOrders, Date groupSuccessTime, Address sendAddress, String productId) {
-        this.orderId = orderId;
-        this.memberOrders = memberOrders;
-        this.groupSuccessTime = groupSuccessTime;
-        this.sendAddress = sendAddress;
-        this.productId = productId;
-    }
-
-    public GroupBuyingOrderToB() {
     }
 }

@@ -3,7 +3,7 @@ package gsh.pojo;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class NormalBuyingToB extends AbstractOrder{
+public class NormalBuyingToB extends AbstractOrder {
 
     private String orderId;//普通订单总ID
     private ArrayList<NormalOrderToB> normalOrderToB;//普通交易子订单
@@ -15,6 +15,16 @@ public class NormalBuyingToB extends AbstractOrder{
 
     public NormalBuyingToB() {
 
+    }
+
+    public NormalBuyingToB(String orderId, ArrayList<NormalOrderToB> normalOrderToB, String marketId, double amount, Bill bill, Address deliveryAddress, Date placeTime) {
+        this.orderId = orderId;
+        this.normalOrderToB = normalOrderToB;
+        this.marketId = marketId;
+        this.amount = amount;
+        this.bill = bill;
+        this.deliveryAddress = deliveryAddress;
+        this.placeTime = placeTime;
     }
 
     public String getOrderId() {
@@ -70,16 +80,6 @@ public class NormalBuyingToB extends AbstractOrder{
     }
 
     public void setPlaceTime(Date placeTime) {
-        this.placeTime = placeTime;
-    }
-
-    public NormalBuyingToB(String orderId, ArrayList<NormalOrderToB> normalOrderToB, String marketId, double amount, Bill bill, Address deliveryAddress, Date placeTime) {
-        this.orderId = orderId;
-        this.normalOrderToB = normalOrderToB;
-        this.marketId = marketId;
-        this.amount = amount;
-        this.bill = bill;
-        this.deliveryAddress = deliveryAddress;
         this.placeTime = placeTime;
     }
 }

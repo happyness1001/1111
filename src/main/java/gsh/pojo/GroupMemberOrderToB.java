@@ -16,6 +16,18 @@ public class GroupMemberOrderToB {
     private Date turnOverTime;//签收时间
     private String remark;//用户订单备注
 
+    public GroupMemberOrderToB(String orderId, String uId, int quantity, float amount, Bill bill, int transportMode, Address deliverAddress, Date joinTime, String remark) {
+        this.orderId = orderId;
+        this.uId = uId;
+        this.quantity = quantity;
+        this.amount = amount;
+        this.bill = bill;
+        this.transportMode = transportMode;
+        this.deliverAddress = deliverAddress;
+        this.joinTime = joinTime;
+        this.remark = remark;
+    }
+
     public String getOrderId() {
         return orderId;
     }
@@ -93,18 +105,6 @@ public class GroupMemberOrderToB {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public GroupMemberOrderToB(String orderId, String uId, int quantity, float amount, Bill bill, int transportMode, Address deliverAddress, Date joinTime,  String remark) {
-        this.orderId = orderId;
-        this.uId = uId;
-        this.quantity = quantity;
-        this.amount = amount;
-        this.bill = bill;
-        this.transportMode = transportMode;
-        this.deliverAddress = deliverAddress;
-        this.joinTime = joinTime;
         this.remark = remark;
     }
 

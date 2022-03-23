@@ -3,6 +3,8 @@ import gsh.pojo.Address;
 import gsh.pojo.Bill;
 import gsh.pojo.NormalBuyingToB;
 import gsh.pojo.NormalOrderToB;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,10 +25,13 @@ public class test extends HttpServlet {
         Bill bill = new Bill();
         NormalBuyingToB normalBuyingToB = new NormalBuyingToB("订单ID",normalOrderToBS,"第233家分店",35,bill,address,new Date());
 
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
+        DoStrategyImpl doStrategyImpl=(DoStrategyImpl) ctx.getBean("doStrategyImpl");
+        doStrategyImpl.doStrategyActivity(normalBuyingToB);
 
 //        new StrategyActivity(StrategyFactory.getStrategy(NormalBuyingToB.class.getSimpleName())).execute(normalBuyingToB);
 //        构造impl，传入订单
-        new DoStrategyImpl().doStrategyActivity(normalBuyingToB);
+//        new DoStrategyImpl().doStrategyActivity(normalBuyingToB);
 
     }
 }

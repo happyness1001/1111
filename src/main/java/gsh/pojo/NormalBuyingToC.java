@@ -3,7 +3,7 @@ package gsh.pojo;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class NormalBuyingToC extends AbstractOrder{
+public class NormalBuyingToC extends AbstractOrder {
 
     private String orderId;//普通订单总ID
     private Address deliveryAddress;//收货地址
@@ -91,7 +91,6 @@ public class NormalBuyingToC extends AbstractOrder{
     public void setBill(Bill bill) {
         this.bill = bill;
     }
-
 
 
 }

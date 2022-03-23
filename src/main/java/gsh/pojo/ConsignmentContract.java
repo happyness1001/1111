@@ -3,7 +3,7 @@ package gsh.pojo;
 import java.util.Date;
 
 //寄售
-public class ConsignmentContract extends AbstractOrder{
+public class ConsignmentContract extends AbstractOrder {
 
     private String orderId;//订单ID，flag+时间戳+MD5校验码
     private String productId;//商品id
@@ -24,7 +24,7 @@ public class ConsignmentContract extends AbstractOrder{
     private Date deliveryTime;//签收时间
     private String remark;//用户订单备注
 
-    public ConsignmentContract(String orderId, String productId, String marketId, int count, double amount, Bill bill, String penaltyRatio, double deposit,String billingCycle, double handlingFee, int transportMode, Address sendAddress, Address deliveryAddress, Date placeTime, String remark) {
+    public ConsignmentContract(String orderId, String productId, String marketId, int count, double amount, Bill bill, String penaltyRatio, double deposit, String billingCycle, double handlingFee, int transportMode, Address sendAddress, Address deliveryAddress, Date placeTime, String remark) {
         this.orderId = orderId;
         this.productId = productId;
         this.marketId = marketId;

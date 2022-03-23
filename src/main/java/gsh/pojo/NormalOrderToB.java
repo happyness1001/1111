@@ -18,6 +18,17 @@ public class NormalOrderToB extends AbstractOrder {
 
     }
 
+    public NormalOrderToB(String orderId, double amount, String productId, int quantity, int transportMode, Address sendAddress, Date deliveryTime, String remark) {
+        this.orderId = orderId;
+        this.amount = amount;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.transportMode = transportMode;
+        this.sendAddress = sendAddress;
+        this.deliveryTime = deliveryTime;
+        this.remark = remark;
+    }
+
     public String getOrderId() {
         return orderId;
     }
@@ -79,17 +90,6 @@ public class NormalOrderToB extends AbstractOrder {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public NormalOrderToB(String orderId, double amount, String productId, int quantity, int transportMode, Address sendAddress, Date deliveryTime, String remark) {
-        this.orderId = orderId;
-        this.amount = amount;
-        this.productId = productId;
-        this.quantity = quantity;
-        this.transportMode = transportMode;
-        this.sendAddress = sendAddress;
-        this.deliveryTime = deliveryTime;
         this.remark = remark;
     }
 }

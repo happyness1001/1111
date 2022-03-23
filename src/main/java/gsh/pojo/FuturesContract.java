@@ -3,11 +3,11 @@ package gsh.pojo;
 import java.util.Date;
 
 //期货
-public class FuturesContract extends AbstractOrder{
+public class FuturesContract extends AbstractOrder {
 
     private String orderId;//订单ID，flag+时间戳+MD5校验码
     private String productId;//商品id
-    private String  shopId;//商户id
+    private String shopId;//商户id
     private int amount;//订单总金额
     private Bill preBill;//账单
     private Bill endBill;//账单

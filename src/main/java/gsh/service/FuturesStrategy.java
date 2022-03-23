@@ -1,23 +1,40 @@
 package gsh.service;
 
-import gsh.dao.*;
+import gsh.dao.GetAddress;
+import gsh.dao.IsArrive;
+import gsh.dao.IsPay;
+import gsh.dao.Strategy;
 import gsh.pojo.FuturesContract;
 import gsh.pojo.Logistics;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
+@Service
 public class FuturesStrategy implements Strategy<FuturesContract> {
+
+    @Autowired
+    CombinationStrategy combinationStrategy;
+    @Autowired
+    IsPay isPay;
+     @Autowired
+    IsArrive isArrive;
+    @Autowired
+    GetAddress deliverAddress;
+
+
+
 
     @Override
     public void doStrategy(final FuturesContract futuresContract) {
 
 //        构造组合策略
-        CombinationStrategy combinationStrategy = new CombinationStrategy();
+//        CombinationStrategy combinationStrategy = new CombinationStrategy();
 //        创建Timer
         Timer timer = new Timer();
 //        创建IsPay
-        IsPay isPay = new IsPay();
+//        IsPay isPay = new IsPay();
 //        创建货运信息
         Logistics logistics = new Logistics(futuresContract.getOrderId(),futuresContract.getProductId(), futuresContract.getQuantity()/*, futuresContract.getTransportMode(), futuresContract.getSendAddress()*/);
 //        提交合约单
@@ -30,13 +47,13 @@ public class FuturesStrategy implements Strategy<FuturesContract> {
         TimerTask timerTask5 = new TimerTask() {
             @Override
             public void run() {
-                if (new IsArrive().isArrive(futuresContract.getProductId())) {
-                    System.out.println(futuresContract.getProductId() + "已经签收，订单结束");
+                if (isArrive.isArrive(futuresContract.getOrderId())) {
+                    System.out.println(futuresContract.getOrderId() + "已经签收，订单结束");
                     this.cancel();
                     timer.cancel();
 //                    System.gc();
                 } else {
-                    System.out.println(futuresContract.getProductId() + "还未签收");
+                    System.out.println(futuresContract.getOrderId() + "还未签收");
                 }
             }
         };
@@ -46,7 +63,7 @@ public class FuturesStrategy implements Strategy<FuturesContract> {
             @Override
             public void run() {
 //                    调取货运信息
-                GetAddress deliverAddress = new GetAddress();
+//                GetAddress deliverAddress = new GetAddress();
                 logistics.setDeliverAddress(deliverAddress.getAddress(futuresContract.getOrderId()));
 //                    进行发货
                 combinationStrategy.doCombinationStrategy(logistics);

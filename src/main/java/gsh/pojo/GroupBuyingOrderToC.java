@@ -4,12 +4,23 @@ package gsh.pojo;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class GroupBuyingOrderToC extends AbstractOrder{
+public class GroupBuyingOrderToC extends AbstractOrder {
     private String orderId;//订单ID
     private String productId;//产品ID
     private String marketId;//商户ID
     private ArrayList<GroupMemberOrderToC> memberOrders;//团员订单集合
     private Date groupSuccessTime;//成团时间
+
+    public GroupBuyingOrderToC(String orderId, String productId, String marketId, ArrayList<GroupMemberOrderToC> memberOrders, Date groupSuccessTime) {
+        this.orderId = orderId;
+        this.productId = productId;
+        this.marketId = marketId;
+        this.memberOrders = memberOrders;
+        this.groupSuccessTime = groupSuccessTime;
+    }
+
+    public GroupBuyingOrderToC() {
+    }
 
     public String getOrderId() {
         return orderId;
@@ -49,17 +60,6 @@ public class GroupBuyingOrderToC extends AbstractOrder{
 
     public void setGroupSuccessTime(Date groupSuccessTime) {
         this.groupSuccessTime = groupSuccessTime;
-    }
-
-    public GroupBuyingOrderToC(String orderId, String productId, String marketId, ArrayList<GroupMemberOrderToC> memberOrders, Date groupSuccessTime) {
-        this.orderId = orderId;
-        this.productId = productId;
-        this.marketId = marketId;
-        this.memberOrders = memberOrders;
-        this.groupSuccessTime = groupSuccessTime;
-    }
-
-    public GroupBuyingOrderToC() {
     }
 }
 

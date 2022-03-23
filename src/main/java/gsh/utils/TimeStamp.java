@@ -1,5 +1,8 @@
 package gsh.utils;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TimeStamp {
 
     public static void main(String[] args) {
