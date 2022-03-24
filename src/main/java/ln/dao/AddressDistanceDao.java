@@ -2,8 +2,10 @@ package ln.dao;
 
 import org.apache.ibatis.annotations.Param;
 import ln.pojo.address_distance;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface AddressDistanceDao {
     //查询全部关系
 

@@ -6,7 +6,7 @@ import ln.pojo.Order;
 
 import java.util.List;
 import java.util.Map;
-
+@Repository
 public interface OrderDao {
 
 

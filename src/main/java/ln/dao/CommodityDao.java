@@ -6,6 +6,7 @@ import ln.pojo.Commodity;
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public interface CommodityDao {
     //查询全部商品
     List<Commodity> getCommodityList();

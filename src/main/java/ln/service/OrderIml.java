@@ -137,13 +137,7 @@ public class OrderIml  implements OrderService {
         System.out.println("添加成功");
     }*/
 
-    public void setOrderCommodityDao(OrderCommodityDao orderCommodityDao) {
-        this.orderCommodityDao = orderCommodityDao;
-    }
 
-    public void setCommodityDao(CommodityDao commodityDao) {
-        this.commodityDao = commodityDao;
-    }
 
 
 

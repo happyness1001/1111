@@ -89,7 +89,7 @@ public class NormalBuyingToBStrategy implements Strategy<NormalBuyingToB> {
                         for (NormalOrderToB nB : normalOrderToB) {
                             logistics.setProductId(nB.getProductId());
                             logistics.setQuantity(nB.getQuantity());
-//                            logistics.setTransportMode(nB.getTransportMode());
+                            logistics.setOrderId(nB.getOrderId());
 //                            logistics.setSendAddress(nB.getSendAddress());
                             combinationStrategy.doCombinationStrategy(logistics);
                         }

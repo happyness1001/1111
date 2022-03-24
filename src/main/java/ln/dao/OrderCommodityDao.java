@@ -1,10 +1,10 @@
 package ln.dao;
 
 import org.springframework.stereotype.Repository;
-import ln.pojo.Commodity;
 
 import java.util.List;
 
+@Repository
 public interface OrderCommodityDao {
     //通过订单id获得该订单的所有商品
     List<String> get_by_order(String order_id);

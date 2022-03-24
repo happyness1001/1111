@@ -2,9 +2,10 @@ package ln.dao;
 
 import ln.pojo.Order;
 import ln.pojo.StoreHouse;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface StoreHouseDao {
 
     //查询全部仓库

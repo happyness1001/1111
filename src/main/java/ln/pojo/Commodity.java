@@ -19,7 +19,7 @@ public class Commodity {
     private double price;//商品价格
     private int quantity;//商品数量
     private String location;//商品位置
-    private int status;//商品状态，1代表上架，2代表下架，3代表揽收，4代表运输，5代表收货
+    private int status;//商品状态，1代表上架，2代表下架，3代表揽收，4代表运输，5代表送达,6代表签收
     private String creat_time;//商品产生时间
     private String modify_time;//商品最后修改时间
 }

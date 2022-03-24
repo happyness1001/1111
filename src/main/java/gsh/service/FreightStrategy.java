@@ -1,7 +1,7 @@
 package gsh.service;
 
 
-import gsh.dao.IsTransport;
+import gsh.dao.IsShipped;
 import gsh.dao.SendLogistics;
 import gsh.pojo.Logistics;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class FreightStrategy {
     @Autowired
     SendLogistics sendLogistics;
     @Autowired
-    IsTransport isTransport;
+    IsShipped isShipped;
     public void doFreight(Logistics logistics) {
 //        发送货运单
 //        SendLogistics sendLogistics = new SendLogistics();
@@ -27,7 +27,8 @@ public class FreightStrategy {
 
             @Override
             public void run() {
-                if (isTransport.isTransport(logistics.getOrderId())) {
+                if (isShipped.isShipped(logistics.getOrderId())) {
+
                     System.out.println(logistics.getOrderId() + "已经发货");
                     this.cancel();
                     timer.cancel();

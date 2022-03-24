@@ -1,9 +1,10 @@
 package ln.dao;
 
 import ln.pojo.Station;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface StationDao {
 
     //查询全部站点
