@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                             http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/context
                             http://www.springframework.org/schema/context/spring-context.xsd
                             http://www.springframework.org/schema/mvc
                             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-<!--    在该包下的controller就会被识别    -->
-<context:component-scan base-package="ln.dlut.ln.controller"/>
-<context:component-scan base-package="mxz.controller"/>
-<context:component-scan base-package="gsh.controller"/>
-<!--    关联数据库-->
+    <!--启动注解识别-->
+    <context:annotation-config/>
+    <!--    在该包下的controller就会被识别    -->
+    <context:component-scan base-package="ln.dlut.ln.controller"/>
+    <context:component-scan base-package="mxz.controller"/>
+    <context:component-scan base-package="gsh.controller"/>
+    <context:component-scan base-package="ljy.digou.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--    关联数据库-->
     <context:property-placeholder location="classpath:database.properties"/>
-<!--    注解驱动    -->
+    <!--    注解驱动    -->
     <!-- mvc 返回乱码处理 -->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
@@ -31,13 +36,25 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-<!--    过滤静态资源  -->
+    <!--    过滤静态资源  -->
     <mvc:default-servlet-handler/>
-<!--    视图解析器   -->
+    <!--    视图解析器   -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
+    <!-- 对上传文件的解析-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/fore*"/>
+            <bean class="ljy.digou.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/fore*"/>
+            <bean class="ljy.digou.interceptor.OtherInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

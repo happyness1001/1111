@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                             http://www.springframework.org/schema/beans/spring-beans.xsd
                             http://www.springframework.org/schema/context
                             http://www.springframework.org/schema/context/spring-context.xsd">
-
-<!--关联数据库配置文件-->
+    <context:annotation-config/>
+    <!--关联数据库配置文件-->
     <context:property-placeholder location="classpath:database.properties"/>
     <context:component-scan base-package="ln.dao"/>
     <context:component-scan base-package="mxz.dao"/>
-<!--    <context:component-scan base-package="ljy.dao"/>-->
-<!--    <context:component-scan base-package="wzz.dao"/>-->
+    <context:component-scan base-package="ljy.digou.service"/>
+    <!--    <context:component-scan base-package="wzz.dao"/>-->
     <context:component-scan base-package="gsh.dao"/>
     <!--    连接池-->
     <bean id="ln-dataSource" class="com.alibaba.druid.pool.DruidDataSource">
@@ -30,12 +30,59 @@
         <property name="password" value="${mxz-password}"/>
 
     </bean>
+    <bean id="ljy-dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${ljy-url}"/>
+        <property name="username" value="${ljy-username}"/>
+        <property name="password" value="${ljy-password}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="20"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="20"/>
+    </bean>
+
     <!--sqlSessionFactory-->
+    <bean id="ljy-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="typeAliasesPackage" value="com.digou.pojo"/>
+        <property name="dataSource" ref="ljy-dataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
     <bean id="ln-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="ln-dataSource"/>
         <!--        绑定mybatis-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-<!--        <property name="mapperLocations" value="classpath*:Dao/*.xml"/>-->
+        <!--        <property name="mapperLocations" value="classpath*:Dao/*.xml"/>-->
     </bean>
     <bean id="mxz-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="mxz-dataSource"/>
@@ -56,4 +103,11 @@
         <!--        要扫描的包-->
         <property name="basePackage" value="mxz.dao"/>
     </bean>
+
+    <!--Mybatis的Mapper文件识别-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="ljy.digou.mapper"/>
+    </bean>
+
+
 </beans>
