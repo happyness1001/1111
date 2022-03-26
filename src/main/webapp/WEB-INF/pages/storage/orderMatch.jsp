@@ -1,4 +1,4 @@
-                                        <%--还没写完--%>
+<%--还没写完--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -34,7 +34,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="order" items="${order}" >
+                <c:forEach var="order" items="${order}">
                     <tr>
                         <td>${order}</td>
                         <td>${order.commodity.id}</td>
@@ -46,7 +46,8 @@
                         <td>${order.receive_location}</td>
                         <td>${order.creat_time}</td>
 
-                        <td><a href="${pageContext.request.contextPath}/commodity/toUpdate?id=${commodity.id}">修改</a> &nbsp;| &nbsp;
+                        <td><a href="${pageContext.request.contextPath}/commodity/toUpdate?id=${commodity.id}">修改</a>
+                            &nbsp;| &nbsp;
                             <a href="${pageContext.request.contextPath}/commodity/delete?id=${commodity.id}">删除</a>
                         </td>
                     </tr>

@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -9,12 +8,12 @@
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>登陆</title>
     <base href="<%=basePath%>">
     <link rel="stylesheet" href="libs/particles/css/style.css">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/login.css"/>
 </head>
 <body>
 <!-- particles.js container -->
@@ -29,13 +28,13 @@
         <div class="switch_bottom" id="switch_bottom"></div>
     </nav>
     <div id="login">
-        <form method="post" action="user/login"  method="POST">
+        <form method="post" action="user/login" method="POST">
             <ul class="group_input">
                 <li>
-                    <input type="text" class="mobile required" id="mobile" name="name" placeholder="账户名" />
+                    <input type="text" class="mobile required" id="mobile" name="name" placeholder="账户名"/>
                 </li>
                 <li>
-                    <input type="password" class="psd required" id="psd" name="password" placeholder="密码" />
+                    <input type="password" class="psd required" id="psd" name="password" placeholder="密码"/>
                 </li>
             </ul>
             <select name="userType">
@@ -45,7 +44,8 @@
                 <option value="1">供应商</option>
                 <option value="4">管理员</option>
             </select>
-            <input type="checkbox" name="un-login" value="1" style="width: 16px;height: 16px;border: 1px solid #D0D0D0;border-radius: 2px;">
+            <input type="checkbox" name="un-login" value="1"
+                   style="width: 16px;height: 16px;border: 1px solid #D0D0D0;border-radius: 2px;">
             <label style="font-size: 14px;color: #9095A2;line-height: 18px;">十天内免登录</label>
             <button type="submit" class="submit_btn" id="btnSubmit">登陆</button>
         </form>
@@ -57,9 +57,12 @@
         <div class="states">
             <a href="javascript:;" class="social_account">社交账号登陆</a>
             <div class="states three_MinIcon">
-                <a href="javascript:;" class="MinIcon_weixin"><img src="img/icon_weixin.jpg" style="width:20px;height:18px" /></a>
-                <a href="javascript:;" class="MinIcon_weibo"><img src="img/icon_weibo.jpg" style="width:20px;height:18px" /></a>
-                <a href="javascript:;" class="MinIcon_qq"><img src="img/icon_qq.jpg" style="width:20px;height:18px" /></a>
+                <a href="javascript:;" class="MinIcon_weixin"><img src="img/icon_weixin.jpg"
+                                                                   style="width:20px;height:18px"/></a>
+                <a href="javascript:;" class="MinIcon_weibo"><img src="img/icon_weibo.jpg"
+                                                                  style="width:20px;height:18px"/></a>
+                <a href="javascript:;" class="MinIcon_qq"><img src="img/icon_qq.jpg"
+                                                               style="width:20px;height:18px"/></a>
             </div>
         </div>
     </div>
@@ -78,7 +81,7 @@
     stats.domElement.style.top = '0px';
     document.body.appendChild(stats.domElement);
     count_particles = document.querySelector('.js-count-particles');
-    update = function() {
+    update = function () {
         stats.begin();
         stats.end();
         if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
@@ -89,7 +92,7 @@
     requestAnimationFrame(update);
 </script>
 <script>
-    $(function(){
+    $(function () {
         //为表单的必填文本框添加提示信息（选择form中的所有后代input元素）
         // $("form :input.required").each(function () {
         //     //通过jquery api：$("HTML字符串") 创建jquery对象
@@ -99,50 +102,49 @@
         // });
         // var errorMsg = $(".error-msg").text();
         //为表单元素添加失去焦点事件
-        if ('null' != "<%=request.getAttribute("msg")%>"){
+        if ('null' != "<%=request.getAttribute("msg")%>") {
             alert('<%=request.getAttribute("msg")%>')
         }
-        $("form :input").blur(function(){
+        $("form :input").blur(function () {
             var $parent = $(this).parent();
             $parent.find(".msg").remove(); //删除以前的提醒元素（find()：查找匹配元素集中元素的所有匹配元素）
             //验证手机号
-            if($(this).is("#mobile")){
+            if ($(this).is("#mobile")) {
                 var mobileVal = $.trim(this.value);
                 // var regMobile = /^1[3|4|5|7|8][0-9]{9}$/;
-                if(mobileVal == ""){
+                if (mobileVal == "") {
                     var errorMsg = " 请输入手机号或邮箱！";
                     $parent.append("<span class='msg onError'>" + errorMsg + "</span>");
-                } else{
-                    var okMsg=" 输入正确";
+                } else {
+                    var okMsg = " 输入正确";
                     $parent.append("<span class='msg onSuccess'>" + okMsg + "</span>");
                 }
             }
             //验证密码
-            if($(this).is("#psd")){
+            if ($(this).is("#psd")) {
                 var psdVal = $.trim(this.value);
                 var regPsd = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
-                if(psdVal== "" || !regPsd.test(psdVal)){
+                if (psdVal == "" || !regPsd.test(psdVal)) {
                     var errorMsg = " 密码为6-20位字母、数字的组合！";
                     $parent.append("<span class='msg onError'>" + errorMsg + "</span>");
-                }
-                else{
-                    var okMsg=" 输入正确";
+                } else {
+                    var okMsg = " 输入正确";
                     $parent.append("<span class='msg onSuccess'>" + okMsg + "</span>");
                 }
             }
-        }).keyup(function(){
+        }).keyup(function () {
             //triggerHandler 防止事件执行完后，浏览器自动为标签获得焦点
             $(this).triggerHandler("blur");
-        }).focus(function(){
+        }).focus(function () {
             $(this).triggerHandler("blur");
         });
 
         //点击重置按钮时，通过trigger()来触发文本框的失去焦点事件
-        $("#btnSubmit").click(function(){
+        $("#btnSubmit").click(function () {
             //trigger 事件执行完后，浏览器会为submit按钮获得焦点
             $("form .required:input").trigger("blur");
             var numError = $("form .onError").length;
-            if(numError){
+            if (numError) {
                 return false;
             }
 

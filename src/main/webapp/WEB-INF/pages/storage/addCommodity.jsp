@@ -27,33 +27,34 @@
 
         <div class="form-group">
             <label>商品cate_id</label>
-            <input type="text" name="cate_id" class="form-control" placeholder="请输入商品cate_id" >
+            <input type="text" name="cate_id" class="form-control" placeholder="请输入商品cate_id">
             <label>商品仓库id</label>
-            <input type="text" name="store_id" class="form-control" placeholder="请输入商品仓库id" >
+            <input type="text" name="store_id" class="form-control" placeholder="请输入商品仓库id">
             <label>商品名称</label>
-            <input type="text" name="name" class="form-control" placeholder="请输入商品名称" >
+            <input type="text" name="name" class="form-control" placeholder="请输入商品名称">
             <label>商品subtitle</label>
-            <input type="text" name="subtitle" class="form-control" placeholder="请输入商品subtitle" >
+            <input type="text" name="subtitle" class="form-control" placeholder="请输入商品subtitle">
             <label>商品main_image</label>
-            <input type="text" name="main_image" class="form-control" placeholder="请上传商品main_image" >
+            <input type="text" name="main_image" class="form-control" placeholder="请上传商品main_image">
             <label>商品sub_images</label>
-            <input type="text" name="sub_images" class="form-control" placeholder="请上传商品sub_images" >
+            <input type="text" name="sub_images" class="form-control" placeholder="请上传商品sub_images">
             <label>商品detail</label>
-            <input type="text" name="detail" class="form-control" placeholder="请输入商品detail" >
+            <input type="text" name="detail" class="form-control" placeholder="请输入商品detail">
             <label>商品price</label>
-            <input type="text" name="price" class="form-control" placeholder="请输入商品price" >
+            <input type="text" name="price" class="form-control" placeholder="请输入商品price">
             <label>商品quantity</label>
-            <input type="text" name="quantity" class="form-control" placeholder="请输入商品quantity" >
+            <input type="text" name="quantity" class="form-control" placeholder="请输入商品quantity">
             <label>商品location</label>
-            <input type="text" name="location" class="form-control" placeholder="请输入商品location" >
+            <input type="text" name="location" class="form-control" placeholder="请输入商品location">
             <label>商品status</label>
-            <input type="text" name="status" class="form-control" placeholder="请输入商品status 1代表上架，2代表下架，3代表揽收，4代表运输，5代表收货" >
+            <input type="text" name="status" class="form-control"
+                   placeholder="请输入商品status 1代表上架，2代表下架，3代表揽收，4代表运输，5代表收货">
             <input type="text" name="creat_time" id="creat_time" value="" style=" display:none">
             <input type="text" name="modify_time" id="modify_time" value="2020-02-01 14:00:00" style=" display:none">
             <script type="text/javascript">
 
 
-                window.onload = function(){
+                window.onload = function () {
                     const nowDate = new Date();
                     const time = nowDate.getFullYear() + "-" + (nowDate.getMonth() + 1) + "-" + nowDate.getDate() + ":" + (nowDate.getHours() + ":" + nowDate.getMinutes() + ":" + nowDate.getSeconds())
                     $("#creat_time").val(time);

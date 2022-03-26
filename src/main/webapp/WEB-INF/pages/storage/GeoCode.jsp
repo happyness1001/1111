@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -21,7 +20,8 @@
             width: 10rem;
             margin-left: 6.8rem;
         }
-        #left{
+
+        #left {
             float: left;
             left: 2rem;
             position: absolute
@@ -33,7 +33,7 @@
 </head>
 <body>
 <div id="container"></div>
-<form id="lnglat" >
+<form id="lnglat">
     <div class="input-card" id="right" style="width: 28rem; ">
 
         <label style="color: grey">请输入收货地点</label>
@@ -41,11 +41,11 @@
             <div class="input-item-prepend">
                 <span class="input-item-text">地址</span>
             </div>
-            <input type="text"id="address"   name="address_name"/>
-            <input type="hidden" id="longitude"name="longitude" >
-            <input type="hidden" id="latitude"name="latitude" >
+            <input type="text" id="address" name="address_name"/>
+            <input type="hidden" id="longitude" name="longitude">
+            <input type="hidden" id="latitude" name="latitude">
         </div>
-        <input id="geo"  type="button"   class="btn" value="确认" />
+        <input id="geo" type="button" class="btn" value="确认"/>
         <a href="${pageContext.request.contextPath}/GenerateRoute/null"><input type="button" class="btn" value="输入完毕"/></a>
 
     </div>
@@ -59,11 +59,11 @@
             <div class="input-item-prepend">
                 <span class="input-item-text">地址</span>
             </div>
-            <input type="text"id="address_left"   name="address_name"/>
-            <input type="hidden" id="longitude_left"name="longitude" >
-            <input type="hidden" id="latitude_left"name="latitude" >
+            <input type="text" id="address_left" name="address_name"/>
+            <input type="hidden" id="longitude_left" name="longitude">
+            <input type="hidden" id="latitude_left" name="latitude">
         </div>
-        <input id="geo_left"  type="button"   class="btn" value="确认" />
+        <input id="geo_left" type="button" class="btn" value="确认"/>
         <input id="hidden_input" type="button" class="btn" value="输入完毕"/>
     </div>
 </form>
@@ -106,7 +106,7 @@
                         //几个参数需要注意一下
                         type: "POST",//方法类型
                         dataType: "json",//预期服务器返回的数据类型
-                        url: "${pageContext.request.contextPath}/GenerateRoute/getLngLat" ,//url
+                        url: "${pageContext.request.contextPath}/GenerateRoute/getLngLat",//url
                         data: $('#lnglat').serialize(),
                         /*success: function (result) {
                             console.log(result);//打印服务端返回的数据(调试用)
@@ -128,8 +128,8 @@
         });
 
 
-
     }
+
     function geoLeftCode() {
         var address = document.getElementById("address_left").value;
         geocoder.getLocation(address, function (status, result) {
@@ -145,7 +145,7 @@
                     //几个参数需要注意一下
                     type: "POST",//方法类型
                     dataType: "json",//预期服务器返回的数据类型
-                    url: "${pageContext.request.contextPath}/GenerateRoute/getLngLatLeft" ,//url
+                    url: "${pageContext.request.contextPath}/GenerateRoute/getLngLatLeft",//url
                     data: $('#lnglat_left').serialize(),
                     /*success: function (result) {
                         console.log(result);//打印服务端返回的数据(调试用)
@@ -166,8 +166,8 @@
         });
 
 
-
     }
+
     document.getElementById("geo").onclick = geoCode;
     document.getElementById("geo_left").onclick = geoLeftCode;
     document.getElementById("address").onkeydown = function (e) {
@@ -178,7 +178,7 @@
         return true;
     };
     document.getElementById("hidden_input").onclick = function (e) {
-        document.getElementById("left").style.display='none';
+        document.getElementById("left").style.display = 'none';
     }
 </script>
 

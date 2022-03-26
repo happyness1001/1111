@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            <c var="commodity" items="${commodity}" >
+            <c var="commodity" items="${commodity}">
                 <tr>
                     <td>${commodity.commodity_id}</td>
                     <td>${commodity.cate_id}</td>
@@ -58,7 +58,8 @@
                     <td>${commodity.status}</td>
                     <td>${commodity.creat_time}</td>
                     <td>${commodity.modify_time}</td>
-                    <td><a href="${pageContext.request.contextPath}/commodity/toUpdate?commodity_id=${commodity.commodity_id}">修改</a>&nbsp;&nbsp;
+                    <td>
+                        <a href="${pageContext.request.contextPath}/commodity/toUpdate?commodity_id=${commodity.commodity_id}">修改</a>&nbsp;&nbsp;
                         <a href="${pageContext.request.contextPath}/commodity/delete?commodity_id=${commodity.commodity_id}">删除</a>
                     </td>
                 </tr>

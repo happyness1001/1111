@@ -14,25 +14,26 @@
             <ul class="nav nav-tabs">
                 <li class="active">
                     <a href="#">首页</a>
-                </li><br/>
+                </li>
+                <br/>
             </ul>
             <h3>
                 请输入商品id
             </h3>
             <form class="form-search" action="${pageContext.request.contextPath}/commodity/getCommodityById">
-                <input class="input-medium search-query" name="id" type="text" /> <button type="submit" class="btn">查找</button>
+                <input class="input-medium search-query" name="id" type="text"/>
+                <button type="submit" class="btn">查找</button>
             </form>
             <h3>
                 请输入商品名称
             </h3>
             <form class="form-search" action="${pageContext.request.contextPath}/commodity/getCommodityLike">
-                <input class="input-medium search-query" name="name" type="text" /> <button type="submit" class="btn">模糊</button>
+                <input class="input-medium search-query" name="name" type="text"/>
+                <button type="submit" class="btn">模糊</button>
             </form>
         </div>
     </div>
 </div>
-
-
 
 
 </body>

@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -34,7 +33,7 @@
 
 </head>
 <body>
-<form id="lnglat" >
+<form id="lnglat">
 
 </form>
 
@@ -44,17 +43,18 @@
 ></script>
 <script type="text/javascript">
 
-   var map = new AMap.Map("container", {
-       resizeEnable: true,
-   });
-   let lnglats = [];
-   var geocoder = new AMap.Geocoder({});
-   var marker = new AMap.Marker();
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+    });
+    let lnglats = [];
+    var geocoder = new AMap.Geocoder({});
+    var marker = new AMap.Marker();
 
     function geoCode() {
         geocoder.getLocation(address, function (status, result) {
             if (status === "complete" && result.geocodes.length) {
-                ${distance_name}.location_name1
+                ${distance_name}.
+                location_name1
                 var lnglat = result.geocodes[0].location;
 
                 let status = 1;
@@ -77,7 +77,7 @@
                         //几个参数需要注意一下
                         type: "POST",//方法类型
                         dataType: "json",//预期服务器返回的数据类型
-                        url: "${pageContext.request.contextPath}/GenerateRoute/getLngLat" ,//url
+                        url: "${pageContext.request.contextPath}/GenerateRoute/getLngLat",//url
                         data: $('#lnglat').serialize(),
                         /*success: function (result) {
                             console.log(result);//打印服务端返回的数据(调试用)
@@ -99,7 +99,6 @@
                 log.error("根据地址查询位置失败");
             }
         });
-
 
 
     }

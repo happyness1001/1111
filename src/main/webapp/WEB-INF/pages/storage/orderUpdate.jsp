@@ -17,10 +17,11 @@
     </div>
 
     <form action="${pageContext.request.contextPath}/order/match" method="post">
-        <input type="hidden" name="id"   value="${q_order.order_id}" >
+        <input type="hidden" name="id" value="${q_order.order_id}">
         <div class="form-group">
             <label>收货地址</label>
-            <input type="text" name="receive_location" class="form-control" placeholder="请输入新的收货地址" value="${q_order.receive_location}">
+            <input type="text" name="receive_location" class="form-control" placeholder="请输入新的收货地址"
+                   value="${q_order.receive_location}">
         </div>
         <div class="form-group">
             <input type="submit" class="form-group" value="修改">
