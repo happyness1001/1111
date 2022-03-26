@@ -30,7 +30,7 @@ public class ConsignmentStrategy implements Strategy<ConsignmentContract> {
 //        提交合约单
         combinationStrategy.doCombinationStrategy(consignmentContract);
 //        创建货运单
-        Logistics logistics = new Logistics(consignmentContract.getOrderId(),consignmentContract.getProductId(), consignmentContract.getCount()/*, consignmentContract.getTransportMode(), consignmentContract.getSendAddress()*/, consignmentContract.getDeliveryAddress());
+        Logistics logistics = new Logistics(consignmentContract.getOrderId(), consignmentContract.getProductId(), consignmentContract.getCount()/*, consignmentContract.getTransportMode(), consignmentContract.getSendAddress()*/, consignmentContract.getDeliveryAddress());
 //        发送货运单
         combinationStrategy.doCombinationStrategy(logistics);
 //        创建Timer

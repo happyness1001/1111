@@ -1,5 +1,3 @@
-
-
 package ljy.digou.controller;
 
 import ljy.digou.pojo.Category;
@@ -34,7 +32,6 @@ public class CategoryController {
 */
 
 
-
 //    @RequestMapping("admin_category_delete")
 //    public String delete(int id,HttpSession session) throws IOException {
 //        categoryService.delete(id);
@@ -48,25 +45,25 @@ public class CategoryController {
 
     //商品添加
     @RequestMapping("getCategory")
-    public String getCategory(Model model){
-        List<Category> cs= categoryService.list();
+    public String getCategory(Model model) {
+        List<Category> cs = categoryService.list();
         model.addAttribute("cs", cs);
-        return "admin/admin_addProduct";
+        return "jsp/admin/admin_addProduct";
     }
 
     //分类管理页面
     @RequestMapping("toCategory")
-    public String toCategory(Model model){
-        List<Category> cs= categoryService.list();
+    public String toCategory(Model model) {
+        List<Category> cs = categoryService.list();
         model.addAttribute("cs", cs);
-        return "admin/admin_managerCategory";
+        return "jsp/admin/admin_managerCategory";
     }
 
     @ResponseBody
     @RequestMapping("admin_category_add")
     public Result<Category> add(Category c) {
-        List<Category> cs= categoryService.list();
-        for (Category cg:cs)
+        List<Category> cs = categoryService.list();
+        for (Category cg : cs)
             if (cg.getName().equals(c.getName()))
                 return new ResultUtil<Category>().setErrorMsg("分类已存在！");
         categoryService.add(c);
@@ -75,17 +72,17 @@ public class CategoryController {
 
 
     @RequestMapping("/toEditCategory")
-    public String toEditCategory(Model model,int id){
+    public String toEditCategory(Model model, int id) {
         Category c = categoryService.get(id);
-        model.addAttribute("cg",c);
-        return "admin/editCategory";
+        model.addAttribute("cg", c);
+        return "jsp/admin/editCategory";
     }
 
     @ResponseBody
     @RequestMapping("admin_category_edit")
-    public Result<Category> edit(Category c,Model model) {
-        List<Category> cs= categoryService.list();
-        for (Category cg:cs)
+    public Result<Category> edit(Category c, Model model) {
+        List<Category> cs = categoryService.list();
+        for (Category cg : cs)
             if (cg.getName().equals(c.getName()))
                 return new ResultUtil<Category>().setErrorMsg("分类已存在！");
         categoryService.update(c);

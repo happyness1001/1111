@@ -1,5 +1,3 @@
-
-
 package ljy.digou.pojo;
 
 public class Member {
@@ -7,15 +5,11 @@ public class Member {
 
     private Integer id;
 
-    private  String   member_name;//用户名
-    private  String   member_phone;   //用户电话
-    private  String   member_address;//用户地址
-    private  Integer   member_points;//用户积分
-    private  Integer      member_rights;//用户权限
-
-
-
-
+    private String member_name;//用户名
+    private String member_phone;   //用户电话
+    private String member_address;//用户地址
+    private Integer member_points;//用户积分
+    private Integer member_rights;//用户权限
 
 
     public int getId() {

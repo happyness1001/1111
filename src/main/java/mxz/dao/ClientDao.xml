@@ -21,11 +21,13 @@
     </resultMap>
 
 
-    <insert id="add" >
-        insert into client	values(#{uid} ,#{name},#{password},#{email},#{sex},#{phone},#{birthday},#{createDateTime},#{trueName},#{ip},#{remark})
+    <insert id="add">
+        insert into client
+        values (#{uid}, #{name}, #{password}, #{email}, #{sex}, #{phone}, #{birthday}, #{createDateTime}, #{trueName},
+                #{ip}, #{remark})
     </insert>
 
-    <update id="update" >
+    <update id="update">
         update client
         <set>
             <if test="name!=null ">
@@ -60,15 +62,21 @@
     </update>
 
     <select id="findByUid" parameterType="String" resultMap="clientMap">
-        select * from client where uid=#{uid}
+        select *
+        from client
+        where uid = #{uid}
     </select>
 
     <delete id="delete" parameterType="String">
-        delete from client where uid=#{uid}
+        delete
+        from client
+        where uid = #{uid}
     </delete>
 
     <select id="findByName" parameterType="String" resultMap="clientMap">
-        select * from client where name=#{name}
+        select *
+        from client
+        where name = #{name}
     </select>
 
 </mapper>

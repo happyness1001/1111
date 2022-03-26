@@ -1,5 +1,3 @@
-
-
 package ljy.digou.mapper;
 
 import ljy.digou.pojo.Order;
@@ -20,19 +18,12 @@ public interface OrderMapper {
     List<Order> selectByStatus(Order example);
 
 
-
     Order selectByPrimaryKey(Integer id);
-
-
 
 
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
-
-
-
-
 
 
 }

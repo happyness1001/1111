@@ -19,5 +19,5 @@ public interface CollectionService {
 
     List<Collection> getUserSC(String uname);
 
-    Collection getPdSC(int pid,String username);
+    Collection getPdSC(int pid, String username);
 }

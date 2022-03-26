@@ -50,10 +50,10 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Integer setDefaultAddress(Address address){
+    public Integer setDefaultAddress(Address address) {
         //查询当前默认地址
         Address current = addressDao.findDefaultAddress(address.getUid());
-        if (current != null){
+        if (current != null) {
             //取消当前默认地址
             current.setIsDefault(0);
             addressDao.update(current);

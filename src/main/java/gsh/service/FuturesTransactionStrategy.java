@@ -14,6 +14,7 @@ public class FuturesTransactionStrategy implements Strategy<FuturesTransactionCo
     CombinationStrategy combinationStrategy;
     @Autowired
     IsPay isPay;
+
     @Override
     public void doStrategy(FuturesTransactionContract futuresTransactionContract) {
 

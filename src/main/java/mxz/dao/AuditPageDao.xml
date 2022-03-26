@@ -16,7 +16,9 @@
     </resultMap>
 
     <insert id="add">
-        insert into audit_page values (#{auditPageId},#{uid},#{state},#{type},#{managerId},#{remark},#{createDateTime},#{updateDateTime})
+        insert into audit_page
+        values (#{auditPageId}, #{uid}, #{state}, #{type}, #{managerId}, #{remark}, #{createDateTime},
+                #{updateDateTime})
     </insert>
 
     <update id="update">
@@ -39,22 +41,29 @@
     </update>
 
     <select id="findByPageState" resultMap="auditPageMap">
-        select * from  audit_page where state=#{state} order by audit_page_id limit 10
+        select *
+        from audit_page
+        where state = #{state}
+        order by audit_page_id
+        limit 10
     </select>
 
     <select id="findPage" resultMap="auditPageMap">
-        select * from  audit_page
+        select * from audit_page
         <where>
             <if test="state != null">
-            and state=#{state}
+                and state=#{state}
             </if>
             <if test="type != null">
                 and type=#{type}
-            </if></where>
+            </if>
+        </where>
         order by audit_page_id limit 10
     </select>
 
     <select id="findByUid" resultMap="auditPageMap">
-        select * from  audit_page where uid=#{uid}
+        select *
+        from audit_page
+        where uid = #{uid}
     </select>
 </mapper>

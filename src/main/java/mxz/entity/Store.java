@@ -20,14 +20,14 @@ public class Store extends User {
     private Date createDateTime;//店铺创建时间
     private Integer userType;//用户类型
 
-    public Store(String name, String password,  String phone, Integer userType) {
+    public Store(String name, String password, String phone, Integer userType) {
         this.name = name;
         this.password = password;
         this.phone = phone;
         this.userType = userType;
     }
 
-    public Store(String name,String password) {
+    public Store(String name, String password) {
         this.password = password;
         this.name = name;
     }

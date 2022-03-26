@@ -1,5 +1,3 @@
-
-
 package ljy.digou.pojo;
 
 public class PropertyValue {

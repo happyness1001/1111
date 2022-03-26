@@ -11,10 +11,19 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class JsonIml implements JsonService {
+    public static void main(String[] args) {
+        JsonIml jsonIml = new JsonIml();
+        long time1 = new Date().getTime();
+        System.out.println("time1:" + time1);
+        System.out.println(jsonIml.sendGet("https://restapi.amap.com/v5/direction/driving", "origin=116.434307,39.90909&destination=116.434446,39.90816&key=1d9801ec3c792505986ce94fb4d49ef7"));
+        long time2 = new Date().getTime();
+        System.out.println("time2:" + time2);
+        System.out.println("time2 - time1:" + (time2 - time1) / 1000 + "秒");
+    }
+
     @Override
     public String sendGet(String url, String param) {
 
@@ -65,9 +74,9 @@ public class JsonIml implements JsonService {
     }
 
     @Override
-    public  double parseDirectionJson(String json) {
+    public double parseDirectionJson(String json) {
 //        System.out.println("传入函数的json===============================================================>" + json);
-        double distance = 0 ;
+        double distance = 0;
         DirectionCallback callbackObject = new Gson().fromJson(json, DirectionCallback.class);
 //        for (int i =0; i< callbackObject.route.paths.size(); i++){
 //                distance+= Double.parseDouble(callbackObject.route.paths.get(i).distance);
@@ -75,7 +84,6 @@ public class JsonIml implements JsonService {
         distance = Double.parseDouble(callbackObject.route.paths.get(0).distance);
         return (distance);
     }
-
 
     @Data
     private static class GeoCodeCallback {
@@ -126,17 +134,6 @@ public class JsonIml implements JsonService {
             }
         }
     }
-
-
-       public static void main(String[] args) {
-           JsonIml jsonIml = new JsonIml();
-           long time1 = new Date().getTime();
-           System.out.println("time1:" + time1);
-           System.out.println(jsonIml.sendGet("https://restapi.amap.com/v5/direction/driving", "origin=116.434307,39.90909&destination=116.434446,39.90816&key=1d9801ec3c792505986ce94fb4d49ef7"));
-           long time2 = new Date().getTime();
-           System.out.println("time2:" + time2);
-           System.out.println("time2 - time1:"  + (time2 - time1)/1000 + "秒");
-     }
 
 
 }

@@ -5,27 +5,34 @@
 
 <mapper namespace="ln.dao.StationDao">
 
-    <select id="getStationList" resultType="ln.pojo.Station" >
-        select * from storage.station;
+    <select id="getStationList" resultType="ln.pojo.Station">
+        select *
+        from storage.station;
     </select>
     <select id="getStationByID" parameterType="int" resultType="ln.pojo.Station">
-        select * from storage.station where station_id = #{station_id}
+        select *
+        from storage.station
+        where station_id = #{station_id}
     </select>
 
 
     <insert id="addStation" parameterType="ln.pojo.Station">
-        insert into storage.station(station_name, station_location) VALUES (#{station_name},#{station_location})
+        insert into storage.station(station_name, station_location)
+        VALUES (#{station_name}, #{station_location})
     </insert>
 
     <update id="updateStation" parameterType="ln.pojo.Station">
         update storage.station
-        set station_name = #{station_name},station_location=#{station_location}
+        set station_name    = #{station_name},
+            station_location=#{station_location}
         where station_id = #{station_id};
 
     </update>
 
 
     <delete id="deleteStation" parameterType="int">
-        delete from storage.station WHERE station_id = #{station_id}
+        delete
+        from storage.station
+        WHERE station_id = #{station_id}
     </delete>
 </mapper>

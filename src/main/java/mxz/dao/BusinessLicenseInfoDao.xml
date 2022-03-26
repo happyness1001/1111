@@ -27,15 +27,23 @@
     </resultMap>
 
     <select id="findByInfoId" resultMap="businessLicenseInfoMap">
-        select * from business_license_information where id=#{infoId}
+        select *
+        from business_license_information
+        where id = #{infoId}
     </select>
 
     <select id="findByAuditPageId" resultMap="businessLicenseInfoMap">
-        select * from business_license_information where audit_page_id=#{auditPageId}
+        select *
+        from business_license_information
+        where audit_page_id = #{auditPageId}
     </select>
 
     <insert id="add">
-        insert into business_license_information values(null,#{auditPageId},#{corporateName},#{registrationNumber},#{frName},#{idNumber},#{frontOfIdCardPhoto},#{backOfIdCardPhoto},#{locationOfBusinessLicense},#{addressOfBusinessLicense},#{dateOfIncorporation},#{registeredCapital},#{businessScope},#{businessLicense},#{officePhone},#{emergencyContact},#{phoneOfEmergencyContact},#{createDateTime},#{updateDateTime})
+        insert into business_license_information
+        values (null, #{auditPageId}, #{corporateName}, #{registrationNumber}, #{frName}, #{idNumber},
+                #{frontOfIdCardPhoto}, #{backOfIdCardPhoto}, #{locationOfBusinessLicense}, #{addressOfBusinessLicense},
+                #{dateOfIncorporation}, #{registeredCapital}, #{businessScope}, #{businessLicense}, #{officePhone},
+                #{emergencyContact}, #{phoneOfEmergencyContact}, #{createDateTime}, #{updateDateTime})
     </insert>
 
     <update id="update">
@@ -93,6 +101,8 @@
     </update>
 
     <delete id="delete">
-        delete from business_license_information where audit_page_id=#{auditPageId}
+        delete
+        from business_license_information
+        where audit_page_id = #{auditPageId}
     </delete>
 </mapper>

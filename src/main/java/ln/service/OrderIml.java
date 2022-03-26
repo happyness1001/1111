@@ -1,43 +1,38 @@
 package ln.service;
 
-import ln.dao.AddressDistanceDao;
 import ln.dao.CommodityDao;
 import ln.dao.OrderCommodityDao;
+import ln.pojo.Commodity;
+import ln.pojo.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ln.pojo.Commodity;
-import ln.pojo.Order;
 
 import java.util.*;
 
 @Service
-public class OrderIml  implements OrderService {
-
-
-
-    @Autowired
-    @Qualifier("commodityDao")
-    private CommodityDao commodityDao;
-
-    @Autowired
-    @Qualifier("orderCommodityDao")
-    private OrderCommodityDao orderCommodityDao;
+public class OrderIml implements OrderService {
 
 
     public static List<String> receiveLocations = new ArrayList<>();//收货地址集合
     public static List<String> sentLocation = new ArrayList<>();//发货地址，即当前仓库地址
+    @Autowired
+    @Qualifier("commodityDao")
+    private CommodityDao commodityDao;
+    @Autowired
+    @Qualifier("orderCommodityDao")
+    private OrderCommodityDao orderCommodityDao;
 
     @Override
-    public void match(Order order){
+    public void match(Order order) {
         List<Commodity> commodityList = getCommodityList(order);//根据订单获得该订单上的所有商品集合
-        Map<String,String> name_location = new TreeMap<>();//定义一个商品名称与商品在仓库中的位置相对应的集合
+        Map<String, String> name_location = new TreeMap<>();//定义一个商品名称与商品在仓库中的位置相对应的集合
         //遍历商品 将商品的名称与位置初始化
         for (Commodity commodity : commodityList) {
-            name_location.put(commodity.getName(),commodity.getLocation());
+            name_location.put(commodity.getName(), commodity.getLocation());
         }
         //如果是发货订单的处理
-        if (analyse(order) == 1){
+        if (analyse(order) == 1) {
             Set<String> commodity_name = name_location.keySet();//得到MAP集合的键——商品名称的集合
             //根据键遍历MAP集合 得到商品的地址的集合 并打印出来 帮助工作人员快速找到对应的商品的地址
             for (String name : commodity_name) {
@@ -45,12 +40,12 @@ public class OrderIml  implements OrderService {
                 System.out.println("发货订单，仓库发货," + "商品:" + name + " 位于:" + location + "  请工作人员尽快发货");
             }
             System.out.println("揽收完成完成输入“1”");
-            while (true){
+            while (true) {
                 Scanner scanner = new Scanner(System.in);
                 int i = scanner.nextInt();
 
                 //工作人员确认揽收后，改变该订单上的每一个商品的状态
-                if (i == 1){
+                if (i == 1) {
                     for (Commodity commodity : commodityList) {
                         commodity.setStatus(3);
                         String receiveLocation = order.getReceive_location();
@@ -60,13 +55,13 @@ public class OrderIml  implements OrderService {
                     sentLocation.add(order.getSent_location());
 
                     System.out.println("该运单商品全部揽收完毕，等待发货，发货完毕请输入”2“");
-                    if (scanner.nextInt() == 2){
+                    if (scanner.nextInt() == 2) {
                         for (Commodity commodity : commodityList) {
                             commodity.setStatus(4);
                             System.out.println("商品:" + commodity.getName() + "  已发货");
                         }
                         System.out.println("该运单商品全部发货完毕，等待收货，确认收货请输入”3“");
-                        if (scanner.nextInt() == 3){
+                        if (scanner.nextInt() == 3) {
                             for (Commodity commodity : commodityList) {
                                 commodity.setStatus(5);
                                 System.out.println("商品:" + commodity.getName() + "  已收货");
@@ -79,7 +74,6 @@ public class OrderIml  implements OrderService {
                 }
 
             }
-
 
 
         }//退货订单的处理
@@ -124,7 +118,6 @@ public class OrderIml  implements OrderService {
     }
 
 
-
     @Override
     public void change(Order order) {
         System.out.println("请");
@@ -136,9 +129,6 @@ public class OrderIml  implements OrderService {
         addressDistanceService.deleteAddressDistance("北北", "zz津");
         System.out.println("添加成功");
     }*/
-
-
-
 
 
 }

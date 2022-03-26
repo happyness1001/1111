@@ -1,17 +1,15 @@
-
-
 package ljy.digou.service.impl;
-
-import java.util.List;
 
 import ljy.digou.mapper.ReviewMapper;
 import ljy.digou.pojo.Review;
+import ljy.digou.pojo.ReviewExample;
 import ljy.digou.pojo.User;
+import ljy.digou.service.ReviewService;
 import ljy.digou.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ljy.digou.pojo.ReviewExample;
-import ljy.digou.service.ReviewService;
+
+import java.util.List;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
@@ -41,35 +39,34 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewMapper.selectByPrimaryKey(id);
     }
 
-    public List<Review> list(int pid){
-        ReviewExample example =new ReviewExample();
+    public List<Review> list(int pid) {
+        ReviewExample example = new ReviewExample();
         example.createCriteria().andPidEqualTo(pid);
         example.setOrderByClause("id desc");
 
-        List<Review> result =reviewMapper.selectByExample(example);
+        List<Review> result = reviewMapper.selectByExample(example);
         setUser(result);
         return result;
     }
 
 
-    public List<Review> admin_all_list(){
-
+    public List<Review> admin_all_list() {
 
 
         //建立一个 查询对象
-        ReviewExample example =new ReviewExample();
+        ReviewExample example = new ReviewExample();
         example.setOrderByClause("id desc");
 
 
         //映射的数据库  理解错Sql语句就行
-        List<Review> result =reviewMapper.selectByExample(example);
+        List<Review> result = reviewMapper.selectByExample(example);
 
 
-        int i=0;
+        int i = 0;
         for (Review review : result) {
 
             System.out.println(result.get(i).getContent());
-            i=i+1;
+            i = i + 1;
         }
 
 
@@ -77,17 +74,16 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
 
-    public void setUser(List<Review> reviews){
+    public void setUser(List<Review> reviews) {
         for (Review review : reviews) {
             setUser(review);
         }
     }
 
 
-
     private void setUser(Review review) {
         int uid = review.getUid();
-        User user =userService.get(uid);
+        User user = userService.get(uid);
         review.setUser(user);
     }
 

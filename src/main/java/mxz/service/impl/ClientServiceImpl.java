@@ -12,15 +12,16 @@ import java.sql.Timestamp;
 public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientDao clientDao;
+
     //注册新用户
-    public  Integer register(Client client) {
-        if(clientDao.findByName(client.getName()) != null) {
+    public Integer register(Client client) {
+        if (clientDao.findByName(client.getName()) != null) {
             //用户名已存在
             return -1;
         }
         //取毫秒前10位即精确到秒，纳秒后9位取余1000精确到微秒。生成16位时间戳
         Long microsecond = System.nanoTime() / 1000 % 1000000;
-        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000?"0":"") + microsecond;
+        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000 ? "0" : "") + microsecond;
         String uid = client.getUserType() + "邮政编码" + timeStamp;
         client.setUid(uid);
 
@@ -37,9 +38,9 @@ public class ClientServiceImpl implements ClientService {
         //账户不存在或密码不正确时，返回null
         if (findClient == null) {
             return null;
-        }else if (client.getPassword().equals(findClient.getPassword())){
+        } else if (client.getPassword().equals(findClient.getPassword())) {
             return findClient;
-        }else {
+        } else {
             return null;
         }
     }
@@ -48,10 +49,12 @@ public class ClientServiceImpl implements ClientService {
     public Integer update(Client client) {
         return clientDao.update(client);
     }
+
     //通过uid查找用户
     public Client findByUid(String uid) {
         return clientDao.findByUid(uid);
     }
+
     //删除用户
     public Integer delete(String uid) {
         return clientDao.delete(uid);
@@ -62,15 +65,15 @@ public class ClientServiceImpl implements ClientService {
         return null;
     }
 
-    public Client findByName(String name){
+    public Client findByName(String name) {
         return clientDao.findByName(name);
-    }
-
-    public void setClientDao(ClientDao clientDao) {
-        this.clientDao = clientDao;
     }
 
     public ClientDao getClientDao() {
         return clientDao;
+    }
+
+    public void setClientDao(ClientDao clientDao) {
+        this.clientDao = clientDao;
     }
 }

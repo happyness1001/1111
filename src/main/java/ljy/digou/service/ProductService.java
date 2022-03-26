@@ -1,18 +1,21 @@
-
-
 package ljy.digou.service;
-
-import java.util.List;
 
 import ljy.digou.pojo.Category;
 import ljy.digou.pojo.Product;
 
+import java.util.List;
+
 public interface ProductService {
     void add(Product p);
+
     void delete(int id);
+
     void update(Product p);
+
     void updateByID(Product p);
+
     Product get(int id);
+
     List list(int cid);
 
     List<Product> getAll();
@@ -33,7 +36,6 @@ public interface ProductService {
 
     //推荐最热
     List<Integer> getGouZuiRe();
-
 
 
 }

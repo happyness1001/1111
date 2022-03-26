@@ -1,7 +1,7 @@
 package ljy.digou.util;
 
 public class getExtension {
-    public  static String extension(String fileName){
+    public static String extension(String fileName) {
         int index = fileName.lastIndexOf(".");
         //获取文件扩展名
         if (index == -1) {

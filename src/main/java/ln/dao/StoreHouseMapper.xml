@@ -5,27 +5,34 @@
 
 <mapper namespace="ln.dao.StoreHouseDao">
 
-    <select id="getStoreHouseList" resultType="ln.pojo.StoreHouse" >
-        select * from storage.store_house;
+    <select id="getStoreHouseList" resultType="ln.pojo.StoreHouse">
+        select *
+        from storage.store_house;
     </select>
     <select id="getStoreHouseByID" parameterType="string" resultType="ln.pojo.StoreHouse">
-        select * from storage.store_house where store_id = #{store_id}
+        select *
+        from storage.store_house
+        where store_id = #{store_id}
     </select>
 
 
     <insert id="addStoreHouse" parameterType="ln.pojo.StoreHouse">
-        insert into storage.store_house(store_id, store_name, store_location) VALUES (#{store_id},#{store_name},#{store_location})
+        insert into storage.store_house(store_id, store_name, store_location)
+        VALUES (#{store_id}, #{store_name}, #{store_location})
     </insert>
 
     <update id="updateStoreHouse" parameterType="ln.pojo.StoreHouse">
         update storage.store_house
-        set store_name = #{store_name},store_location=#{store_location}
+        set store_name    = #{store_name},
+            store_location=#{store_location}
         where store_id = #{store_id};
 
     </update>
 
 
     <delete id="deleteStoreHouse" parameterType="string">
-        delete from storage.`store_house` WHERE store_id = #{store_id}
+        delete
+        from storage.`store_house`
+        WHERE store_id = #{store_id}
     </delete>
 </mapper>

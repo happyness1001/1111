@@ -5,27 +5,39 @@
 
 <mapper namespace="ln.dao.OrderDao">
 
-    <select id="getOrderList" resultType="ln.pojo.Order" >
-        select * from storage.order;
+    <select id="getOrderList" resultType="ln.pojo.Order">
+        select *
+        from storage.order;
     </select>
     <select id="getOrderByID" parameterType="string" resultType="ln.pojo.Order">
-        select * from storage.order where order_id = #{order_id}
+        select *
+        from storage.order
+        where order_id = #{order_id}
     </select>
 
 
     <insert id="addOrder" parameterType="ln.pojo.Order">
-        insert into storage.order(order_id,order_type, sent_location, receive_location,sent_phone_number,receive_phone_number, creat_time, order_price) VALUES (#{order_id},#{order_type},#{sent_location},#{receive_location},#{sent_phone_number},#{receive_phone_number},#{creat_time},#{order_price})
+        insert into storage.order(order_id, order_type, sent_location, receive_location, sent_phone_number,
+                                  receive_phone_number, creat_time, order_price)
+        VALUES (#{order_id}, #{order_type}, #{sent_location}, #{receive_location}, #{sent_phone_number},
+                #{receive_phone_number}, #{creat_time}, #{order_price})
     </insert>
 
     <update id="updateOrder" parameterType="ln.pojo.Order">
         update storage.order
-        set sent_location = #{sent_location},receive_location=#{receive_location},sent_phone_number=#{sent_phone_number}, receive_phone_number=#{receive_phone_number},   order_type=#{order_type}
+        set sent_location       = #{sent_location},
+            receive_location=#{receive_location},
+            sent_phone_number=#{sent_phone_number},
+            receive_phone_number=#{receive_phone_number},
+            order_type=#{order_type}
         where order_id = #{order_id};
 
     </update>
 
 
     <delete id="deleteOrder" parameterType="string">
-        delete from storage.`order` WHERE order_id = #{order_id}
+        delete
+        from storage.`order`
+        WHERE order_id = #{order_id}
     </delete>
 </mapper>

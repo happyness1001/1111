@@ -1,5 +1,3 @@
-
-
 package ljy.digou.pojo;
 
 import java.util.List;

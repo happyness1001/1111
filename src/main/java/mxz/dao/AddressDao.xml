@@ -19,18 +19,25 @@
     </resultMap>
 
     <select id="findByUid" resultMap="addressMap">
-        select * from address where uid = #{uid}
+        select *
+        from address
+        where uid = #{uid}
     </select>
 
     <select id="findDefaultAddress" resultMap="addressMap">
-        select * from address where uid=#{uid} and is_default=1
+        select *
+        from address
+        where uid = #{uid}
+          and is_default = 1
     </select>
 
     <insert id="add">
-        insert into address values (null,#{uid},#{province},#{city},#{area},#{address},#{receiver},#{phone},#{isDefault},#{createTime},#{updateTime})
+        insert into address
+        values (null, #{uid}, #{province}, #{city}, #{area}, #{address}, #{receiver}, #{phone}, #{isDefault},
+                #{createTime}, #{updateTime})
     </insert>
 
-    <update id="update" >
+    <update id="update">
         update address
         <set>
             <if test="province!=null">
@@ -62,6 +69,8 @@
     </update>
 
     <delete id="delete">
-        delete from address where address_id=#{addressId}
+        delete
+        from address
+        where address_id = #{addressId}
     </delete>
 </mapper>

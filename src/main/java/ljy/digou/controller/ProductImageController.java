@@ -8,7 +8,6 @@ import ljy.digou.service.ProductService;
 import ljy.digou.util.ImageUtil;
 import ljy.digou.util.ResultUtil;
 import ljy.digou.util.getExtension;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,25 +27,23 @@ import java.io.File;
 @Controller
 @RequestMapping("")
 public class ProductImageController {
+    private static final Logger log = LoggerFactory.getLogger(ProductImageController.class);
     @Autowired
     ProductService productService;
-
     @Autowired
     ProductImageService productImageService;
 
-    private static final Logger log = LoggerFactory.getLogger(ProductImageController.class);
-
     //WebUploader图片上传
     @ResponseBody
-    @RequestMapping(value = "/image/imageUpload",method = RequestMethod.POST)
+    @RequestMapping(value = "/image/imageUpload", method = RequestMethod.POST)
     public Result<Object> uploadFile(@RequestParam("file") MultipartFile files, HttpSession hs) {
         String fileName = files.getOriginalFilename();
         String imageFolder = hs.getServletContext().getRealPath("img/productSingle_middle/");
         File f = new File(imageFolder, fileName);
-        if (f.exists()){
+        if (f.exists()) {
             return new ResultUtil<Object>().setErrorMsg("图片已存在，请改名后重新上传！");
         }
-        String imagePath="";
+        String imagePath = "";
         //获取父目录
         f.getParentFile().mkdirs();
         //获取文件扩展名
@@ -56,32 +53,32 @@ public class ProductImageController {
             BufferedImage img = ImageUtil.changeImage(f);
             ImageIO.write(img, ex, f);
             ImageUtil.resizeImage(f, 217, 190, f);
-            hs.setAttribute("singleName",fileName);
-            imagePath = imageFolder+fileName;
-        }catch (Exception e){
+            hs.setAttribute("singleName", fileName);
+            imagePath = imageFolder + fileName;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new ResultUtil<Object>().setData(imagePath);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/editImage/imageUpload",method = RequestMethod.POST)
+    @RequestMapping(value = "/editImage/imageUpload", method = RequestMethod.POST)
     public Result<Object> uploadImage(@RequestParam("file") MultipartFile files, HttpSession hs) {
-        Product p = (Product)hs.getAttribute("p");
-        log.info("----------图片："+p.getImageName()+"-----------");
+        Product p = (Product) hs.getAttribute("p");
+        log.info("----------图片：" + p.getImageName() + "-----------");
         String fileName = files.getOriginalFilename();
         String imageFolder = hs.getServletContext().getRealPath("img/productSingle_middle/");
         //删除以前的缩略图
-        if (p!=null){
-            File file = new File(imageFolder,p.getImageName());
-            if (file.exists()&&file.isFile())
+        if (p != null) {
+            File file = new File(imageFolder, p.getImageName());
+            if (file.exists() && file.isFile())
                 file.delete();
         }
         File f = new File(imageFolder, fileName);
-        if (f.exists()){
+        if (f.exists()) {
             return new ResultUtil<Object>().setErrorMsg("图片已存在，请改名后重新上传！");
         }
-        String imagePath="";
+        String imagePath = "";
         //获取父目录
         f.getParentFile().mkdirs();
         //获取文件扩展名
@@ -91,9 +88,9 @@ public class ProductImageController {
             BufferedImage img = ImageUtil.changeImage(f);
             ImageIO.write(img, ex, f);
             ImageUtil.resizeImage(f, 217, 190, f);
-            hs.setAttribute("singleName",fileName);
-            imagePath = imageFolder+fileName;
-        }catch (Exception e){
+            hs.setAttribute("singleName", fileName);
+            imagePath = imageFolder + fileName;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new ResultUtil<Object>().setData(imagePath);
@@ -101,32 +98,32 @@ public class ProductImageController {
 
     //kindeditor上传
     @ResponseBody
-    @RequestMapping(value = "/kindeditor/imageUpload",method = RequestMethod.POST)
+    @RequestMapping(value = "/kindeditor/imageUpload", method = RequestMethod.POST)
     public KindEditorResult kindeditor(@RequestParam("imgFile") MultipartFile files, HttpSession hs) {
-        KindEditorResult kindEditorResult=new KindEditorResult();
+        KindEditorResult kindEditorResult = new KindEditorResult();
         String fileName = files.getOriginalFilename();
         String imageFolder = hs.getServletContext().getRealPath("img/productDetailed/");
         File f = new File(imageFolder, fileName);
-        if (f.exists()){
+        if (f.exists()) {
             kindEditorResult.setError(1);
             kindEditorResult.setMessage("图片已存在，请重新上传！");
             return kindEditorResult;
         }
-        String imagePath="";
+        String imagePath = "";
         //获取父目录
         f.getParentFile().mkdirs();
         //获取文件扩展名
         String ex = getExtension.extension(fileName);
         try {
             files.transferTo(f);
-            imagePath = "img/productDetailed/"+fileName;
+            imagePath = "img/productDetailed/" + fileName;
             BufferedImage img = ImageUtil.changeImage(f);
             ImageIO.write(img, ex, f);
             ImageUtil.resizeImage(f, 217, 190, f);
             kindEditorResult.setError(0);
             kindEditorResult.setUrl(imagePath);
             return kindEditorResult;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         kindEditorResult.setError(1);

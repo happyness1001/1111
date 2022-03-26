@@ -1,8 +1,8 @@
-
 package ljy.digou.mapper;
 
 import ljy.digou.pojo.PropertyValue;
 import ljy.digou.pojo.PropertyValueExample;
+
 import java.util.List;
 
 public interface PropertyValueMapper {

@@ -5,29 +5,38 @@
 
 <mapper namespace="ln.dao.AddressDistanceDao">
 
-    <select id="getAddressDistanceList" resultType="ln.pojo.address_distance" >
-        select * from storage.address_distance;
+    <select id="getAddressDistanceList" resultType="ln.pojo.address_distance">
+        select *
+        from storage.address_distance;
     </select>
     <select id="getAddressDistanceListByAddress" parameterType="string" resultType="ln.pojo.address_distance">
-        select * from storage.address_distance where from_address = #{from_address} and to_address = #{to_address}
+        select *
+        from storage.address_distance
+        where from_address = #{from_address}
+          and to_address = #{to_address}
     </select>
 
 
     <insert id="addAddressDistance" parameterType="ln.pojo.address_distance">
-        insert into storage.address_distance(from_address, to_address, distance) VALUES (#{from_address},#{to_address},#{distance});
+        insert into storage.address_distance(from_address, to_address, distance)
+        VALUES (#{from_address}, #{to_address}, #{distance});
     </insert>
 
     <update id="updateAddressDistance" parameterType="ln.pojo.address_distance">
         update storage.address_distance
         set distance=#{distance}
-        where from_address = #{from_address} and to_address=#{to_address};
+        where from_address = #{from_address}
+          and to_address = #{to_address};
 
 
     </update>
 
 
     <delete id="deleteAddressDistance" parameterType="string">
-        delete from storage.address_distance WHERE from_address = #{from_address} and to_address=#{to_address};
+        delete
+        from storage.address_distance
+        WHERE from_address = #{from_address}
+          and to_address = #{to_address};
 
     </delete>
 </mapper>

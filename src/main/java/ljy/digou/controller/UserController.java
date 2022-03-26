@@ -1,25 +1,19 @@
-
-
 package ljy.digou.controller;
 
-import java.util.HashMap;
-import java.util.List;
-
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import ljy.digou.pojo.Member;
 import ljy.digou.pojo.Result;
 import ljy.digou.pojo.User;
 import ljy.digou.service.MemberService;
 import ljy.digou.service.UserService;
-import ljy.digou.util.ResultUtil;
-import ljy.digou.pojo.Member;
 import ljy.digou.util.GeetestLib;
+import ljy.digou.util.Page;
+import ljy.digou.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import ljy.digou.util.Page;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +21,8 @@ import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
 
 
 @Controller
@@ -40,19 +36,19 @@ public class UserController {
 
     //用户注册
     @RequestMapping("foreregister")
-    public String register(Model model,User user) {
-        String name =  user.getName();
+    public String register(Model model, User user) {
+        String name = user.getName();
         name = HtmlUtils.htmlEscape(name);
         user.setName(name);
         boolean exist = userService.isExist(name);
-        if(exist){
-            String m ="用户名已经被使用,不能使用";
+        if (exist) {
+            String m = "用户名已经被使用,不能使用";
             model.addAttribute("msg", m);
-            return "fore/register";
+            return "jsp/fore/register";
         }
         userService.add(user);
         //新建用户登录表
-        Member m=new Member();
+        Member m = new Member();
         m.setMember_name(user.getName());
         //用户详情表
         memberService.add(m);
@@ -76,22 +72,22 @@ public class UserController {
     //已经被我修改过　　得到用户
 //    @RequestMapping("fore")
 //    @RequestMapping("forelogin")
-    @RequestMapping(value = {"forelogin","fore"})
+    @RequestMapping(value = {"forelogin", "fore"})
     public String login(@RequestParam("name") String name, @RequestParam("password") String password, Model model, HttpSession session) {
         name = HtmlUtils.htmlEscape(name);
-        User user = userService.get(name,password);
+        User user = userService.get(name, password);
 
-        if(null==user){
+        if (null == user) {
             model.addAttribute("msg", "账号密码错误");
-            return "fore/login";
+            return "jsp/fore/login";
         }
         session.setAttribute("user", user);
         return "redirect:forehome";
     }
 
     @RequestMapping("admin_user_list")
-    public String list(Model model, Page page){
-        PageHelper.offsetPage(page.getStart(),page.getCount());
+    public String list(Model model, Page page) {
+        PageHelper.offsetPage(page.getStart(), page.getCount());
 
         /*
         List<User> us= userService.list();
@@ -101,7 +97,7 @@ public class UserController {
 
         */
 
-        List<Member> mlist= memberService.list();
+        List<Member> mlist = memberService.list();
 
         int total = (int) new PageInfo<>(mlist).getTotal();
         page.setTotal(total);
@@ -110,24 +106,24 @@ public class UserController {
         model.addAttribute("page", page);
 
 //        return "admin/listUser";
-        return "admin/admin_listUser";
+        return "jsp/admin/admin_listUser";
     }
 
 
     //模糊查询
     @RequestMapping("admin_user_list_like")
-    public String alike_search(Model model, Page page,@RequestParam("find_value") String find_value, @RequestParam("search_input") String input_value){
-        PageHelper.offsetPage(page.getStart(),page.getCount());
+    public String alike_search(Model model, Page page, @RequestParam("find_value") String find_value, @RequestParam("search_input") String input_value) {
+        PageHelper.offsetPage(page.getStart(), page.getCount());
 
 
-        System.out.println("获得："+find_value);
+        System.out.println("获得：" + find_value);
         System.out.println(input_value);
 
-        if(find_value.equals("All")){
+        if (find_value.equals("All")) {
             return "redirect:admin_user_list";
         }
 
-        List<Member> mlist= memberService.alikeList(find_value,input_value);
+        List<Member> mlist = memberService.alikeList(find_value, input_value);
 
         int total = (int) new PageInfo<>(mlist).getTotal();
         page.setTotal(total);
@@ -136,34 +132,35 @@ public class UserController {
         model.addAttribute("page", page);
 
 //        return "admin/listUser";
-        return "admin/admin_listUser";
+        return "jsp/admin/admin_listUser";
     }
 
 
-    /**  用户中心表 　查看自己家的个人信息      */
-        @RequestMapping("personalCenter")
-        public String personalCenter(Model model, HttpSession session){
-            //获取到当前在线User
-            User u=(User)session.getAttribute("user");
-            System.out.println("user personalcenter 登录得到user"+u.getName());
+    /**
+     * 用户中心表 　查看自己家的个人信息
+     */
+    @RequestMapping("personalCenter")
+    public String personalCenter(Model model, HttpSession session) {
+        //获取到当前在线User
+        User u = (User) session.getAttribute("user");
+        System.out.println("user personalcenter 登录得到user" + u.getName());
 
-            Member current_member=memberService.get(u.getName());
-            System.out.println(current_member.getMember_phone());
-
-
-            model.addAttribute("current_member", current_member);
-
-            session.setAttribute("current_member",current_member);
-            //得到用户详情
+        Member current_member = memberService.get(u.getName());
+        System.out.println(current_member.getMember_phone());
 
 
+        model.addAttribute("current_member", current_member);
 
-            System.out.println("personalcenter.***　得到用户详情信息");
+        session.setAttribute("current_member", current_member);
+        //得到用户详情
 
-            return "fore/personalcenter";
+
+        System.out.println("personalcenter.***　得到用户详情信息");
+
+        return "jsp/fore/personalcenter";
 
 
-        }
+    }
 
 
     @RequestMapping("member-updateselfinfo.do")
@@ -175,23 +172,22 @@ public class UserController {
                                @RequestParam("member_address") String m_address,
                                @RequestParam("member_points") int member_points,
                                @RequestParam("member_rights") int member_rights
-                               ) {
+    ) {
 
-                                System.out.println(m_phone);
-                                System.out.println(m_address);
-                                System.out.println(member_rights);
+        System.out.println(m_phone);
+        System.out.println(m_address);
+        System.out.println(member_rights);
 
 
+        Member m = new Member();
+        m.setId(id);
+        m.setMember_phone(m_phone);
+        m.setMember_name(m_name);
+        m.setMember_address(m_address);
+        m.setMember_points(member_points);
+        m.setMember_rights(member_rights);
 
-                                Member m=new Member();
-                                m.setId(id);
-                                m.setMember_phone(m_phone);
-                                m.setMember_name(m_name);
-                                m.setMember_address(m_address);
-                                m.setMember_points(member_points);
-                                m.setMember_rights(member_rights);
-
-                                memberService.updateUserPoint(m);
+        memberService.updateUserPoint(m);
 
 //        model.addAttribute("m", m);
 
@@ -207,18 +203,18 @@ public class UserController {
     public String updateUserinfo(Model model, HttpSession session,
                                  @RequestParam("m_id") int id,
                                  @RequestParam("m_right") int right,
-                                 @RequestParam("value") int value){
+                                 @RequestParam("value") int value) {
 
-                System.out.println(id);
-                System.out.println(right);
-                System.out.println(value);
+        System.out.println(id);
+        System.out.println(right);
+        System.out.println(value);
 
-                Member m=new Member();
-                m.setId(id);
-                m.setMember_rights(right-value);
+        Member m = new Member();
+        m.setId(id);
+        m.setMember_rights(right - value);
 
-                memberService.updateUserRight(m);
-                return "redirect:admin_user_list";
+        memberService.updateUserRight(m);
+        return "redirect:admin_user_list";
 
 
     }
@@ -228,16 +224,16 @@ public class UserController {
 
     @RequestMapping("updateMemberPoint")
     public String updateMemberPoint(Model model, HttpSession session,
-                                 @RequestParam("m_id") int id,
-                                 @RequestParam("m_point") int point,
-                                 @RequestParam("value") int value){
+                                    @RequestParam("m_id") int id,
+                                    @RequestParam("m_point") int point,
+                                    @RequestParam("value") int value) {
         System.out.println(id);
         System.out.println(point);
         System.out.println(value);
 
-        Member m=new Member();
+        Member m = new Member();
         m.setId(id);
-        m.setMember_rights(point-value);
+        m.setMember_rights(point - value);
 
         memberService.updateUserPoint(m);
         return "";
@@ -248,10 +244,10 @@ public class UserController {
 
     //极验初始化
     @ResponseBody
-    @RequestMapping(value = "/geetestInit",method = RequestMethod.GET)
-    public String geetesrInit(HttpServletRequest request){
+    @RequestMapping(value = "/geetestInit", method = RequestMethod.GET)
+    public String geetesrInit(HttpServletRequest request) {
 
-        GeetestLib gtSdk = new GeetestLib(GeetestLib.id, GeetestLib.key,GeetestLib.newfailback);
+        GeetestLib gtSdk = new GeetestLib(GeetestLib.id, GeetestLib.key, GeetestLib.newfailback);
 
         String resStr = "{}";
 
@@ -271,13 +267,13 @@ public class UserController {
 
     //管理员登陆
     @ResponseBody
-    @RequestMapping(value = "/admin/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     public Result<Object> login(String username, String password,
                                 String challenge, String validate, String seccode,
-                                HttpServletRequest request){
+                                HttpServletRequest request) {
 
         //极验验证
-        GeetestLib gtSdk = new GeetestLib(GeetestLib.id, GeetestLib.key,GeetestLib.newfailback);
+        GeetestLib gtSdk = new GeetestLib(GeetestLib.id, GeetestLib.key, GeetestLib.newfailback);
 
         //从session中获取gt-server状态
         int gt_server_status_code = (Integer) request.getSession().getAttribute(gtSdk.gtServerStatusSessionKey);
@@ -301,31 +297,29 @@ public class UserController {
         if (gtResult == 1) {
             // 验证成功
             username = HtmlUtils.htmlEscape(username);
-            User user = userService.get(username,password);
+            User user = userService.get(username, password);
 
-            if(user==null){
+            if (user == null) {
                 return new ResultUtil<Object>().setErrorMsg("用户名或密码错误");
-            }
-            else {
-                request.getSession().setAttribute("admin",user);
+            } else {
+                request.getSession().setAttribute("admin", user);
                 return new ResultUtil<Object>().setData(null);
             }
             //MD5加密
-        }
-        else {
+        } else {
             // 验证失败
             return new ResultUtil<Object>().setErrorMsg("验证失败");
         }
     }
 
     @RequestMapping("adminlogoff")
-    public String adminlogout( HttpSession session) {
+    public String adminlogout(HttpSession session) {
         session.removeAttribute("admin");
         return "redirect:forehome";
     }
 
     @RequestMapping("forelogout")
-    public String logout( HttpSession session) {
+    public String logout(HttpSession session) {
         session.removeAttribute("user");
         return "redirect:forehome";
     }
@@ -333,21 +327,21 @@ public class UserController {
     //检查session
     @RequestMapping("forecheckLogin")
     @ResponseBody
-    public String checkLogin( HttpSession session) {
-        User user =(User)  session.getAttribute("user");
+    public String checkLogin(HttpSession session) {
+        User user = (User) session.getAttribute("user");
 //        System.out.println("执行到这了吗 controller");
-        if(null!=user)
+        if (null != user)
             return "success";
         return "fail";
     }
 
     @RequestMapping("foreloginAjax")
     @ResponseBody
-    public String loginAjax(@RequestParam("name") String name, @RequestParam("password") String password,HttpSession session) {
+    public String loginAjax(@RequestParam("name") String name, @RequestParam("password") String password, HttpSession session) {
         name = HtmlUtils.htmlEscape(name);
-        User user = userService.get(name,password);
+        User user = userService.get(name, password);
 
-        if(null==user){
+        if (null == user) {
             return "fail";
         }
         session.setAttribute("user", user);

@@ -1,7 +1,6 @@
 package gsh.pojo;
 
 import gsh.dao.Strategy;
-import gsh.pojo.AbstractOrder;
 
 public class StrategyActivity {
 

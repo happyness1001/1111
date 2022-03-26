@@ -53,21 +53,21 @@ public class ManagerServiceImpl implements ManagerService {
         //账户不存在或密码不正确时，返回null
         if (findManager == null) {
             return null;
-        }else if (manager.getPassword().equals(findManager.getPassword())){
+        } else if (manager.getPassword().equals(findManager.getPassword())) {
             return findManager;
-        }else {
+        } else {
             return null;
         }
     }
 
     @Override
     public Integer register(Manager manager) {
-        if(managerDao.findByName(manager.getName()) != null) {
+        if (managerDao.findByName(manager.getName()) != null) {
             //用户名已存在
             return -1;
         }
         Long microsecond = System.nanoTime() / 1000 % 1000000;
-        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000?"0":"") + microsecond;
+        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000 ? "0" : "") + microsecond;
         String uid = manager.getUserType() + "邮政编码" + timeStamp;
         manager.setUid(uid);
 

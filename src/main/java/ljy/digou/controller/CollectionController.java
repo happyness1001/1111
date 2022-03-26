@@ -1,11 +1,11 @@
 package ljy.digou.controller;
 
 
-import ljy.digou.pojo.Product;
-import ljy.digou.pojo.User;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import ljy.digou.pojo.Collection;
+import ljy.digou.pojo.Product;
+import ljy.digou.pojo.User;
 import ljy.digou.service.CollectionService;
 import ljy.digou.service.ProductService;
 import ljy.digou.util.Page;
@@ -26,60 +26,59 @@ public class CollectionController {
     CollectionService collectionService;
     @Autowired
     ProductService productService;
+
     //显示用户收藏
     @RequestMapping("shouCangPage")
-    public String UsershouCang(HttpSession session){
+    public String UsershouCang(HttpSession session) {
 
-        User user =(User)session.getAttribute("user");
-        List<Collection> collectionList=collectionService.getUserSC(user.getName());
+        User user = (User) session.getAttribute("user");
+        List<Collection> collectionList = collectionService.getUserSC(user.getName());
 //        System.out.println(collectionList.size());
-        List<Product> productList=new ArrayList<>();
-        for (Collection c:collectionList){
+        List<Product> productList = new ArrayList<>();
+        for (Collection c : collectionList) {
             productList.add(productService.get(c.getPid()));
         }
 
         //放到  服务器上 供我取出来
         session.removeAttribute("collectionList");
         session.removeAttribute("shoucangPd");
-        session.setAttribute("collectionList",collectionList);
-        session.setAttribute("shoucangPd",productList);
+        session.setAttribute("collectionList", collectionList);
+        session.setAttribute("shoucangPd", productList);
 
-        return "include/fore/shouCangPage";
+        return "jsp/include/fore/shouCangPage";
     }
 
 
     //添加产品收藏
     @RequestMapping("shoucangSucceed")
-    public String shoucangPd(int pid,HttpSession session){
-        if (productService.get(pid)==null){
+    public String shoucangPd(int pid, HttpSession session) {
+        if (productService.get(pid) == null) {
             System.out.println("已经成功收藏过了！");
-            return "include/fore/shoucangSucceed";
+            return "jsp/include/fore/shoucangSucceed";
         }
-        User user =(User)session.getAttribute("user");
-        Collection collection=new Collection();
+        User user = (User) session.getAttribute("user");
+        Collection collection = new Collection();
         collection.setPid(pid);
-        if (user==null){
-            return "fore/login";
+        if (user == null) {
+            return "jsp/fore/login";
         }
         collection.setScuname(user.getName());
         collectionService.add(collection);
-        return "include/fore/shoucangSucceed";
+        return "jsp/include/fore/shoucangSucceed";
     }
-
 
 
     //收藏产品删除
     @RequestMapping("shoucangDelete")
-    public String shoucangDelete(HttpSession session,int id){
+    public String shoucangDelete(HttpSession session, int id) {
 
         //control  调用 sevice层
 
         //sevice层具体删除去
-                collectionService.delete(id);
+        collectionService.delete(id);
 
         return "redirect:shouCangPage";
     }
-
 
 
     //后台的 收藏列表
@@ -87,16 +86,16 @@ public class CollectionController {
     public String showAllCollection(HttpSession session, Model model, Page page) {
 
         //分页助手
-        PageHelper.offsetPage(page.getStart(),page.getCount());
+        PageHelper.offsetPage(page.getStart(), page.getCount());
 
         //收藏的集合
-        List<Collection> collecList=collectionService.list();
+        List<Collection> collecList = collectionService.list();
 
 
-        List<Product> collecList_plist=new ArrayList<>();
+        List<Product> collecList_plist = new ArrayList<>();
 
 
-        for (Collection c:collecList){
+        for (Collection c : collecList) {
             collecList_plist.add(productService.get(c.getPid()));
         }
 
@@ -111,7 +110,7 @@ public class CollectionController {
 //        session.setAttribute("collecList",collecList);
 //        session.setAttribute("collecList_plist",collecList_plist);
 
-        return "admin/admin_listCollection";
+        return "jsp/admin/admin_listCollection";
     }
 
 

@@ -14,5 +14,6 @@ public interface StoreService {
     public Store findByUid(String uid);
 
     public Store findByName(String name);
+
     public Store login(Store store);
 }

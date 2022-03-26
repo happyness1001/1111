@@ -18,12 +18,12 @@ public class ProviderController {
     private AuditPageService auditPageService;
 
     @RequestMapping("/register")
-    public ModelAndView pregister(BusinessLicenseInfo businessLicenseInfo, AuditPage auditPage){
+    public ModelAndView pregister(BusinessLicenseInfo businessLicenseInfo, AuditPage auditPage) {
         int result = 0;
         System.out.println(businessLicenseInfo);
         System.out.println(auditPage);
-        result = auditPageService.add(auditPage,businessLicenseInfo);
-        if (result == 0){
+        result = auditPageService.add(auditPage, businessLicenseInfo);
+        if (result == 0) {
 
         }
         return null;

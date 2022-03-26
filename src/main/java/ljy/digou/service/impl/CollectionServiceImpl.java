@@ -1,12 +1,10 @@
 package ljy.digou.service.impl;
 
 
-
 import ljy.digou.mapper.CollectionMapper;
-import ljy.digou.mapper.MemberMapper;
-import ljy.digou.pojo.*;
+import ljy.digou.pojo.Collection;
+import ljy.digou.pojo.CollectionExample;
 import ljy.digou.service.CollectionService;
-import ljy.digou.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +19,7 @@ public class CollectionServiceImpl implements CollectionService {
 
     @Override
     public List<Collection> list() {
-        CollectionExample example =new CollectionExample();
+        CollectionExample example = new CollectionExample();
         example.setOrderByClause("scId desc");
         return collectionMapper.selectByExample(example);
     }
@@ -44,24 +42,24 @@ public class CollectionServiceImpl implements CollectionService {
     //查询用户的收藏的商品 正序
     @Override
     public List<Collection> getUserSC(String uname) {
-        CollectionExample collectionExample=new CollectionExample();
-        CollectionExample.Criteria collectionExampleCriteria=collectionExample.createCriteria();
+        CollectionExample collectionExample = new CollectionExample();
+        CollectionExample.Criteria collectionExampleCriteria = collectionExample.createCriteria();
         collectionExampleCriteria.andScunameEqualTo(uname);
         return collectionMapper.selectByExample(collectionExample);
     }
 
 
     //查询某产品是否收藏
-    public Collection getPdSC(int pid,String username){
-        CollectionExample collectionExample=new CollectionExample();
+    public Collection getPdSC(int pid, String username) {
+        CollectionExample collectionExample = new CollectionExample();
         collectionExample.createCriteria().andPidEqualTo(pid).andScunameEqualTo(username);
-        List<Collection> collectionList=new ArrayList<>();
-        collectionList=collectionMapper.selectByExample(collectionExample);
-        try{
-            if (collectionList.get(0)==null)
+        List<Collection> collectionList = new ArrayList<>();
+        collectionList = collectionMapper.selectByExample(collectionExample);
+        try {
+            if (collectionList.get(0) == null)
                 return new Collection();
-        }catch (Exception e){
-            Collection collection=new Collection();
+        } catch (Exception e) {
+            Collection collection = new Collection();
             collection.setPid(-1);
             return collection;
         }

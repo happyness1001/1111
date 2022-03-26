@@ -1,5 +1,3 @@
-
-
 package ljy.digou.controller;
 
 import ljy.digou.pojo.Product;
@@ -23,15 +21,16 @@ public class PropertyValueController {
     ProductService productService;
 
     @RequestMapping("admin_propertyValue_edit")
-    public String edit(Model model,int pid) {
+    public String edit(Model model, int pid) {
         Product p = productService.get(pid);
         propertyValueService.init(p);
         List<PropertyValue> pvs = propertyValueService.list(p.getId());
 
         model.addAttribute("p", p);
         model.addAttribute("pvs", pvs);
-        return "admin/editPropertyValue";
+        return "jsp/admin/editPropertyValue";
     }
+
     @RequestMapping("admin_propertyValue_update")
     @ResponseBody
     public String update(PropertyValue pv) {

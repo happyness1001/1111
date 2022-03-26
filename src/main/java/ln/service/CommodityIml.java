@@ -2,16 +2,15 @@ package ln.service;
 
 
 import ln.dao.CommodityDao;
-import ln.dao.StoreHouseDao;
+import ln.pojo.Commodity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import ln.pojo.Commodity;
 
 import java.util.List;
 
 @Service
-public class CommodityIml implements CommodityService{
+public class CommodityIml implements CommodityService {
 
     @Autowired
     @Qualifier("commodityDao")
@@ -51,11 +50,12 @@ public class CommodityIml implements CommodityService{
     public List<Commodity> getCommodityLike(String name) {
         return commodityDao.getCommodityLike(name);
     }
+
     public String GenerateID() {
         long microsecond = System.nanoTime() / 1000 % 1000000;
-        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000?"0":"") + microsecond;
+        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000 ? "0" : "") + microsecond;
 //        return  "邮政编码" + timeStamp;
-        return  timeStamp;
+        return timeStamp;
     }
 }
 

@@ -10,6 +10,7 @@ public class IsShipped {
     @Autowired
     @Qualifier("orderCommodityIml")
     private OrderCommodityService orderCommodityService;
+
     public boolean isShipped(String OrderId) {
 //        if(发货)
         return orderCommodityService.isShipped(OrderId);

@@ -4,15 +4,15 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5Util {
-    public static String md5password(String password){
+    public static String md5password(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("md5");
             byte[] result = digest.digest(password.getBytes());
             StringBuffer buffer = new StringBuffer();
-            for(byte b:result){
-                int number = b&0xff;
+            for (byte b : result) {
+                int number = b & 0xff;
                 String str = Integer.toHexString(number);
-                if(str.length() == 1){
+                if (str.length() == 1) {
                     buffer.append("0");
                 }
                 buffer.append(str);

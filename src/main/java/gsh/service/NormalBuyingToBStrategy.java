@@ -36,7 +36,7 @@ public class NormalBuyingToBStrategy implements Strategy<NormalBuyingToB> {
 //        创建IsPay
 //        IsPay isPay = new IsPay();
 //        创建货运信息
-        Logistics logistics = new Logistics(normalBuyingToB.getOrderId(),normalBuyingToB.getDeliveryAddress());
+        Logistics logistics = new Logistics(normalBuyingToB.getOrderId(), normalBuyingToB.getDeliveryAddress());
 //        创建IsArrive
 //        IsArrive isArrive = new IsArrive();
 //        获取商品信息

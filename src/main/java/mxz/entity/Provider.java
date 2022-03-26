@@ -25,7 +25,8 @@ public class Provider extends User {
         this.phone = phone;
         this.userType = userType;
     }
-    public Provider(String name,String password) {
+
+    public Provider(String name, String password) {
         this.password = password;
         this.name = name;
     }

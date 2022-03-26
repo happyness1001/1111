@@ -1,17 +1,14 @@
-
-
 package ljy.digou.controller;
 
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
-import ljy.digou.pojo.*;
-import ljy.digou.pojo.Collection;
-import ljy.digou.service.*;
-import ljy.digou.util.AlipayConfig;
 import com.github.pagehelper.PageHelper;
 import ljy.comparator.*;
-
+import ljy.digou.pojo.Collection;
+import ljy.digou.pojo.*;
+import ljy.digou.service.*;
+import ljy.digou.util.AlipayConfig;
 import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +31,7 @@ import java.util.*;
 @Controller
 @RequestMapping("")
 public class ForeController {
+    private static final Logger log = LoggerFactory.getLogger(ForeController.class);
     @Autowired
     CategoryService categoryService;
     @Autowired
@@ -55,53 +53,50 @@ public class ForeController {
     @Autowired
     CollectionService collectionService;
 
-
-    private static final Logger log = LoggerFactory.getLogger(ForeController.class);
-
     //商城主页
     @RequestMapping("forehome")
     public String home(Model model) {
-        List<Category> cs= categoryService.list();
+        List<Category> cs = categoryService.list();
         productService.fill(cs);
         productService.fillByRow(cs);
         model.addAttribute("cs", cs);
-        return "fore/home";
+        return "jsp/fore/home";
     }
 
     //获取一个类别的所有产品
     @RequestMapping("forecategory")
-    public String category(int cid,String sort, Model model,HttpSession session) {
+    public String category(int cid, String sort, Model model, HttpSession session) {
         Category c = categoryService.get(cid);
         productService.fill(c);
         productService.setSaleAndReviewNumber(c.getProducts());
 
-        if(null!=sort){
-            switch(sort){
+        if (null != sort) {
+            switch (sort) {
                 case "review"://评价
-                    Collections.sort(c.getProducts(),new ProductReviewComparator());
+                    Collections.sort(c.getProducts(), new ProductReviewComparator());
                     break;
-                case "date" ://日期
-                    Collections.sort(c.getProducts(),new ProductDateComparator());
+                case "date"://日期
+                    Collections.sort(c.getProducts(), new ProductDateComparator());
                     break;
-                case "saleCount" ://销量
-                    Collections.sort(c.getProducts(),new ProductSaleCountComparator());
+                case "saleCount"://销量
+                    Collections.sort(c.getProducts(), new ProductSaleCountComparator());
                     break;
                 case "price"://价格
-                    Collections.sort(c.getProducts(),new ProductPriceComparator());
+                    Collections.sort(c.getProducts(), new ProductPriceComparator());
                     break;
                 case "all"://综合
-                    Collections.sort(c.getProducts(),new ProductAllComparator());
+                    Collections.sort(c.getProducts(), new ProductAllComparator());
                     break;
             }
         }
-        session.setAttribute("showProduct","showProduct");
+        session.setAttribute("showProduct", "showProduct");
         model.addAttribute("c", c);
-        return "fore/category";
+        return "jsp/fore/category";
     }
 
     //显示某一商品
     @RequestMapping("foreproduct")
-    public String product( int pid,HttpSession hs) {
+    public String product(int pid, HttpSession hs) {
         Product p = productService.get(pid);
 
         List<ProductImage> productSingleImages = productImageService.list(p.getId(), ProductImageService.type_single);
@@ -112,31 +107,31 @@ public class ForeController {
         List<PropertyValue> pvs = propertyValueService.list(p.getId());
         List<Review> reviews = reviewService.list(p.getId());
         productService.setSaleAndReviewNumber(p);
-        User user = (User)hs.getAttribute("user");
+        User user = (User) hs.getAttribute("user");
         String username = "";
-        if (user!=null)
+        if (user != null)
             username = user.getName();
-        Collection collection=collectionService.getPdSC(pid,username);
-        log.error("----------------"+collection.getPid()+"-------"+collection.getScuname());
-        if (collection==null||collection.getPid()==-1){
-            hs.setAttribute("isShouChang","false");
-        }else {
-            hs.setAttribute("isShouChang","true");
+        Collection collection = collectionService.getPdSC(pid, username);
+        log.error("----------------" + collection.getPid() + "-------" + collection.getScuname());
+        if (collection == null || collection.getPid() == -1) {
+            hs.setAttribute("isShouChang", "false");
+        } else {
+            hs.setAttribute("isShouChang", "true");
         }
         hs.setAttribute("reviews", reviews);
         hs.setAttribute("p", p);
         hs.setAttribute("pvs", pvs);
-        return "fore/product";
+        return "jsp/fore/product";
     }
 
     //搜索
     @RequestMapping("foresearch")
-    public String search( String keyword,Model model){
-        PageHelper.offsetPage(0,20);
-        List<Product> ps= productService.search(keyword);
+    public String search(String keyword, Model model) {
+        PageHelper.offsetPage(0, 20);
+        List<Product> ps = productService.search(keyword);
         productService.setSaleAndReviewNumber(ps);
-        model.addAttribute("ps",ps);
-        return "fore/searchResult";
+        model.addAttribute("ps", ps);
+        return "jsp/fore/searchResult";
     }
 
     //
@@ -144,16 +139,16 @@ public class ForeController {
     public String buyone(int pid, int num, HttpSession session) {
         Product p = productService.get(pid);
         int oiid = 0;
-        User user =(User)  session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         System.out.println("执行到立即购买");
-        if (user==null){
-            return "fore/login";
+        if (user == null) {
+            return "jsp/fore/login";
         }
         boolean found = false;
         List<OrderItem> ois = orderItemService.listByUser(user.getId());
         for (OrderItem oi : ois) {
-            if(oi.getProduct().getId().intValue()==p.getId().intValue()){
-                oi.setNumber(oi.getNumber()+num);
+            if (oi.getProduct().getId().intValue() == p.getId().intValue()) {
+                oi.setNumber(oi.getNumber() + num);
                 orderItemService.update(oi);
                 found = true;
                 oiid = oi.getId();
@@ -161,7 +156,7 @@ public class ForeController {
             }
         }
 
-        if(!found){
+        if (!found) {
             OrderItem oi = new OrderItem();
             oi.setUid(user.getId());
             oi.setNumber(num);
@@ -169,46 +164,46 @@ public class ForeController {
             orderItemService.add(oi);
             oiid = oi.getId();
         }
-        return "redirect:forebuy?oiid="+oiid;
+        return "redirect:forebuy?oiid=" + oiid;
     }
 
     @RequestMapping("forebuy")
-    public String buy( Model model,String[] oiid,HttpSession session){
+    public String buy(Model model, String[] oiid, HttpSession session) {
         List<OrderItem> ois = new ArrayList<>();
         float total = 0;
 
         for (String strid : oiid) {
             int id = Integer.parseInt(strid);
-            OrderItem oi= orderItemService.get(id);
-            total +=oi.getProduct().getPromotePrice()*oi.getNumber();
+            OrderItem oi = orderItemService.get(id);
+            total += oi.getProduct().getPromotePrice() * oi.getNumber();
             ois.add(oi);
         }
 
         session.setAttribute("ois", ois);
         model.addAttribute("total", total);
-        return "fore/buy";
+        return "jsp/fore/buy";
     }
 
 
     @RequestMapping("forecreateOrder")
-    public String createOrder(HttpSession session ,Order order){
-        User user =(User)  session.getAttribute("user");
+    public String createOrder(HttpSession session, Order order) {
+        User user = (User) session.getAttribute("user");
         String orderCode = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()) + RandomUtils.nextInt(10000);
         order.setOrderCode(orderCode);
         order.setCreateDate(new Date());
         order.setUid(user.getId());
         order.setStatus(OrderService.waitPay);
-        List<OrderItem> ois= (List<OrderItem>)  session.getAttribute("ois");
-        float total =orderService.add(order,ois);
-        session.setAttribute("oid",order.getId());
-        session.setAttribute("total",total);
-        return "redirect:forealipay?oid="+order.getId()+"&total="+total;
+        List<OrderItem> ois = (List<OrderItem>) session.getAttribute("ois");
+        float total = orderService.add(order, ois);
+        session.setAttribute("oid", order.getId());
+        session.setAttribute("total", total);
+        return "redirect:forealipay?oid=" + order.getId() + "&total=" + total;
     }
 
     @RequestMapping(value = "forealipay")
     public String goAlipay(int oid, float total, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        User user =(User)  request.getSession().getAttribute("user");
-        List<OrderItem> ot = orderItemService.getByoAndu(user.getId(),oid);
+        User user = (User) request.getSession().getAttribute("user");
+        List<OrderItem> ot = orderItemService.getByoAndu(user.getId(), oid);
         String productName = ot.get(0).getProduct().getName();
         Order order = orderService.get(oid);
 
@@ -232,11 +227,11 @@ public class ForeController {
         // 该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。
         String timeout_express = "1c";
 
-        alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
-                + "\"total_amount\":\""+ total_amount +"\","
-                + "\"subject\":\""+ subject +"\","
-                + "\"body\":\""+ body +"\","
-                + "\"timeout_express\":\""+ timeout_express +"\","
+        alipayRequest.setBizContent("{\"out_trade_no\":\"" + out_trade_no + "\","
+                + "\"total_amount\":\"" + total_amount + "\","
+                + "\"subject\":\"" + subject + "\","
+                + "\"body\":\"" + body + "\","
+                + "\"timeout_express\":\"" + timeout_express + "\","
                 + "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
 
         //请求
@@ -257,44 +252,44 @@ public class ForeController {
         order.setPayDate(new Date());
         orderService.update(order);
         model.addAttribute("o", order);
-        mav.setViewName("fore/payed");
+        mav.setViewName("jsp/fore/payed");
         return mav;
     }
 
     @RequestMapping("forebought")
-    public String bought( Model model,HttpSession session) {
-        User user =(User)  session.getAttribute("user");
-        List<Order> os= orderService.list(user.getId(),OrderService.delete);
+    public String bought(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        List<Order> os = orderService.list(user.getId(), OrderService.delete);
 
         orderItemService.fill(os);
 
         model.addAttribute("os", os);
 
-        return "fore/bought";
+        return "jsp/fore/bought";
     }
 
     @RequestMapping("foreconfirmPay")
-    public String confirmPay( Model model,int oid) {
+    public String confirmPay(Model model, int oid) {
         Order o = orderService.get(oid);
         orderItemService.fill(o);
         model.addAttribute("o", o);
-        return "fore/confirmPay";
+        return "jsp/fore/confirmPay";
     }
 
 
     @RequestMapping("foreorderConfirmed")
-    public String orderConfirmed( Model model,int oid) {
+    public String orderConfirmed(Model model, int oid) {
         Order o = orderService.get(oid);
         o.setStatus(OrderService.waitReview);
         o.setConfirmDate(new Date());
         orderService.update(o);
-        return "fore/orderConfirmed";
+        return "jsp/fore/orderConfirmed";
     }
 
 
     @RequestMapping("foredeleteOrder")
     @ResponseBody
-    public String deleteOrder( Model model,int oid){
+    public String deleteOrder(Model model, int oid) {
         Order o = orderService.get(oid);
         o.setStatus(OrderService.delete);
         orderService.update(o);
@@ -303,7 +298,7 @@ public class ForeController {
 
     //每个产品下面的 评论集合
     @RequestMapping("forereview")
-    public String review( Model model,int oid) {
+    public String review(Model model, int oid) {
         //得到用户订单
         Order o = orderService.get(oid);
         //得到订单的商品
@@ -323,14 +318,13 @@ public class ForeController {
         model.addAttribute("p", p);
         model.addAttribute("o", o);
         model.addAttribute("reviews", reviews);
-        return "fore/review";
+        return "jsp/fore/review";
     }
-
 
 
     //确认收货   的时候 要评价
     @RequestMapping("foredoreview")
-    public String doreview( Model model,HttpSession session,@RequestParam("oid") int oid,@RequestParam("pid") int pid  ,@RequestParam("price_value") float price_value    ,String content) {
+    public String doreview(Model model, HttpSession session, @RequestParam("oid") int oid, @RequestParam("pid") int pid, @RequestParam("price_value") float price_value, String content) {
         Order o = orderService.get(oid);
         o.setStatus(OrderService.finish);
         orderService.update(o);
@@ -339,8 +333,8 @@ public class ForeController {
         content = HtmlUtils.htmlEscape(content);
 
         //获取当前对象
-        User user =(User)  session.getAttribute("user");
-        Member member=(Member)session.getAttribute("current_member");
+        User user = (User) session.getAttribute("user");
+        Member member = (Member) session.getAttribute("current_member");
 
         //添加评论
         Review review = new Review();
@@ -351,118 +345,118 @@ public class ForeController {
         reviewService.add(review);
 
         //给用户积分
-        member.setMember_points(member.getMember_points()+(int)price_value);
+        member.setMember_points(member.getMember_points() + (int) price_value);
         memberService.updateUserPoint(member);
-        session.setAttribute("current_member",member);
+        session.setAttribute("current_member", member);
 
-        return "redirect:forereview?oid="+oid+"&showonly=true";
+        return "redirect:forereview?oid=" + oid + "&showonly=true";
     }
 
 
     @RequestMapping("foreupdate")
-    public String foreupdate( Model model,HttpSession session) {
-        return "fore/updateMyinfo";
+    public String foreupdate(Model model, HttpSession session) {
+        return "jsp/fore/updateMyinfo";
     }
 
     //获取推荐的产品
     @RequestMapping("foretuijian")
     public String pdTuijian(HttpSession session) {
-        List<Product> productList=new ArrayList<>();
-        for (int pid:orderItemService.getTuijian()){
+        List<Product> productList = new ArrayList<>();
+        for (int pid : orderItemService.getTuijian()) {
             productList.add(productService.get(pid));
         }
         session.setAttribute("c", productList);
-        session.setAttribute("showProduct","tuijian");
-        return "fore/category";
+        session.setAttribute("showProduct", "tuijian");
+        return "jsp/fore/category";
     }
 
     //获取狗嘴热的产品
     @RequestMapping("foreGouzuire")
     public String pdGouZuiRe(HttpSession session) {
-        List<Product> productList=new ArrayList<>();
-        for (int i:productService.getGouZuiRe()){
+        List<Product> productList = new ArrayList<>();
+        for (int i : productService.getGouZuiRe()) {
             productList.add(productService.get(i));
         }
-        session.setAttribute("showProduct","gouZuiRe");
-        session.setAttribute("c",productList);
-        return "fore/category";
+        session.setAttribute("showProduct", "gouZuiRe");
+        session.setAttribute("c", productList);
+        return "jsp/fore/category";
     }
 
     @RequestMapping("foremypoint")
-    public String  foremypoint( Model model) {
+    public String foremypoint(Model model) {
         return "fore/shownMypoint";
     }
 
     @RequestMapping("go_chart1")
-    public String  forechart1( Model model,@RequestParam("cid") int id,HttpSession session) {
+    public String forechart1(Model model, @RequestParam("cid") int id, HttpSession session) {
         System.out.println(id);
         Category cc = categoryService.get(id);
         productService.fill(cc);
         productService.setSaleAndReviewNumber(cc.getProducts());
 
-        Map<String,Integer> map1 = new HashMap();
+        Map<String, Integer> map1 = new HashMap();
 
         for (Product pp : cc.getProducts()) {
-            map1.put(pp.getName(),pp.getStock());
+            map1.put(pp.getName(), pp.getStock());
         }
 
-        session.setAttribute("map1",map1);
+        session.setAttribute("map1", map1);
 //
 //            float arr[]={50, 20, 36, 10, 10, 30};
 //
 //            session.setAttribute("shuju",arr);
-        session.setAttribute("admin_showProduct","admin_showProduct");
+        session.setAttribute("admin_showProduct", "admin_showProduct");
         model.addAttribute("cc", cc);
 
-        return "admin/admin_chart1";
+        return "jsp/admin/admin_chart1";
 
     }
 
     @RequestMapping("go_chart3")
-    public String  forechart3( Model model,@RequestParam("cid") int id,HttpSession session) {
+    public String forechart3(Model model, @RequestParam("cid") int id, HttpSession session) {
 
         System.out.println(id);
         Category cc = categoryService.get(id);
         productService.fill(cc);
         productService.setSaleAndReviewNumber(cc.getProducts());
 
-        Map<String,Integer> map3 = new HashMap();
+        Map<String, Integer> map3 = new HashMap();
 
         for (Product pp : cc.getProducts()) {
-            map3.put(pp.getName(),pp.getReviewCount());
+            map3.put(pp.getName(), pp.getReviewCount());
         }
 
-        session.setAttribute("map3",map3);
+        session.setAttribute("map3", map3);
 
-        session.setAttribute("admin_showProduct","admin_showProduct");
+        session.setAttribute("admin_showProduct", "admin_showProduct");
         model.addAttribute("cc", cc);
 
-        return "admin/admin_chart3";
+        return "jsp/admin/admin_chart3";
 
     }
 
 
     @RequestMapping("go_chart2")
-    public String  forechart2( Model model,@RequestParam("cid") int id,HttpSession session) {
+    public String forechart2(Model model, @RequestParam("cid") int id, HttpSession session) {
 
         System.out.println(id);
         Category cc = categoryService.get(id);
         productService.fill(cc);
         productService.setSaleAndReviewNumber(cc.getProducts());
 
-        Map<String,Integer> map2 = new HashMap();
+        Map<String, Integer> map2 = new HashMap();
 
         for (Product pp : cc.getProducts()) {
-            map2.put(pp.getName(),pp.getSaleCount());
+            map2.put(pp.getName(), pp.getSaleCount());
         }
 
-        session.setAttribute("map2",map2);
-        float arr[]={50, 20, 36, 10, 10, 30};
+        session.setAttribute("map2", map2);
+        float arr[] = {50, 20, 36, 10, 10, 30};
 
-        session.setAttribute("shuju",arr);
-        session.setAttribute("admin_showProduct","admin_showProduct");
+        session.setAttribute("shuju", arr);
+        session.setAttribute("admin_showProduct", "admin_showProduct");
         model.addAttribute("cc", cc);
-        return "admin/admin_chart2";
+        return "jsp/admin/admin_chart2";
 
     }
 

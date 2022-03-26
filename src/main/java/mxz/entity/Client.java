@@ -23,13 +23,14 @@ public class Client extends User {
     private String remark;//签名
     private Integer userType;//用户类型
 
-    public Client(String name, String password,  String phone, Integer userType) {
+    public Client(String name, String password, String phone, Integer userType) {
         this.name = name;
         this.password = password;
         this.phone = phone;
         this.userType = userType;
     }
-    public Client(String name,String password) {
+
+    public Client(String name, String password) {
         this.password = password;
         this.name = name;
     }

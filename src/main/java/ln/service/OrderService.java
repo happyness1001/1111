@@ -8,9 +8,12 @@ import java.util.List;
 public interface OrderService {
 
     void match(Order order);//
+
     void change(Order order);
+
     int analyse(Order order);//分析订单
-    String dispatch(String receive_location,String order_id);//分发订单
+
+    String dispatch(String receive_location, String order_id);//分发订单
 //    void addAddressDistance();
 
     //根据订单查询商品

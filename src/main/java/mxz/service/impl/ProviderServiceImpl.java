@@ -53,22 +53,22 @@ public class ProviderServiceImpl implements ProviderService {
         //账户不存在或密码不正确时，返回null
         if (provider == null) {
             return null;
-        }else if (provider.getPassword().equals(provider.getPassword())){
+        } else if (provider.getPassword().equals(provider.getPassword())) {
             findProvider.setUserType(1);
             return findProvider;
-        }else {
+        } else {
             return null;
         }
     }
 
     @Override
     public Integer register(Provider provider) {
-        if(providerDao.findByName(provider.getName()) != null) {
+        if (providerDao.findByName(provider.getName()) != null) {
             //用户名已存在
             return -1;
         }
         Long microsecond = System.nanoTime() / 1000 % 1000000;
-        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000?"0":"") + microsecond;
+        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000 ? "0" : "") + microsecond;
         String uid = provider.getUserType() + "邮政编码" + timeStamp;
         provider.setUid(uid);
 

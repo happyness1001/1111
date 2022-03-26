@@ -1,8 +1,8 @@
-
 package ljy.digou.mapper;
 
 import ljy.digou.pojo.ProductImage;
 import ljy.digou.pojo.ProductImageExample;
+
 import java.util.List;
 
 public interface ProductImageMapper {

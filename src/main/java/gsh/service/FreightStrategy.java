@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
 @Service
 public class FreightStrategy {
 
@@ -16,6 +17,7 @@ public class FreightStrategy {
     SendLogistics sendLogistics;
     @Autowired
     IsShipped isShipped;
+
     public void doFreight(Logistics logistics) {
 //        发送货运单
 //        SendLogistics sendLogistics = new SendLogistics();

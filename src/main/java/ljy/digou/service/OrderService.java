@@ -1,11 +1,9 @@
-
-
 package ljy.digou.service;
-
-import java.util.List;
 
 import ljy.digou.pojo.Order;
 import ljy.digou.pojo.OrderItem;
+
+import java.util.List;
 
 public interface OrderService {
 
@@ -19,11 +17,17 @@ public interface OrderService {
     String yituihuo = "yituihuo";
 
     void add(Order c);
-    float add(Order c,List<OrderItem> ois);
+
+    float add(Order c, List<OrderItem> ois);
+
     void delete(int id);
+
     void update(Order c);
+
     Order get(int id);
+
     List list();
+
     List list(int uid, String excludedStatus);
 
 

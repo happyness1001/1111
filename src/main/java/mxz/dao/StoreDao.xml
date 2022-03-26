@@ -15,8 +15,9 @@
         <result column="create_datetime" property="createDateTime"/>
     </resultMap>
 
-    <insert id="add" >
-        insert into store values(#{uid},#{password},#{name},#{phone},#{auditUrl},#{isDeposit},#{remark},#{createDateTime})
+    <insert id="add">
+        insert into store
+        values (#{uid}, #{password}, #{name}, #{phone}, #{auditUrl}, #{isDeposit}, #{remark}, #{createDateTime})
     </insert>
 
     <update id="update">
@@ -39,16 +40,20 @@
     </update>
 
     <select id="findByUid" resultMap="storeMap">
-        select * from store where uid=#{uid}
+        select *
+        from store
+        where uid = #{uid}
     </select>
 
     <delete id="delete">
-        delete from store where uid=#{uid}
+        delete
+        from store
+        where uid = #{uid}
     </delete>
 
     <select id="findByName" resultMap="storeMap">
         select *
         from store
-        where name=#{name}
+        where name = #{name}
     </select>
 </mapper>

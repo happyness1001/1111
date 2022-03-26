@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 public class DoStrategyImpl implements DoStrategy {
 
 
-
     @Override
     public void doStrategyActivity(AbstractOrder abstractOrder) {
 //        获得相应的Active策略

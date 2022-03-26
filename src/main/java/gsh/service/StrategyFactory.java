@@ -40,7 +40,11 @@ public class StrategyFactory {
 //    }
 
 
-//    private static Map<AbstractOrder, Strategy> ORDER_STRATEGY_MAP = new HashMap<AbstractOrder, Strategy>();
+    @Autowired
+    static
+    EmptyStrategy NON_STRATEGY;
+    private static Map<String, Strategy> ORDER_STRATEGY_MAP = new HashMap<String, Strategy>();
+    //    private static Map<AbstractOrder, Strategy> ORDER_STRATEGY_MAP = new HashMap<AbstractOrder, Strategy>();
 //
 //
 //    private static final NormalBuyingToB NormalBuyingToB = new NormalBuyingToB();
@@ -95,12 +99,14 @@ public class StrategyFactory {
     FuturesTransactionStrategy futuresTransactionStrategy;
     @Autowired
     ConsignmentStrategy consignmentStrategy;
-    @Autowired
-    static
-    EmptyStrategy NON_STRATEGY;
 
+    public StrategyFactory() {
+    }
 
-    private static Map<String, Strategy> ORDER_STRATEGY_MAP = new HashMap<String, Strategy>();
+    public static Strategy getStrategy(String OrderKey) {
+        Strategy strategy = ORDER_STRATEGY_MAP.get(OrderKey);
+        return strategy == null ? NON_STRATEGY : strategy;
+    }
 
     @PostConstruct
     public void ConstructStrategyMap() {
@@ -114,13 +120,6 @@ public class StrategyFactory {
         ORDER_STRATEGY_MAP.put(OrderKey.FuturesTransactionContract, futuresTransactionStrategy);
         ORDER_STRATEGY_MAP.put(OrderKey.ConsignmentContract, consignmentStrategy);
 
-    }
-    public StrategyFactory() {
-    }
-
-    public static Strategy getStrategy(String OrderKey) {
-        Strategy strategy = ORDER_STRATEGY_MAP.get(OrderKey);
-        return strategy == null ? NON_STRATEGY : strategy;
     }
 
     private interface OrderKey {

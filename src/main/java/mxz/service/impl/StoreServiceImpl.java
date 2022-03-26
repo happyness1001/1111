@@ -53,22 +53,22 @@ public class StoreServiceImpl implements StoreService {
         //账户不存在或密码不正确时，返回null
         if (findStore == null) {
             return null;
-        }else if (store.getPassword().equals(findStore.getPassword())){
+        } else if (store.getPassword().equals(findStore.getPassword())) {
             findStore.setUserType(2);
             return findStore;
-        }else {
+        } else {
             return null;
         }
     }
 
     @Override
     public Integer register(Store store) {
-        if(storeDao.findByName(store.getName()) != null) {
+        if (storeDao.findByName(store.getName()) != null) {
             //用户名已存在
             return -1;
         }
         Long microsecond = System.nanoTime() / 1000 % 1000000;
-        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000?"0":"") + microsecond;
+        String timeStamp = System.currentTimeMillis() / 1000L + (microsecond < 100000 ? "0" : "") + microsecond;
         String uid = store.getUserType() + "邮政编码" + timeStamp;
         store.setUid(uid);
 

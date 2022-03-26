@@ -1,28 +1,24 @@
 /**
-* 模仿天猫整站ssm 教程 为how2j.cn 版权所有
-* 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关
-* 供购买者学习，请勿私自传播，否则自行承担相关法律责任
-*/	
+ * 模仿天猫整站ssm 教程 为how2j.cn 版权所有
+ * 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关
+ * 供购买者学习，请勿私自传播，否则自行承担相关法律责任
+ */
 
 package ljy.digou.service.impl;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import ljy.digou.service.CategoryService;
-import ljy.digou.service.ProductImageService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import ljy.digou.mapper.ProductMapper;
 import ljy.digou.pojo.Category;
 import ljy.digou.pojo.Product;
 import ljy.digou.pojo.ProductExample;
 import ljy.digou.pojo.ProductImage;
-import ljy.digou.service.OrderItemService;
-import ljy.digou.service.ProductService;
-import ljy.digou.service.ReviewService;
+import ljy.digou.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired

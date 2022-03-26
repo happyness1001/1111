@@ -32,8 +32,8 @@ public class UserController {
     private ManagerService managerService;
 
     //String name, String password, Integer userType,String phone
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public ModelAndView register(HttpServletRequest request, Integer userType){
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ModelAndView register(HttpServletRequest request, Integer userType) {
         ModelAndView modelAndView = new ModelAndView();
         //返回的消息
         String m = "注册失败";
@@ -48,29 +48,29 @@ public class UserController {
         //注册结果:-1表示用户名已存在,0表示注册失败,1表示注册成功
         Integer result = 0;
 
-        switch (userType){
+        switch (userType) {
             case Constants.USER_TYPE_PROVIDER:
-                result = providerService.register(new Provider(name,password,phone,userType));
+                result = providerService.register(new Provider(name, password, phone, userType));
                 break;
             case Constants.USER_TYPE_STORE:
-                result = storeService.register(new Store(name,password,phone,userType));
+                result = storeService.register(new Store(name, password, phone, userType));
                 break;
             case Constants.USER_TYPE_CLIENT:
-                result = clientService.register(new Client(name,password,phone,userType));
+                result = clientService.register(new Client(name, password, phone, userType));
                 break;
             case Constants.USER_TYPE_MANAGER:
-                result = managerService.register(new Manager(name,password,userType));
+                result = managerService.register(new Manager(name, password, userType));
                 break;
             default:
-                 m = "用户类型无法识别";
+                m = "用户类型无法识别";
                 System.out.println(m);
-                modelAndView.addObject("msg",m);
+                modelAndView.addObject("msg", m);
                 modelAndView.setViewName("forward:/register.jsp");
                 return modelAndView;
         }
-        switch (result){
+        switch (result) {
             case -1:
-                 m = "用户名已存在";
+                m = "用户名已存在";
                 System.out.println(m);
                 modelAndView.setViewName("forward:/register.jsp");
                 break;
@@ -84,12 +84,12 @@ public class UserController {
                 modelAndView.setViewName("forward:/login.jsp");
                 break;
         }
-        modelAndView.addObject("msg",m);
+        modelAndView.addObject("msg", m);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ModelAndView login(HttpServletRequest request, HttpServletResponse response,Integer userType, HttpSession session){
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(HttpServletRequest request, HttpServletResponse response, Integer userType, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
         //返回的消息
         String m = "登陆失败";
@@ -102,49 +102,49 @@ public class UserController {
         password = MD5Util.md5password(request.getParameter("password"));
         name = HtmlUtils.htmlEscape(request.getParameter("name"));
         //验证用户名和密码，如果成功将result赋值查询出的user对象
-        switch (userType){
+        switch (userType) {
             case 1:
-                result = providerService.login(new Provider(name,password));
+                result = providerService.login(new Provider(name, password));
                 break;
             case 2:
-                result = storeService.login(new Store(name,password));
+                result = storeService.login(new Store(name, password));
                 break;
             case 3:
-                result = clientService.login(new Client(name,password));
+                result = clientService.login(new Client(name, password));
                 break;
             case 4:
-                result = managerService.login(new Manager(name,password));
+                result = managerService.login(new Manager(name, password));
                 break;
             default:
                 m = "用户类型无法识别";
                 System.out.println(m);
-                modelAndView.addObject("msg",m);
+                modelAndView.addObject("msg", m);
                 modelAndView.setViewName("forward:/login.jsp");
                 return modelAndView;
         }
         //处理验证后结果
-        if ( null == result ){
+        if (null == result) {
             m = "用户名不存在或者密码与用户名不匹配";
             System.out.println(m);
             modelAndView.setViewName("forward:/login.jsp");
         } else {
             //如果用户勾选十天免登录，实现十天免登录
-            if("1".equals(request.getParameter("un-login"))){
-                Cookie cookie1 = new Cookie("username" , name);
-                Cookie cookie2 = new Cookie("password" , password);
-                Cookie cookie3 = new Cookie("userType" , userType.toString());
+            if ("1".equals(request.getParameter("un-login"))) {
+                Cookie cookie1 = new Cookie("username", name);
+                Cookie cookie2 = new Cookie("password", password);
+                Cookie cookie3 = new Cookie("userType", userType.toString());
                 cookie1.setPath(request.getContextPath());
                 cookie2.setPath(request.getContextPath());
                 cookie3.setPath(request.getContextPath());
-                cookie1.setMaxAge(60*60*24*10);
-                cookie2.setMaxAge(60*60*24*10);
-                cookie3.setMaxAge(60*60*24*10);
+                cookie1.setMaxAge(60 * 60 * 24 * 10);
+                cookie2.setMaxAge(60 * 60 * 24 * 10);
+                cookie3.setMaxAge(60 * 60 * 24 * 10);
                 response.addCookie(cookie1);
                 response.addCookie(cookie2);
                 response.addCookie(cookie3);
             }
-            session.setAttribute("username",name);
-            session.setAttribute("uid",result.getUid());
+            session.setAttribute("username", name);
+            session.setAttribute("uid", result.getUid());
             if (result.getUserType() == 1) {
                 m = "登录成功";
                 modelAndView.addObject("user", result);
@@ -162,10 +162,9 @@ public class UserController {
                 modelAndView.setViewName("forward:/login.jsp");
             }
         }
-        modelAndView.addObject("msg",m);
+        modelAndView.addObject("msg", m);
         return modelAndView;
     }
-
 
 
     public ClientService getClientService() {

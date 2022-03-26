@@ -14,5 +14,6 @@ public interface ManagerService {
     public Manager findByUid(String uid);
 
     public Manager findByName(String name);
+
     public Manager login(Manager manager);
 }

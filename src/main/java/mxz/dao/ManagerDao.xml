@@ -12,8 +12,9 @@
         <result column="create_datetime" property="createDateTime"/>
     </resultMap>
 
-    <insert id="add" >
-        insert into manager values(#{uid},#{password},#{name},#{managerType},#{createDateTime})
+    <insert id="add">
+        insert into manager
+        values (#{uid}, #{password}, #{name}, #{managerType}, #{createDateTime})
     </insert>
 
     <update id="update">
@@ -33,16 +34,20 @@
     </update>
 
     <select id="findByUid" resultMap="managerMap">
-        select * from manager where uid=#{uid}
+        select *
+        from manager
+        where uid = #{uid}
     </select>
 
     <delete id="delete">
-        delete from manager where uid=#{uid}
+        delete
+        from manager
+        where uid = #{uid}
     </delete>
 
     <select id="findByName" resultMap="managerMap">
         select *
         from manager
-        where name=#{name}
+        where name = #{name}
     </select>
 </mapper>

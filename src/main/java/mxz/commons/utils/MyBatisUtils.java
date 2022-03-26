@@ -9,8 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class MyBatisUtils {
-    private static  SqlSessionFactory factory = null;
-//  单例SqlSessionFactory
+    private static SqlSessionFactory factory = null;
+
+    //  单例SqlSessionFactory
     static {
         String config = "mybatis.xml";
         try {
@@ -21,8 +22,9 @@ public class MyBatisUtils {
             e.printStackTrace();
         }
     }
-//  获取SqlSession
-    public static SqlSession getSqlSession(){
+
+    //  获取SqlSession
+    public static SqlSession getSqlSession() {
         return factory.openSession(true);//自动提交事务
     }
 

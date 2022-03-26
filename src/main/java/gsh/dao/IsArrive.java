@@ -11,6 +11,7 @@ public class IsArrive {
     @Autowired
     @Qualifier("orderCommodityIml")
     private OrderCommodityService orderCommodityService;
+
     public boolean isArrive(String orderId) {
 //      if(送达)
         orderCommodityService.isArrive(orderId);

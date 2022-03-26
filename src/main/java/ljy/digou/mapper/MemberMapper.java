@@ -1,10 +1,8 @@
-
-
 package ljy.digou.mapper;
 
+import ljy.digou.pojo.Alike;
 import ljy.digou.pojo.Member;
 import ljy.digou.pojo.MemberExample;
-import ljy.digou.pojo.Alike;
 
 import java.util.List;
 
@@ -18,11 +16,9 @@ public interface MemberMapper {
     List<Member> selectByExample(MemberExample example);
 
     //模糊查询
-    List<Member> selectByExampleAlike (Alike alike);
+    List<Member> selectByExampleAlike(Alike alike);
 
-    Member  selectByPrimaryKey(String member_phone);
-
-
+    Member selectByPrimaryKey(String member_phone);
 
 
     int updateByPrimaryKeySelective(Member record);
@@ -30,10 +26,7 @@ public interface MemberMapper {
     int updateByPrimaryKey(Member record);
 
     // 自己玩
-    Member  selectUserByName(String member_phone);
-
-
-
+    Member selectUserByName(String member_phone);
 
 
 }

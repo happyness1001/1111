@@ -1,9 +1,8 @@
-
-
 package ljy.digou.mapper;
 
 import ljy.digou.pojo.OrderItem;
 import ljy.digou.pojo.OrderItemExample;
+
 import java.util.List;
 
 public interface OrderItemMapper {

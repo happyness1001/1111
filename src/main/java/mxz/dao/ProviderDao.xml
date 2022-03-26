@@ -15,8 +15,9 @@
         <result column="remark" property="remark"/>
     </resultMap>
 
-    <insert id="add" >
-        insert into provider values(#{uid},#{name},#{password},#{isDeposit},#{phone},#{birthday},#{createDateTime},#{remark})
+    <insert id="add">
+        insert into provider
+        values (#{uid}, #{name}, #{password}, #{isDeposit}, #{phone}, #{birthday}, #{createDateTime}, #{remark})
     </insert>
 
     <update id="update">
@@ -42,16 +43,20 @@
     </update>
 
     <select id="findByUid" resultMap="providerMap">
-        select * from provider where uid=#{uid}
+        select *
+        from provider
+        where uid = #{uid}
     </select>
 
     <delete id="delete">
-        delete from provider where uid=#{uid}
+        delete
+        from provider
+        where uid = #{uid}
     </delete>
 
     <select id="findByName" resultMap="providerMap">
         select *
         from provider
-        where name=#{name}
+        where name = #{name}
     </select>
 </mapper>

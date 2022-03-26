@@ -1,14 +1,12 @@
-
-
 package ljy.digou.service.impl;
 
-import ljy.digou.service.PropertyService;
-import ljy.digou.service.PropertyValueService;
 import ljy.digou.mapper.PropertyValueMapper;
 import ljy.digou.pojo.Product;
 import ljy.digou.pojo.Property;
 import ljy.digou.pojo.PropertyValue;
 import ljy.digou.pojo.PropertyValueExample;
+import ljy.digou.service.PropertyService;
+import ljy.digou.service.PropertyValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,9 +28,9 @@ public class PropertyValueServiceImpl implements PropertyValueService {
 
         List<Property> pts = propertyService.list(p.getCid());
 
-        for (Property pt: pts) {
-            PropertyValue pv = get(pt.getId(),p.getId());
-            if(null==pv){
+        for (Property pt : pts) {
+            PropertyValue pv = get(pt.getId(), p.getId());
+            if (null == pv) {
                 pv = new PropertyValue();
                 pv.setPid(p.getId());
                 pv.setPtid(pt.getId());
@@ -51,7 +49,7 @@ public class PropertyValueServiceImpl implements PropertyValueService {
     public PropertyValue get(int ptid, int pid) {
         PropertyValueExample example = new PropertyValueExample();
         example.createCriteria().andPtidEqualTo(ptid).andPidEqualTo(pid);
-        List<PropertyValue> pvs= propertyValueMapper.selectByExample(example);
+        List<PropertyValue> pvs = propertyValueMapper.selectByExample(example);
         if (pvs.isEmpty())
             return null;
         return pvs.get(0);

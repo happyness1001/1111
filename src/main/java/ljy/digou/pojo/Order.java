@@ -1,5 +1,3 @@
-
-
 package ljy.digou.pojo;
 
 import ljy.digou.service.OrderService;
@@ -56,6 +54,12 @@ public class Order {
     private float total;
 
     private int totalNumber;
+
+    public static void main(String args[]) {
+        Order o = new Order();
+        o.setStatus(OrderService.delete);
+        System.out.println(o.getStatusDesc());
+    }
 
     public Integer getId() {
         return id;
@@ -168,45 +172,38 @@ public class Order {
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
-    
-    
-    public static void main(String args[]){
-        Order o  = new Order();
-        o.setStatus(OrderService.delete);
-        System.out.println(o.getStatusDesc());
-    }
-    public String getStatusDesc(){
-        String desc ="未知";
-        switch(status){
+
+    public String getStatusDesc() {
+        String desc = "未知";
+        switch (status) {
             case OrderService.waitPay:
-                desc="待付款";
+                desc = "待付款";
                 break;
             case OrderService.waitDelivery:
-                desc="待发货";
+                desc = "待发货";
                 break;
             case OrderService.waitConfirm:
-                desc="待收货";
+                desc = "待收货";
                 break;
             case OrderService.waitReview:
-                desc="等评价";
+                desc = "等评价";
                 break;
             case OrderService.finish:
-                desc="完成";
+                desc = "完成";
                 break;
             case OrderService.delete:
-                desc="刪除";
+                desc = "刪除";
                 break;
             case OrderService.waitTuihuo:
-                desc="待退货";
+                desc = "待退货";
                 break;
             case OrderService.yituihuo:
-                desc="已退货";
+                desc = "已退货";
                 break;
-
 
 
             default:
-                desc="未知";
+                desc = "未知";
         }
         return desc;
     }

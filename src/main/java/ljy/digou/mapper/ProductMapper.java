@@ -1,9 +1,8 @@
-
-
 package ljy.digou.mapper;
 
 import ljy.digou.pojo.Product;
 import ljy.digou.pojo.ProductExample;
+
 import java.util.List;
 
 public interface ProductMapper {

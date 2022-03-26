@@ -20,7 +20,8 @@ public class Manager extends User {
         this.password = password;
         this.userType = userType;
     }
-    public Manager(String name,String password) {
+
+    public Manager(String name, String password) {
         this.password = password;
         this.name = name;
     }

@@ -3,7 +3,7 @@ package ljy.digou.pojo;
 import java.io.Serializable;
 
 
-public class KindEditorResult implements Serializable{
+public class KindEditorResult implements Serializable {
 
     private int error;
 

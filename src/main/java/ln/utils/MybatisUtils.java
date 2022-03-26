@@ -10,6 +10,7 @@ import java.io.InputStream;
 
 public class MybatisUtils {
     public static SqlSessionFactory sqlSessionFactory;
+
     //创建一个sqlSession工厂
     static {
         String resources = "mybatis-config.xml";
@@ -19,10 +20,11 @@ public class MybatisUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
+
     //获得一个openSession,即SqlSession的实例，其中包含了所有sql的方法
-    public static SqlSession getSqlSession(){
+    public static SqlSession getSqlSession() {
         return sqlSessionFactory.openSession();
     }
 }
