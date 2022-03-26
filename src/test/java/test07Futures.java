@@ -10,11 +10,10 @@ public class test07Futures {
     public static void main(String[] args) {
         Bill bill = new Bill();
         Address address = new Address();
-        FuturesContract futuresContract = new FuturesContract("111","222","333",bill,bill,30,new Date(),new Date(),1,address,address);
+        FuturesContract futuresContract = new FuturesContract("111", "222", "333", bill, bill, 30, new Date(), new Date(), 1, address, address);
         FuturesStrategy futuresStrategy = new FuturesStrategy();
         futuresStrategy.doStrategy(futuresContract);
     }
-
 
 
 }

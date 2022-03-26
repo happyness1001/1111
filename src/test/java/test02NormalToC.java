@@ -14,7 +14,7 @@ public class test02NormalToC {
         normalOrderToCS.add(normalOrderToC);
         Address address = new Address();
         Bill bill = new Bill();
-        NormalBuyingToC normalBuyingToC = new NormalBuyingToC("1810460",address,normalOrderToCS,new Date(),"爷就是帅","12",2,bill);
+        NormalBuyingToC normalBuyingToC = new NormalBuyingToC("1810460", address, normalOrderToCS, new Date(), "爷就是帅", "12", 2, bill);
         NormalBuyingToCStrategy normalBuyingToCStrategy = new NormalBuyingToCStrategy();
         normalBuyingToCStrategy.doStrategy(normalBuyingToC);
     }

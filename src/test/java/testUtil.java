@@ -8,12 +8,13 @@ public class testUtil {
         Timer timer = new Timer();
         TimerTask timerTask2 = new TimerTask() {
             int count = 0;//计数
+
             @Override
             public void run() {
                 if (count < number) {
                     System.out.println("执行Task2");
                     count++;
-                }else{
+                } else {
                     System.out.println("执行完成");
                     timer.cancel();
                 }
@@ -22,20 +23,21 @@ public class testUtil {
 
         TimerTask timerTask1 = new TimerTask() {
             int count = 0;//计数
+
             @Override
             public void run() {
                 if (count < number) {
                     System.out.println("执行Task1");
                     count++;
-                }else{
-                    timer.scheduleAtFixedRate(timerTask2,1000,1000);
+                } else {
+                    timer.scheduleAtFixedRate(timerTask2, 1000, 1000);
                     this.cancel();
                 }
 
             }
         };
 
-        timer.scheduleAtFixedRate(timerTask1,1000,1000);
+        timer.scheduleAtFixedRate(timerTask1, 1000, 1000);
     }
 
 }
