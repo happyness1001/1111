@@ -65,7 +65,7 @@
     <bean id="ljy-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="typeAliasesPackage" value="com.digou.pojo"/>
         <property name="dataSource" ref="ljy-dataSource"/>
-        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
 
         <property name="plugins">
             <array>
@@ -107,6 +107,7 @@
     <!--Mybatis的Mapper文件识别-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="ljy.digou.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="ljy-sqlSessionFactory"/>
     </bean>
 
 
