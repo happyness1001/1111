@@ -27,7 +27,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("")
-public class UserController {
+public class LjyUserController {
     @Autowired
     UserService userService;
     @Autowired
