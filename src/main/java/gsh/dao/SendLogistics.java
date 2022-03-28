@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 //传送地址
 public class SendLogistics {
     @Autowired
-    @Qualifier("orderController")
+    @Qualifier("lnOrderController")
     private OrderController orderController;
 
 //    private Logistics logistics;

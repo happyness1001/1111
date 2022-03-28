@@ -4,13 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
- <!--   <settings>
-        <setting name="logImpl" value="STDOUT_LOGGING"/>
-    </settings>-->
+
     <typeAliases>
         <package name="ln.pojo"/>
         <package name="mxz.entity"/>
-        <package name="ljy.digou.pojo"/>
+<!--        <package name="ljy.digou.pojo"/>-->
         <package name="wzz.digou.pojo"/>
     </typeAliases>
 </configuration>
