@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wzz.digou.mapper.BulkConfigMapper">
+    <resultMap id="BaseResultMap" type="wzz.digou.pojo.BulkConfig">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="shopid" jdbcType="INTEGER" property="shopid"/>
+        <result column="pid" jdbcType="INTEGER" property="pid"/>
+        <result column="bulkprice" jdbcType="DOUBLE" property="bulkprice"/>
+        <result column="population" jdbcType="INTEGER" property="population"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="starttime" jdbcType="DATE" property="starttime"/>
+        <result column="endtime" jdbcType="DATE" property="endtime"/>
+    </resultMap>
+
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="wzz.digou.pojo.BulkConfig"
+            useGeneratedKeys="true">
+        insert into `2cshop_ssm`.bulkconfig (shopid, pid, bulkprice, population, status, starttime, endtime)
+        values (#{shopid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{bulkprice,jdbcType=FLOAT},
+                #{population,jdbcType=INTEGER},
+                #{status,jdbcType=INTEGER}, #{starttime,jdbcType=DATE}, #{endtime,jdbcType=DATE})
+    </insert>
+
+    <select id="selectBulkPrice" parameterType="java.lang.Integer" resultType="java.lang.Double">
+        select bulkprice
+        from `2cshop_ssm`.bulkconfig
+        where id = #{bulkid,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectBulkConfig" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select *
+        from `2cshop_ssm`.bulkconfig
+        where id = #{bulkid,jdbcType=INTEGER}
+    </select>
+</mapper>

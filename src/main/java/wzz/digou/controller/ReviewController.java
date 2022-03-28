@@ -1,15 +1,15 @@
-package ljy.digou.controller;
+package wzz.digou.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import ljy.digou.pojo.Review;
-import ljy.digou.service.ReviewService;
-import ljy.digou.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import wzz.digou.pojo.Review;
+import wzz.digou.service.ReviewService;
+import wzz.digou.util.Page;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class ReviewController {
     ReviewService reviewService;
 
 
-    // 得到后台的评论列表
+    // 得到    后台的评论列表
     @RequestMapping("admin_review_list")
     public String list(Model model, Page page) {
         PageHelper.offsetPage(page.getStart(), page.getCount());
@@ -31,7 +31,7 @@ public class ReviewController {
         page.setTotal(total);
         model.addAttribute("reviewList", reviewList);
         model.addAttribute("page", page);
-        return "jsp/admin/admin_listReview";
+        return "2cjsp/admin/admin_listReview";
     }
 
 
