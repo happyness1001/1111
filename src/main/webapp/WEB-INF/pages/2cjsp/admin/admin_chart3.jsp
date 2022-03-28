@@ -48,7 +48,7 @@ ${admin.name}
     // 指定图表的配置项和数据
     option = {
         title: {
-            text: '地狗商城评论',
+            text: '农村集采商城评论',
             subtext: '实时大数据统计',
             x: 'center'
         },

@@ -1,4 +1,4 @@
-<%@ page import="com.digou.pojo.Collection" %><%--
+<%@ page import="wzz.digou.pojo.Collection" %><%--
   Created by IntelliJ IDEA.
   User: 李莉
   Date: 18-10-29
@@ -311,7 +311,7 @@
 
 
             <div class="white_link">
-                <a href="#nowhere" style="padding-left:0px"> 山科大　计算机１５３　ｗｅｂ开发小组集团</a><span class="slash">|</span>
+                <a href="#nowhere" style="padding-left:0px"> 大连理工大学　　ｗｅｂ开发小组集团</a><span class="slash">|</span>
                 <a href="#nowhere"> 最强底狗</a><span class="slash">|</span>
 
                 <a href="#nowhere"> 最强底狗 </a><span class="slash">|</span>

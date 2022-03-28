@@ -71,7 +71,7 @@
                 }
             },
             title: {
-                text: '地狗商城的SALE'
+                text: '农村集采商城的SALE'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

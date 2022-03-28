@@ -115,8 +115,8 @@ website:	http://code.google.com/p/jquerytree/
     background-color: transparent;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-image: url("./img/zTreeStandard.png");
-    *background-image: url("./img/zTreeStandard.gif")
+    background-image: url("img/zTreeStandard.png");
+    *background-image: url("img/zTreeStandard.gif")
 }
 
 .ztree li span.button.switch {

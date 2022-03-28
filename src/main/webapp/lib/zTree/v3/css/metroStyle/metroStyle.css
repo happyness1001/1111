@@ -37,7 +37,7 @@ website:    http://code.google.com/p/jquerytree/
 }
 
 .ztree li ul.line {
-    background: url(./img/line_conn.png) 0 0 repeat-y;
+    background: url(img/line_conn.png) 0 0 repeat-y;
 }
 
 .ztree li a {
@@ -118,8 +118,8 @@ website:    http://code.google.com/p/jquerytree/
     background-color: transparent;
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-image: url("./img/metro.png");
-    *background-image: url("./img/metro.gif")
+    background-image: url("img/metro.png");
+    *background-image: url("img/metro.gif")
 }
 
 .ztree li span.button.chk {
@@ -334,7 +334,7 @@ website:    http://code.google.com/p/jquerytree/
 
 .ztree li span.button.ico_loading {
     margin-right: 2px;
-    background: url(./img/loading.gif) no-repeat scroll 0 0 transparent;
+    background: url(img/loading.gif) no-repeat scroll 0 0 transparent;
     vertical-align: top;
     *vertical-align: middle
 }
@@ -357,8 +357,8 @@ span.tmpzTreeMove_arrow {
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: -168px -84px;
-    background-image: url("./img/metro.png");
-    *background-image: url("./img/metro.gif")
+    background-image: url("img/metro.png");
+    *background-image: url("img/metro.gif")
 }
 
 ul.ztreeul.ztreeDragUL {

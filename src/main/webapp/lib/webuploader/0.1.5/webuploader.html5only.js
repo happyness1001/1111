@@ -6028,5 +6028,5 @@
     ], function (preset) {
         return preset;
     });
-    return require('webuploader');
+    return require('src/main/webapp/lib/webuploader/0.1.5/webuploader');
 });

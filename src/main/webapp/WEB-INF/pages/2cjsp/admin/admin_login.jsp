@@ -2,13 +2,13 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>地狗后台管理系统</title>
+    <title>农村集采后台管理系统</title>
     <link rel="Shortcut Icon" href="icon/all.png"/>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="地狗后台管理系统 v1.0,地狗,地狗购物商城后台管理系统">
-    <meta name="description" content="地狗后台管理系统 v1.0，是一款电商后台管理系统，适合中小型CMS后台系统。">
+    <meta name="keywords" content="农村集采后台管理系统 v1.0,农村集采,农村集采购物商城后台管理系统">
+    <meta name="description" content="农村集采后台管理系统 v1.0，是一款电商后台管理系统，适合中小型CMS后台系统。">
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
