@@ -2286,7 +2286,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Created by Peter Atoria @ http://iAtoria.com
@@ -2328,7 +2328,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // AppleScript brush by David Chambers
@@ -2405,7 +2405,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         var keywords = 'if fi then elif else for do done until while break continue case esac function return in eq ne ge le';
@@ -2446,7 +2446,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by Jen
@@ -2528,7 +2528,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Copyright 2006 Shin, YoungJin
@@ -2607,7 +2607,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         var keywords = 'abstract as base bool break byte case catch char checked class const ' +
@@ -2653,7 +2653,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         function getKeywordsCSS(str) {
@@ -2724,7 +2724,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         var keywords = 'abs addr and ansichar ansistring array as asm begin boolean byte cardinal ' +
@@ -2761,7 +2761,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         this.regexList = [
@@ -2784,7 +2784,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by Jean-Lou Dupont
@@ -2818,7 +2818,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by Andres Almiray
@@ -2867,7 +2867,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         var keywords = 'abstract assert boolean break byte case catch char class const ' +
@@ -2906,7 +2906,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by Patrick Webster
@@ -2946,7 +2946,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         var keywords = 'break case catch continue ' +
@@ -2980,7 +2980,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by David Simmons-Duffin and Marty Kube
@@ -3055,7 +3055,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         var funcs = 'abs acos acosh addcslashes addslashes ' +
@@ -3125,7 +3125,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
     };
@@ -3140,7 +3140,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by Joel 'Jaykul' Bennett, http://PoshCode.org | http://HuddledMasses.org
@@ -3206,7 +3206,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by Gheorghe Milas and Ahmad Sherif
@@ -3252,7 +3252,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by Erik Peterson.
@@ -3289,7 +3289,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         function getKeywordsCSS(str) {
@@ -3363,7 +3363,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         // Contributed by Yegor Jbanov and David Bernard.
@@ -3396,7 +3396,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         var funcs = 'abs avg case cast coalesce convert count current_timestamp ' +
@@ -3444,7 +3444,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         var keywords = 'AddHandler AddressOf AndAlso Alias And Ansi As Assembly Auto ' +
@@ -3482,7 +3482,7 @@ typeof (exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter 
 })();
 ;(function () {
     // CommonJS
-    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('shCore').SyntaxHighlighter : null);
+    SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined' ? require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/SyntaxHighlighter/shCore').SyntaxHighlighter : null);
 
     function Brush() {
         function process(match, regexInfo) {

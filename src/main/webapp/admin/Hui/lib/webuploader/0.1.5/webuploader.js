@@ -8090,5 +8090,5 @@
     ], function (preset) {
         return preset;
     });
-    return require('webuploader');
+    return require('src/main/webapp/admin/Hui/lib/webuploader/0.1.5/webuploader');
 });

@@ -4174,5 +4174,5 @@
     ], function (preset) {
         return preset;
     });
-    return require('webuploader');
+    return require('src/main/webapp/admin/Hui/lib/ueditor/1.4.3/third-party/webuploader/webuploader');
 });
