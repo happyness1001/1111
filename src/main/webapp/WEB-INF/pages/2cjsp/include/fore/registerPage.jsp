@@ -38,7 +38,7 @@
 </script>
 
 
-<form method="post" action="foreregister" class="registerForm">
+<form method="post" action="user/register" class="registerForm">
 
 
     <div class="registerDiv">
@@ -73,7 +73,18 @@
                 <td class="registerTableRightTD"><input id="repeatpassword" type="password" placeholder="请再次输入你的密码">
                 </td>
             </tr>
-
+            <tr>
+                <td class="registerTableLeftTD">用户类型</td>
+                <td class="registerTableRightTD">
+                    <select name="userType" id="userType">
+                        <option value="0" selected>请选择用户类型</option>
+                        <option value="3">普通用户</option>
+                        <option value="2">商户</option>
+                        <option value="1">供应商</option>
+                        <option value="4">管理员</option>
+                    </select>
+                </td>
+            </tr>
             <tr>
                 <td colspan="2" class="registerButtonTD">
                     <a href="registerSuccess.jsp">

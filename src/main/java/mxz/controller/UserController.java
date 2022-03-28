@@ -65,23 +65,23 @@ public class UserController {
                 m = "用户类型无法识别";
                 System.out.println(m);
                 modelAndView.addObject("msg", m);
-                modelAndView.setViewName("forward:/register.jsp");
+                modelAndView.setViewName("2cjsp/fore/register");
                 return modelAndView;
         }
         switch (result) {
             case -1:
                 m = "用户名已存在";
                 System.out.println(m);
-                modelAndView.setViewName("forward:/register.jsp");
+                modelAndView.setViewName("2cjsp/fore/register");
                 break;
             case 0:
                 System.out.println(m);
-                modelAndView.setViewName("forward:/register.jsp");
+                modelAndView.setViewName("2cjsp/fore/register");
                 break;
             case 1:
                 m = "注册成功";
                 System.out.println(m);
-                modelAndView.setViewName("forward:/login.jsp");
+                modelAndView.setViewName("redirect:/registerSuccessPage");
                 break;
         }
         modelAndView.addObject("msg", m);
