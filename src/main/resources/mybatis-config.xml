@@ -2,33 +2,14 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
-    <!--        <settings>
-                <setting name="logImpl" value="STDOUT_LOGGING"/>
-            </settings>-->
+ <!--   <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>-->
     <typeAliases>
         <package name="ln.pojo"/>
         <package name="mxz.entity"/>
         <package name="ljy.digou.pojo"/>
     </typeAliases>
-
-    <mappers>
-        <mapper resource="ln/dao/CommodityMapper.xml"/>
-        <mapper resource="ln/dao/OrderCommodityMapper.xml"/>
-        <mapper resource="ln/dao/OrderMapper.xml"/>
-        <mapper resource="ln/dao/StationMapper.xml"/>
-        <mapper resource="ln/dao/StoreHouseMapper.xml"/>
-        <mapper resource="ln/dao/AddressDistanceMapper.xml"/>
-        <package name="mxz.dao"/>
-        <package name="ljy.digou.mapper"/>
-
-        <!-- <package name="ln.dao"/>
-         <package name="gsh.dao"/>
-         <package name="mxz.dao"/>
-         <package name="ljy.dao"/>-->
-        <!--        <package name="wzz.dao"/>-->
-
-
-        <!--        <package name="dao"/>-->
-    </mappers>
 </configuration>

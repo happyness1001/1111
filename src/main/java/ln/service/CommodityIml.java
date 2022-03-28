@@ -6,6 +6,7 @@ import ln.pojo.Commodity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,11 +31,13 @@ public class CommodityIml implements CommodityService {
     @Override
     public void addCommodity(Commodity commodity) {
         commodity.setCommodity_id(GenerateID());
+        System.out.println(commodity);
 //        if (storeHouseDao.getStoreHouseByID())
         commodityDao.addCommodity(commodity);
     }
 
     @Override
+    @Transactional
     public void updateCommodity(Commodity commodity) {
         commodityDao.updateCommodity(commodity);
     }

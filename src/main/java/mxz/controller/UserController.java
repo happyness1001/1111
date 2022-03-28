@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@Controller
+@Controller("mxzUserController")
 @RequestMapping("/user")
 public class UserController {
     @Autowired

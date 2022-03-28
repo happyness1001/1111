@@ -9,8 +9,6 @@
                             http://www.springframework.org/schema/context/spring-context.xsd
                             http://www.springframework.org/schema/mvc
                             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <!--启动注解识别-->
-    <context:annotation-config/>
     <!--    在该包下的controller就会被识别    -->
     <context:component-scan base-package="ln.dlut.ln.controller"/>
     <context:component-scan base-package="mxz.controller"/>
@@ -18,8 +16,6 @@
     <context:component-scan base-package="ljy.digou.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-    <!--    关联数据库-->
-    <context:property-placeholder location="classpath:database.properties"/>
     <!--    注解驱动    -->
     <!-- mvc 返回乱码处理 -->
     <mvc:annotation-driven>
