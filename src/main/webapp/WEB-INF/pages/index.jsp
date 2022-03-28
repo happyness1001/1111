@@ -9,7 +9,7 @@
 </head>
 <body>
 <script type="text/javascript">
-    window.location.href = "login";
+    window.location.href = "forehome";
 </script>
 </body>
 </html>
