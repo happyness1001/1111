@@ -312,13 +312,13 @@
 
             <div class="white_link">
                 <a href="#nowhere" style="padding-left:0px"> 大连理工大学　　ｗｅｂ开发小组集团</a><span class="slash">|</span>
-                <a href="#nowhere"> 最强底狗</a><span class="slash">|</span>
+                <a href="#nowhere"> 最强</a><span class="slash">|</span>
 
-                <a href="#nowhere"> 最强底狗 </a><span class="slash">|</span>
-                <a href="#nowhere"> 最强底狗 </a><span class="slash">|</span>
-                <a href="#nowhere"> 最强底狗 </a><span class="slash">|</span>
-                <a href="#nowhere"> 最强底狗 </a><span class="slash">|</span>
-                <a href="#nowhere"> 最强底狗 </a>
+                <a href="#nowhere"> 最强 </a><span class="slash">|</span>
+                <a href="#nowhere"> 最强 </a><span class="slash">|</span>
+                <a href="#nowhere"> 最强 </a><span class="slash">|</span>
+                <a href="#nowhere"> 最强 </a><span class="slash">|</span>
+                <a href="#nowhere"> 最强 </a>
             </div>
 
 
