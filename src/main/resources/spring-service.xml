@@ -15,6 +15,7 @@
     <context:component-scan base-package="mxz.service"/>
     <context:component-scan base-package="gsh.service"/>
     <context:component-scan base-package="ljy.digou.service"/>
+    <context:component-scan base-package="wzz.digou.service"/>
     <!--    <context:component-scan base-package="wzz.service"/>-->
 
 

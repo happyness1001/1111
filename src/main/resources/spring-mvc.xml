@@ -16,6 +16,9 @@
     <context:component-scan base-package="ljy.digou.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+    <context:component-scan base-package="wzz.digou.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
     <!--    注解驱动    -->
     <!-- mvc 返回乱码处理 -->
     <mvc:annotation-driven>
@@ -50,6 +53,16 @@
         <mvc:interceptor>
             <mvc:mapping path="/fore*"/>
             <bean class="ljy.digou.interceptor.OtherInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/fore*"/>
+            <bean class="wzz.digou.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/fore*"/>
+            <bean class="wzz.digou.interceptor.OtherInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
