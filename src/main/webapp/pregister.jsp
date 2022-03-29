@@ -32,7 +32,7 @@
     <div class="registerArea">
         <h3>商家入驻申请<span class="go">我有账号，去<a href="shoplogin.html" target="_blank">登陆</a></span></h3>
         <div class="info">
-            <form class="sui-form form-horizontal" action="foreregister" method="post">
+            <form class="sui-form form-horizontal" action="forehome" method="post">
 
                 <div class="control-group">
                     <label class="control-label">公司名称：</label>
@@ -131,7 +131,7 @@
                 <div class="control-group">
                     <label class="control-label"></label>
                     <div class="controls btn-reg">
-                        <button type="submit" class="submit_btn" id="btnSubmit" onclick="sendSubmit()">注册</button>
+                        <button type="submit" class="submit_btn" id="btnSubmit" onclick="sendSubmit()">提交</button>
                     </div>
                 </div>
             </form>
