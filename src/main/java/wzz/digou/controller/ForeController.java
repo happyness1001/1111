@@ -338,10 +338,10 @@ public class ForeController {
                 order.getAddress(), order.getAddress(), order.getAddress(), null);
         ArrayList<NormalOrderToB> normalOrderToBS = new ArrayList<>();
         for(OrderItem orderItem: ois){
-            normalOrderToBS.add(new NormalOrderToB(Integer.toString(orderItem.getId()), 0, Integer.toString(orderItem.getOid()), orderItem.getNumber(), 1,null,null, null));
+            normalOrderToBS.add(new NormalOrderToB(Integer.toString(1), 0, Integer.toString(1), orderItem.getNumber(), 1,null,null, null));
         }
         gsh.pojo.Bill bill = new gsh.pojo.Bill();
-        NormalBuyingToB normalBuyingToB = new NormalBuyingToB(order.getOrderCode(),normalOrderToBS,"第233家分店", order.getTotal(), bill,address,order.getCreateDate());
+        NormalBuyingToB normalBuyingToB = new NormalBuyingToB(Integer.toString(1),normalOrderToBS,"第233家分店", order.getTotal(), bill,address,order.getCreateDate());
 
         //将normalOrder传给交易中台
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
