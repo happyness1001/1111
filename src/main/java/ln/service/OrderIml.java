@@ -89,7 +89,6 @@ public class OrderIml implements OrderService {
 
     @Override
     public int analyse(Order order) {
-        System.out.println("分析运单类型");
 
         return (order.getOrder_type());
     }

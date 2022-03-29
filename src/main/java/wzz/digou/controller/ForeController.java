@@ -347,7 +347,7 @@ public class ForeController {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         DoStrategyImpl doStrategyImpl = (DoStrategyImpl) ctx.getBean("doStrategyImpl");
         doStrategyImpl.doStrategyActivity(normalBuyingToB);
-        return "2cjsp/fore/waitpay";
+        return "2cjsp/fore/home";
     }
 
 

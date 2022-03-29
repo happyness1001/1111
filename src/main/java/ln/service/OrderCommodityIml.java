@@ -35,16 +35,10 @@ public class OrderCommodityIml implements OrderCommodityService {
 
 
     private Commodity getCommodityByOrder(String orderId) {
-        List<String> commodities = null;
-        try {
-            commodities = orderCommodityDao.get_by_order(orderId);
-            System.out.println("commodities:" + commodities);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            System.out.println("没有该订单");
-        }
-        assert commodities != null;
+
+        List<String> commodities = orderCommodityDao.get_by_order(orderId);
+        assert commodities != null : "没有该订单";
+        System.out.println("commodities:" + commodities);
         String commodityId = commodities.get(0);
         return commodityDao.getCommodityByID(commodityId);
     }

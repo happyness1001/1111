@@ -25,7 +25,7 @@ public class OrderController {
     public void getOrderFromCenter(gsh.pojo.Logistics info) {
         System.out.println("解析info，生成order");
 
-        Order order = new Order(info.getOrderId(), 2, "ddd", info.getDeliverAddress().getReceiver_address(), "111", info.getDeliverAddress().getReceiver_phone(), "15", 15);
+        Order order = new Order(info.getOrderId(), 1, "ddd", info.getDeliverAddress().getReceiver_address(), "111", info.getDeliverAddress().getReceiver_phone(), "15", 15);
         match(order);
     }//从中台接收订单信息 并解析之后生成运单
 
@@ -43,7 +43,7 @@ public class OrderController {
         System.out.println(order);
         orderService.match(order);
 //        model.addAttribute("order",order);
-        System.out.println("已确认收货，跳转页面");
+//        System.out.println("已确认收货，跳转页面");
         return "storage/map";
     }
 
