@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
-
+<%
+    String basePath = request.getScheme() + "://" +
+            request.getServerName() + ":" + request.getServerPort() +
+            request.getContextPath() + "/";
+%>
+<head>
+    <base href="<%=basePath%>">
+</head>
 
 <script>
     $(function () {
@@ -38,7 +45,7 @@
 </script>
 
 
-<form method="post" action="user/register" class="registerForm">
+<form method="post" action="foreregister" class="registerForm">
 
 
     <div class="registerDiv">

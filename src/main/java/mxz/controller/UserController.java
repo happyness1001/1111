@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.HtmlUtils;
+import wzz.digou.pojo.Member;
+import wzz.digou.service.MemberService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +32,8 @@ public class UserController {
     private StoreService storeService;
     @Autowired
     private ManagerService managerService;
+    @Autowired
+    MemberService memberService;
 
     //String name, String password, Integer userType,String phone
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -82,6 +86,11 @@ public class UserController {
                 m = "注册成功";
                 System.out.println(m);
                 modelAndView.setViewName("redirect:/registerSuccessPage");
+                //新建用户登录表
+                Member member = new Member();
+                member.setMember_name(name);
+                //用户详情表
+                memberService.add(member);
                 break;
         }
         modelAndView.addObject("msg", m);
@@ -119,14 +128,14 @@ public class UserController {
                 m = "用户类型无法识别";
                 System.out.println(m);
                 modelAndView.addObject("msg", m);
-                modelAndView.setViewName("forward:/login.jsp");
+                modelAndView.setViewName("2cjsp/fore/login");
                 return modelAndView;
         }
         //处理验证后结果
         if (null == result) {
             m = "用户名不存在或者密码与用户名不匹配";
             System.out.println(m);
-            modelAndView.setViewName("forward:/login.jsp");
+            modelAndView.setViewName("2cjsp/fore/login");
         } else {
             //如果用户勾选十天免登录，实现十天免登录
             if ("1".equals(request.getParameter("un-login"))) {
@@ -143,13 +152,14 @@ public class UserController {
                 response.addCookie(cookie2);
                 response.addCookie(cookie3);
             }
+            session.setAttribute("user", result);
             session.setAttribute("username", name);
             session.setAttribute("uid", result.getUid());
             if (result.getUserType() == 1) {
                 m = "登录成功";
                 modelAndView.addObject("user", result);
                 modelAndView.setViewName("forward:/providerpage.jsp");
-            } else if (result.getUserType() == 2) {
+            } else if (result.getUserType() == Constants.USER_TYPE_STORE) {
                 m = "登录成功";
 
             } else if (result.getUserType() == 4) {
@@ -161,6 +171,7 @@ public class UserController {
                 modelAndView.addObject("user", result);
                 modelAndView.setViewName("forward:/login.jsp");
             }
+            modelAndView.setViewName("redirect:/forehome");
         }
         modelAndView.addObject("msg", m);
         return modelAndView;

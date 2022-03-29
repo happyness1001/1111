@@ -51,7 +51,7 @@ public class ProviderServiceImpl implements ProviderService {
         //查询对应账户名的用户
         Provider findProvider = providerDao.findByName(provider.getName());
         //账户不存在或密码不正确时，返回null
-        if (provider == null) {
+        if (findProvider == null) {
             return null;
         } else if (provider.getPassword().equals(provider.getPassword())) {
             findProvider.setUserType(1);

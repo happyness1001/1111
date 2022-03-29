@@ -1,5 +1,6 @@
 package mxz.service.impl;
 
+import mxz.commons.constants.Constants;
 import mxz.dao.ClientDao;
 import mxz.entity.Client;
 import mxz.service.ClientService;
@@ -39,6 +40,7 @@ public class ClientServiceImpl implements ClientService {
         if (findClient == null) {
             return null;
         } else if (client.getPassword().equals(findClient.getPassword())) {
+            findClient.setUserType(Constants.USER_TYPE_CLIENT);
             return findClient;
         } else {
             return null;

@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
 
-
+<%
+    String basePath = request.getScheme() + "://" +
+            request.getServerName() + ":" + request.getServerPort() +
+            request.getContextPath() + "/";
+%>
 <script>
     $(function () {
 
@@ -29,7 +33,9 @@
     })
 </script>
 
-
+<head>
+    <base href="<%=basePath%>">
+</head>
 <div id="loginDiv" style="position: relative">
 
     <div class="simpleLogo">
@@ -62,7 +68,16 @@
 				</span>
                 <input id="password" name="password" type="password" placeholder="密码" type="text">
             </div>
-
+            <select name="userType">
+                <option value="0" selected>请选择用户类型</option>
+                <option value="3">普通用户</option>
+                <option value="2">商户</option>
+                <option value="1">供应商</option>
+                <option value="4">管理员</option>
+            </select>
+            <input type="checkbox" name="un-login" value="1"
+                   style="width: 16px;height: 16px;border: 1px solid #D0D0D0;border-radius: 2px;">
+            <label style="font-size: 14px;color: #9095A2;line-height: 18px;">十天内免登录</label>
 
             <div>
                 <a class="notImplementLink" href="#nowhere">忘记登录密码</a>
