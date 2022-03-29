@@ -9,6 +9,16 @@ public class NormalOrderToB extends AbstractOrder {
     private double amount;//分订单产品单价
     private String productId;// 商品id
     private int quantity;//数量
+
+    public String getMarketId() {
+        return marketId;
+    }
+
+    public void setMarketId(String marketId) {
+        this.marketId = marketId;
+    }
+
+    private String marketId;//商户id
     private int transportMode;//配送方式//////////////
     private Address sendAddress;//发货地址////////////
     private Date deliveryTime;//签收时间
@@ -27,6 +37,7 @@ public class NormalOrderToB extends AbstractOrder {
         this.sendAddress = sendAddress;
         this.deliveryTime = deliveryTime;
         this.remark = remark;
+
     }
 
     public String getOrderId() {

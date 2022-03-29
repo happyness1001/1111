@@ -8,7 +8,7 @@
     <typeAliases>
         <package name="ln.pojo"/>
         <package name="mxz.entity"/>
-<!--        <package name="ljy.digou.pojo"/>-->
+        <!--        <package name="ljy.digou.pojo"/>-->
         <package name="wzz.digou.pojo"/>
     </typeAliases>
 </configuration>

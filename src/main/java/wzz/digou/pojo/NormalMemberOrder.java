@@ -6,7 +6,7 @@ public class NormalMemberOrder {
     private String orderId;//订单ID
 
     private String productId;//产品ID
-    private String marketId;//商户ID
+//    private String marketId;//商户ID
     //    private int couponID;//优惠券ID
     private int quantity;//商品数量
     private Double amount;//支付总金额
@@ -22,9 +22,9 @@ public class NormalMemberOrder {
 
     }
 
-    public NormalMemberOrder(String productId, String marketId, int quantity, Double amount, Bill bill, String remark) {
+    public NormalMemberOrder(String productId, int quantity, Double amount, Bill bill, String remark) {
         this.productId = productId;
-        this.marketId = marketId;
+
         this.quantity = quantity;
         this.amount = amount;
         this.bill = bill;
@@ -47,13 +47,13 @@ public class NormalMemberOrder {
         this.productId = productId;
     }
 
-    public String getMarketId() {
-        return marketId;
-    }
-
-    public void setMarketId(String marketId) {
-        this.marketId = marketId;
-    }
+//    public String getMarketId() {
+//        return marketId;
+//    }
+//
+//    public void setMarketId(String marketId) {
+//        this.marketId = marketId;
+//    }
 
     public int getQuantity() {
         return quantity;

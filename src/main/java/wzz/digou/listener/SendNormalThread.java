@@ -1,9 +1,17 @@
 package wzz.digou.listener;
 
+import gsh.controller.DoStrategyImpl;
+import gsh.pojo.Address;
+import gsh.pojo.Bill;
+import gsh.pojo.NormalBuyingToB;
+import gsh.pojo.NormalOrderToB;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import wzz.digou.controller.ForeController;
 import wzz.digou.pojo.NormalMemberOrder;
 import wzz.digou.pojo.NormalOrder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,7 +75,19 @@ public class SendNormalThread extends Thread {
         }
         String no = generatePK('6');
         normalOrder.setOrderId(no);
+        Address address = new Address(normalOrder.getDeliveryAddress().getShipping_name(), normalOrder.getDeliveryAddress().getShipping_code(), normalOrder.getDeliveryAddress().getReceiver_name(), normalOrder.getDeliveryAddress().getReceiver_phone(),
+                                        normalOrder.getDeliveryAddress().getReceiver_state(), normalOrder.getDeliveryAddress().getReceiver_city(), normalOrder.getDeliveryAddress().getReceiver_district(), normalOrder.getDeliveryAddress().getReceiver_address(), normalOrder.getDeliveryAddress().getReceiver_zip());
+        ArrayList<NormalOrderToB> normalOrderToBS = new ArrayList<>();
+        for(NormalMemberOrder normalMemberOrder : normalOrder.getNormalMemberOrders()){
+            normalOrderToBS.add(new NormalOrderToB(normalMemberOrder.getOrderId(), normalMemberOrder.getAmount(), normalMemberOrder.getProductId(), normalMemberOrder.getQuantity(), 1,null,null, normalMemberOrder.getRemark()));
+        }
+        Bill bill = new Bill();
+        NormalBuyingToB normalBuyingToB = new NormalBuyingToB(normalOrder.getOrderId(),normalOrderToBS,"第233家分店", normalOrder.getAmount(), bill,address,normalOrder.getPlaceTime());
+
         //将normalOrder传给交易中台
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        DoStrategyImpl doStrategyImpl = (DoStrategyImpl) ctx.getBean("doStrategyImpl");
+        doStrategyImpl.doStrategyActivity(normalBuyingToB);
     }
 
     //生成订单id

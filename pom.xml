@@ -255,7 +255,6 @@
         </dependency><!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core -->
 
 
-
     </dependencies>
 
     <build>
