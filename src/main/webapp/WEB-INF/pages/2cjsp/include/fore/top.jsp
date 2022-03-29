@@ -10,7 +10,7 @@
     <c:if test="${!empty user}">
         <a href="">${user.name}</a>
         <a href="personalCenter">个人中心</a>
-        <a href="<%=request.getContextPath()+"/pregister.jsp"%>">供应商审核</a>
+        <a href="<%=request.getContextPath()%>/pregister.jsp">供应商审核</a>
         <a href="forelogout">退出</a>
 
     </c:if>
