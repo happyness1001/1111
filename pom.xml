@@ -205,7 +205,7 @@
         <dependency>
             <groupId>com.github.jsqlparser</groupId>
             <artifactId>jsqlparser</artifactId>
-            <version>1.0</version>
+            <version>3.1</version>
         </dependency>
         <!-- 日志处理 -->
         <dependency>
