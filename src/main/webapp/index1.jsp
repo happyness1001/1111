@@ -33,7 +33,7 @@
     </style>
 </head>
 <body>
-
+<%----%>
 <h3>
     <a href="${pageContext.request.contextPath}/forehome">点击进入商城主页</a>
 </h3>
