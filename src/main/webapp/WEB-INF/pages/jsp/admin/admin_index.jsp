@@ -17,7 +17,7 @@
         </div>
         <div class="foods">
             <p>版权所有@2022 <a href="http://www.lvgaopan.cn/"
-                            target="_blank" title="">地狗</a>
+                            target="_blank" title="">农村集采商城</a>
             </p>
         </div>
 

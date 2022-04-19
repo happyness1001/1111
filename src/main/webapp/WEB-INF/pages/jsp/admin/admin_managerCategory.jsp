@@ -120,7 +120,7 @@
 
 
     <div class="foods">
-        <p>版权所有@2018 地狗商城 <a href="#" target="_blank" title="地狗商城">地狗商城</a></p>
+        <p>版权所有@2022 农村集采商城 <a href="#" target="_blank" title="农村集采商城">农村集采商城</a></p>
     </div>
 
 

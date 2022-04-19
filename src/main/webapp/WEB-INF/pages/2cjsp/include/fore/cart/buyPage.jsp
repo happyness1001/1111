@@ -47,7 +47,7 @@
                 <tr>
                     <th colspan="2" class="productListTableFirstColumn">
                         <img class="tmallbuy" src="img/site/tmallbuy.png">
-                        <a class="marketLink" href="#nowhere">店铺：地狗店铺</a>
+                        <a class="marketLink" href="#nowhere">店铺：农村集采商城店铺</a>
                         <a class="wangwanglink" href="#nowhere"> <span class="wangwangGif"></span> </a>
                     </th>
                     <th>单价</th>

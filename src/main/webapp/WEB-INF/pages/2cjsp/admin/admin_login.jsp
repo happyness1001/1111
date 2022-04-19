@@ -117,7 +117,7 @@
 
         <!--footer-->
         <div class="footer">
-            <p>&copy; 2018 Digou. All rights reserved | Design by <a href="#" target="_blank">Digou</a></p>
+            <p>&copy; 2022 DLUT. All rights reserved | Design by <a href="#" target="_blank">DLUT</a></p>
         </div>
         <!--//footer-->
     </div>

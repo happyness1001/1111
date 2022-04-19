@@ -90,7 +90,7 @@
             });
 
             $("div#footer a[href$=#nowhere]").click(function () {
-                alert("模仿地狗的连接，并没有跳转到实际的页面");
+                alert("模仿农村集采商城的连接，并没有跳转到实际的页面");
             });
 
 

@@ -164,7 +164,7 @@
 
 
     <div class="foods">
-        <p>版权所有@2018 商城 <a href="#" target="_blank" title="农村集采商城">商城</a></p>
+        <p>版权所有@2022 商城 <a href="#" target="_blank" title="农村集采商城">商城</a></p>
     </div>
 
 </div>

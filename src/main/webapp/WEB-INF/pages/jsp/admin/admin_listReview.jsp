@@ -86,7 +86,7 @@
 
 
     <div class="foods">
-        <p>版权所有@2018 <a href="http://www.lvgaopan.com/" target="_blank" title=""></a>
+        <p>版权所有@2022 <a href="http://www.lvgaopan.com/" target="_blank" title=""></a>
         </p>
     </div>
 

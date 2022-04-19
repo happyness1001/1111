@@ -62,7 +62,7 @@
             </tr>
             <tr>
                 <td>卖家昵称：</td>
-                <td>地狗商铺 <%--<span class="confirmPayOrderDetailWangWangGif"></span>--%></td>
+                <td>农村集采商城商铺 <%--<span class="confirmPayOrderDetailWangWangGif"></span>--%></td>
             </tr>
             <tr>
                 <td>收货信息：</td>

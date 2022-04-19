@@ -135,7 +135,7 @@
 
 
     <div class="foods">
-        <p>版权所有@2018 农业集采商城 <a href="#" target="_blank" title="农业集采商城">农业集采商城</a></p>
+        <p>版权所有@2022 农业集采商城 <a href="#" target="_blank" title="农业集采商城">农业集采商城</a></p>
     </div>
 
 </div>

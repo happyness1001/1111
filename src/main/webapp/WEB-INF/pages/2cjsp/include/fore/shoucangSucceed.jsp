@@ -30,10 +30,10 @@
 
 <nav class="top ">
     <a href="/forehome">
-        <span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-home redColor"></span>地狗首页
+        <span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-home redColor"></span>农村集采商城首页
     </a>
 
-    <span>欢迎来到地狗</span>
+    <span>欢迎来到农村集采商城</span>
 
     <c:if test="${!empty user}">
         <a href="loginPage">${user.name}</a>
@@ -46,7 +46,7 @@
         <a href="registerPage">免费注册</a>
         <%--<a href="adminloginPage">我是管理</a>--%>
     </c:if>
-    <span style="color: black; margin-left: 250px">地狗云持续为您护航！走你</span>
+    <span style="color: black; margin-left: 250px">农村集采商城云持续为您护航！走你</span>
 
     <span class="pull-right">
 		<c:if test="${!empty user}">

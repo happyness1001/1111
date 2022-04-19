@@ -2,13 +2,13 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>地狗后台管理系统</title>
+    <title>农村集采商城后台管理系统</title>
     <link rel="Shortcut Icon" href="icon/all.png"/>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="地狗后台管理系统 v1.0,地狗,地狗购物商城后台管理系统">
-    <meta name="description" content="地狗后台管理系统 v1.0，是一款电商后台管理系统，适合中小型CMS后台系统。">
+    <meta name="keywords" content="农村集采商城后台管理系统 v1.0,农村集采商城,农村集采商城购物商城后台管理系统">
+    <meta name="description" content="农村集采商城后台管理系统 v1.0，是一款电商后台管理系统，适合中小型CMS后台系统。">
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -87,7 +87,7 @@
     <div class="center-container">
         <!--header-->
         <div class="header-w3l">
-            <h1>地狗<span class="title">后台管理系统</span></h1>
+            <h1>农村集采商城<span class="title">后台管理系统</span></h1>
         </div>
         <!--//header-->
         <div class="main-content-agile">
@@ -117,7 +117,7 @@
 
         <!--footer-->
         <div class="footer">
-            <p>&copy; 2018 Digou. All rights reserved | Design by <a href="#" target="_blank">Digou</a></p>
+            <p>&copy; 2022 DLUT. All rights reserved | Design by <a href="#" target="_blank">DLUT</a></p>
         </div>
         <!--//footer-->
     </div>

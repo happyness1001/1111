@@ -71,7 +71,7 @@
             });
 
             $("div#footer a[href$=#nowhere]").click(function () {
-                alert("模仿地狗的连接，并没有跳转到实际的页面");
+                alert("模仿农村集采商城的连接，并没有跳转到实际的页面");
             });
 
 
@@ -94,10 +94,10 @@
 <nav class="top ">
     <a href="/forehome">
         <span style="color:#C40000;margin:0px" class=" glyphicon glyphicon-home redColor"></span>
-        地狗首页
+        农村集采商城首页
     </a>
 
-    <span>欢迎来地狗</span>
+    <span>欢迎来农村集采商城</span>
 
 
     <a href="loginPage">${user.name}</a>
@@ -167,10 +167,10 @@
                         <tr class="orderListItemFirstTR">
                             <td colspan="2">
 
-                                    <%--<span>收藏时间:   <b>2018-10- 14:17:41</b>--%>
+                                    <%--<span>收藏时间:   <b>2022-10- 14:17:41</b>--%>
                                     <%--</span>--%>
                             </td>
-                            <td colspan="2"><img width="13px" src="img/site/orderItemTmall.png">地狗商场</td>
+                            <td colspan="2"><img width="13px" src="img/site/orderItemTmall.png">农村集采商城商场</td>
                             <td colspan="1">
                                     <%--<a class="wangwanglink" href="#nowhere">--%>
                                     <%--<div class="orderItemWangWangGif"></div>--%>
@@ -258,7 +258,7 @@
 							</span>
                     <input id="password" name="password" type="password" placeholder="密码" type="text">
                 </div>
-                <span class="text-danger">不要输入真实的地狗账号密码</span><br><br>
+                <span class="text-danger">不要输入真实的农村集采商城账号密码</span><br><br>
                 <div>
                     <a href="#nowhere">忘记登录密码</a>
                     <a href="registerPage" class="pull-right">免费注册</a>
