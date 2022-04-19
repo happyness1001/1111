@@ -103,14 +103,19 @@
         <!--左边导航条开始的地方-->
 
         <div class="sideMenu">
-            <h3 class="am-icon-flag"><em></em> <a href="#">会员管理</a></h3>
-            <ul>
-                <li><a href="admin_user_list">会员列表</a></li>
-            </ul>
-
+            <%--            <h3 class="am-icon-flag"><em></em> <a href="#">会员管理</a></h3>--%>
+            <%--            <ul>--%>
+            <%--                <li><a href="admin_user_list">会员列表</a></li>--%>
+            <%--            </ul>--%>
+            <h3 class="am-icon-logistics"><em></em> <a href="#">物流系统</a></h3>
+                <ul>
+                    <li><a href="${pageContext.request.contextPath}/commodity/allCommodity">查看库存商品</a></li>
+                    <li><a href="${pageContext.request.contextPath}/order/map">生成路线</a></li>
+                    <li><a href="${pageContext.request.contextPath}/order/match">分析订单操作</a></li>
+                </ul>
             <h3 class="am-icon-users"><em></em> <a href="#">商品管理</a></h3>
             <ul>
-                <li><a href="admin_product_listAll">商品列表</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin_product_listAll">商品列表</a></li>
                 <li><a href="toCategory">分类管理</a></li>
 
             </ul>
@@ -120,10 +125,10 @@
 
             <%--            </ul>--%>
 
-            <h3 class="am-icon-cart-plus"><em></em> <a href="#">收藏管理</a></h3>
-            <ul>
-                <li><a href="showAllCollection">收藏记录</a></li>
-            </ul>
+            <%--            <h3 class="am-icon-cart-plus"><em></em> <a href="#">收藏管理</a></h3>--%>
+            <%--            <ul>--%>
+            <%--                <li><a href="showAllCollection">收藏记录</a></li>--%>
+            <%--            </ul>--%>
 
             <h3 class="am-icon-cart-plus"><em></em> <a href="#">订单管理</a></h3>
             <ul>

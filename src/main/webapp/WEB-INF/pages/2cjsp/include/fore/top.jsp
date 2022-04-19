@@ -11,6 +11,9 @@
         <a href="">${user.name}</a>
         <a href="personalCenter">个人中心</a>
         <a href="<%=request.getContextPath()%>/pregister.jsp">资质审核</a>
+        <c:if test="${user.role == 1}">
+            <a href="personalCenter">上架商品</a>
+        </c:if>
         <a href="forelogout">退出</a>
 
     </c:if>

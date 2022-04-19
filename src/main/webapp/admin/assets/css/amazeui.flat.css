@@ -5485,7 +5485,7 @@ a.am-close:hover {
 }
 
 .am-icon-trash-o:before {
-    content: "\f014";
+    content: "\f0c0";
 }
 
 .am-icon-home:before {
@@ -6094,7 +6094,9 @@ a.am-close:hover {
 .am-icon-users:before {
     content: "\f0c0";
 }
-
+.am-icon-logistics:before{
+    content: "\f1b9";
+}
 .am-icon-chain:before,
 .am-icon-link:before {
     content: "\f0c1";

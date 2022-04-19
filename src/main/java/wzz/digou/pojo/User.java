@@ -13,7 +13,7 @@ public class User {
 
     private String password;
 
-//    private int role;
+    private int role;
 
     public Integer getId() {
         return id;
@@ -39,14 +39,14 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    //    public int getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(int role) {
-//        this.role = role;
-//    }
-//
+        public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
     public String getAnonymousName() {
         if (null == name)
             return null;

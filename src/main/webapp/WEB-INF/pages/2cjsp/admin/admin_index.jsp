@@ -16,7 +16,7 @@
             <%--<h2 style="text-align: center">${active_admin.getAdmin_name()} :欢迎回来</h2>--%>
         </div>
         <div class="foods">
-            <p>版权所有@2017 <a href="http://www.lvgaopan.cn/"
+            <p>版权所有@2022 <a href="http://www.lvgaopan.cn/"
                             target="_blank" title="">村镇集采平台</a>
             </p>
         </div>

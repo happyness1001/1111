@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf8" %>
-<%@ page import="com.digou.pojo.User" %>
+<%@ page import="wzz.digou.pojo.User" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>--%>
 <%
@@ -245,7 +245,7 @@
     <div class=" foods">
 
         <%--<p>
-            版权所有@2017 书香味道 <a href="http://www.lvgaopan.com/" target="_blank"
+            版权所有@2022 书香味道 <a href="http://www.lvgaopan.com/" target="_blank"
                               title="书香味道">书香味道</a>
 
         </p>--%>

@@ -330,7 +330,7 @@
 }
 
 .fa-trash-o:before {
-    content: "\f014";
+    content: "\f0c0";
 }
 
 .fa-home:before {
@@ -931,7 +931,9 @@
 .fa-users:before {
     content: "\f0c0";
 }
-
+.am-icon-logistics:before{
+    content: "\f1b9";
+}
 .fa-chain:before,
 .fa-link:before {
     content: "\f0c1";

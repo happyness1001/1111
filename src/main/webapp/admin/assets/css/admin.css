@@ -20,7 +20,9 @@
 .admin-main {
     background: #2a3542
 }
-
+.am-icon-logistics:before{
+    content: "\f1b9";
+}
 .admin-menu {
     position: fixed;
     bottom: 30px;

@@ -78,7 +78,7 @@
                 <c:if test="${st.count<=4}">
 				<span>
 				<a href="forecategory?cid=${c.id}">
-					|${c.name}|
+					${c.name}
 				</a></span>
                 </c:if>
             </c:forEach>

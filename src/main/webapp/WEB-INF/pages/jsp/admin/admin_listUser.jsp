@@ -150,7 +150,7 @@
 
     <div class="foods">
 
-        <p>版权所有@2017 <a href="http://www.lvgaopan.com/" target="_blank" title="书香味道">书香味道</a>
+        <p>版权所有@2022 <a href="http://www.lvgaopan.com/" target="_blank" title="书香味道">书香味道</a>
 
         </p>
 

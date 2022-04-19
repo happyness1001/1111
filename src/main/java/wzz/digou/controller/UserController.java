@@ -78,14 +78,15 @@ public class UserController {
 //    @RequestMapping("fore")
 //    @RequestMapping("forelogin")
     @RequestMapping(value = {"forelogin", "fore"})
-    public String login(@RequestParam("name") String name, @RequestParam("password") String password, Model model, HttpSession session) {
+    public String login(@RequestParam("name") String name, @RequestParam("password") String password,@RequestParam("userType") String userType, Model model, HttpSession session) {
         name = HtmlUtils.htmlEscape(name);
         User user = userService.get(name, password);
-
+        user.setRole(Integer.parseInt(userType));
         if (null == user/*||user.getRole()!=1*/) {
             model.addAttribute("msg", "账号密码错误");
             return "2cjsp/fore/login";
         }
+        System.out.println("user:" + user);
         session.setAttribute("user", user);
 //        System.out.println(user.getRole());
         return "redirect:forehome";

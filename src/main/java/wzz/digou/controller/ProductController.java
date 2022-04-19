@@ -141,7 +141,7 @@ public class ProductController {
 
         model.addAttribute("page", page);
 
-        return "2cjsp/dmin/admin_listProduct";
+        return "2cjsp/admin/admin_listProduct";
     }
 
     @ResponseBody()
