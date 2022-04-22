@@ -21,7 +21,8 @@
     <c:if test="${empty user}">
         <a href="loginPage">请登录</a>
         <a href="registerPage">免费注册</a>
-        <a href="adminloginPage">我是管理</a>
+        <a href="adminloginPage">我是供应商</a>
+        <a href="login">我是管理</a>
     </c:if>
 
 

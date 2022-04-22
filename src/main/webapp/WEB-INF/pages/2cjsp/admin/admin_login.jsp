@@ -95,7 +95,7 @@
                 <div class="wthree-pro">
                     <h2>Login Here</h2>
                 </div>
-                <form id="login" action="adminLogin" method="post" width="100%">
+                <form id="login" action="adminLogin" method="post" >
                     <input placeholder="用户名" name="name" id="username" class="user" type="text" required="">
                     <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br><br>
                     <input placeholder="密码" name="password" id="password" class="pass" type="password" required="">
@@ -122,105 +122,5 @@
         <!--//footer-->
     </div>
 </div>
-<%--<script type="text/javascript">--%>
-
-<%--    var handler = function (captchaObj) {--%>
-<%--        captchaObj.appendTo('#captcha');--%>
-<%--        captchaObj.onReady(function () {--%>
-<%--            $("#wait").hide();--%>
-<%--        });--%>
-<%--        $('#loginButton').click(function () {--%>
-<%--            $("#loginButton").val("登录中...");--%>
-<%--            $("#loginButton").attr("disabled","disabled");--%>
-<%--            var name=$("#username").val();--%>
-<%--            var pass=$("#password").val();--%>
-<%--            if(name==""||pass==""){--%>
-<%--                layer.msg("用户名或密码不能为空");--%>
-<%--                $("#loginButton").val("登录");--%>
-<%--                $("#loginButton").removeAttr("disabled");--%>
-<%--                return;--%>
-<%--            }--%>
-<%--            var reg = /^[0-9A-Za-z]+$/;--%>
-<%--            if(!reg.exec(name))--%>
-<%--            {--%>
-<%--                layer.msg("用户名格式有误");--%>
-<%--                $("#loginButton").val("登录");--%>
-<%--                $("#loginButton").removeAttr("disabled");--%>
-<%--                return;--%>
-<%--            }--%>
-<%--            var result = captchaObj.getValidate();--%>
-<%--            if (!result) {--%>
-<%--                layer.msg("请完成验证");--%>
-<%--                $("#loginButton").val("登录");--%>
-<%--                $("#loginButton").removeAttr("disabled");--%>
-<%--                return ;--%>
-<%--            }--%>
-<%--            $.ajax({--%>
-<%--                url: '/admin/login?t=' + (new Date()).getTime(), // 加随机数防止缓存--%>
-<%--                type: 'POST',--%>
-<%--                dataType: 'json',--%>
-<%--                data: {--%>
-<%--                    username: name,--%>
-<%--                    password: pass,--%>
-<%--                    challenge: result.geetest_challenge,--%>
-<%--                    validate: result.geetest_validate,--%>
-<%--                    seccode: result.geetest_seccode--%>
-<%--                },--%>
-<%--                success: function (data) {--%>
-<%--                    if(data.success==true){--%>
-<%--                        window.location.href="/toLogin";--%>
-<%--                    }else{--%>
-<%--                        layer.msg(data.message);--%>
-<%--                        captchaObj.reset();--%>
-<%--                        $("#loginButton").val("登录");--%>
-<%--                        $("#loginButton").removeAttr("disabled");--%>
-<%--                    }--%>
-<%--                },--%>
-<%--                error:function(XMLHttpRequest){--%>
-<%--                    layer.alert('数据处理失败! 错误码:'+XMLHttpRequest.status+' 错误信息:'+JSON.parse(XMLHttpRequest.responseText).message,{title: '错误信息',icon: 2});--%>
-<%--                    $("#loginButton").val("登录");--%>
-<%--                    $("#loginButton").removeAttr("disabled");--%>
-<%--                }--%>
-<%--            });--%>
-<%--        })--%>
-<%--        window.gt = captchaObj;--%>
-<%--    };--%>
-
-<%--    $.ajax({--%>
-<%--        url: '/geetestInit?t=' + (new Date()).getTime(), // 加随机数防止缓存--%>
-<%--        type: "GET",--%>
-<%--        dataType: 'json',--%>
-<%--        success: function (data) {--%>
-<%--            initGeetest({--%>
-<%--                gt: data.gt,--%>
-<%--                challenge: data.challenge,--%>
-<%--                new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机--%>
-<%--                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注--%>
-<%--                product: "popup", // 产品形式，包括：float，popup--%>
-<%--                width: "100%"--%>
-<%--            }, handler);--%>
-<%--        }--%>
-<%--    });--%>
-
-
-// $.ajax({
-// url:"/sys/base",
-// type: 'GET',
-// success:function (data) {
-// if(data.success!=true){
-// layer.alert(data.message,{title: '错误信息',icon: 2});
-// return;
-// }
-// if(data.result.hasLogNotice==1){
-// layer.alert(data.result.logNotice, {
-// title: "通知"
-// });
-// }
-// },
-// error:function(XMLHttpRequest){
-// layer.alert('数据处理失败! 错误码:'+XMLHttpRequest.status,{title: '错误信息',icon: 2});
-// }
-// });
-</script>
 </body>
 </html>
