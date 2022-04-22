@@ -11,7 +11,8 @@
                             http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!--关联数据库配置文件-->
     <context:property-placeholder location="classpath:database.properties"/>
-
+    <!-- DI注解解析器 -->
+    <context:annotation-config/>
 
     <context:component-scan base-package="ln.dao"/>
     <context:component-scan base-package="mxz.dao"/>
@@ -19,6 +20,7 @@
     <context:component-scan base-package="wzz.digou.service"/>
     <!--    <context:component-scan base-package="wzz.dao"/>-->
     <context:component-scan base-package="gsh.dao"/>
+    <context:component-scan base-package="com.ppq"/>
 
 
     <!--    连接池-->
@@ -32,6 +34,13 @@
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.mxz-url}"/>
         <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <bean id="ppq-dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="url" value="${jdbc.ppq.url}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
@@ -61,6 +70,24 @@
                   value="20"/>
     </bean>
 
+    <!-- 3.配置SqlSessionFactory对象 -->
+    <bean id="ppq-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="ppq-dataSource"/>
+        <!-- 配置MyBaties全局配置文件:mybatis-config.xml -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 配置mybatis分页插件PageHelper -->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!-- 什么都不配，使用默认的配置 -->
+                        <value></value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
 
     <bean id="wzz-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="wzz-dataSource"/>
@@ -103,10 +130,16 @@
     <bean id="wzz-transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="wzz-dataSource"/>
     </bean>
+    <bean id="ppq-transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据库连接池 -->
+        <property name="dataSource" ref="ppq-dataSource" />
+    </bean>
+
     <!--开启事务注解驱动，告诉spring使用注解管理事务，创建代理对象-->
     <tx:annotation-driven transaction-manager="mxz-transactionManager"/>
     <tx:annotation-driven transaction-manager="ln-transactionManager"/>
     <tx:annotation-driven transaction-manager="wzz-transactionManager"/>
+    <tx:annotation-driven transaction-manager="ppq-transactionManager"/>
 
 
 
@@ -133,6 +166,12 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="wzz.digou.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="wzz-sqlSessionFactory"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="ppq-sqlSessionFactory"/>
+        <!-- 给出需要扫描Dao接口包 -->
+        <property name="basePackage" value="com.ppq.dao"/>
     </bean>
 
 </beans>

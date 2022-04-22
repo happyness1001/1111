@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.StopWordsMapper">
+    <insert id="addWord" parameterType="stopWords">
+        insert into stop_words (word)
+        values (#{word})
+    </insert>
+    <select id="queryAllWords" resultType="String">
+        select word from stop_words
+    </select>
+</mapper>

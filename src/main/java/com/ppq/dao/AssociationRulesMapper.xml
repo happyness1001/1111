@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.AssociationRulesMapper">
+    <select id="selectRules" resultType="AssociationRules">
+        select * from association_rules
+    </select>
+    <delete id="deleteRules" parameterType="java.lang.Integer">
+        delete from association_rules where id = #{id}
+    </delete>
+    <insert id="addRules" parameterType="AssociationRules">
+        insert into association_rules(pre_item_number, pre_item_name, post_item_number, post_item_name, confidence)
+        values (#{preItemNumber},#{preItemName},#{postItemNumber},#{postItemName},#{confidence})
+    </insert>
+</mapper>

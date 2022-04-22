@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.ItemCategoryMapper">
+    <select id="selectNameByNumber" parameterType="java.lang.String" resultType="java.lang.String">
+        select category_name from item_category where category_number = #{number}
+    </select>
+    <select id="fuzzyQueryByNumber" parameterType="java.lang.String" resultType="ItemCategory">
+        select * from item_category where category_number like #{number}
+    </select>
+</mapper>

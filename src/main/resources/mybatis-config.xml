@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
+    <settings>
+        <!--下划线驼峰自动转换-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <typeAliases>
         <package name="ln.pojo"/>
         <package name="mxz.entity"/>
         <!--        <package name="ljy.digou.pojo"/>-->
         <package name="wzz.digou.pojo"/>
+        <package name="com.ppq.pojo"/>
     </typeAliases>
+
+
 </configuration>

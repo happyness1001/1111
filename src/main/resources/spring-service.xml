@@ -17,6 +17,33 @@
     <!--    <context:component-scan base-package="ljy.digou.service"/>-->
     <context:component-scan base-package="wzz.digou.service"/>
     <!--    <context:component-scan base-package="wzz.service"/>-->
+    <context:component-scan base-package="com.ppq.service" />
+
+    <bean id="CommentServiceImpl" class="com.ppq.service.CommentServiceImpl" autowire="byType">
+    </bean>
+    <bean id="UserServiceImpl" class="com.ppq.service.UserServiceImpl" autowire="byType">
+    </bean>
+    <bean id="SentimentAnalysisImpl" class="com.ppq.service.SentimentAnalysisImpl" autowire="byType">
+    </bean>
+    <bean id="CustomerServiceImpl" class="com.ppq.service.CustomerServiceImpl" autowire="byType">
+    </bean>
+    <bean id="CustomerTransactionServiceImpl" class="com.ppq.service.CustomerTransactionServiceImpl" autowire="byType">
+    </bean>
+    <bean id="CustomerRecordServiceImpl" class="com.ppq.service.CustomerRecordServiceImpl" autowire="byType">
+    </bean>
+    <bean id="TransactionServiceImpl" class="com.ppq.service.TransactionServiceImpl" autowire="byType">
+    </bean>
+    <bean id="ItemCategoryServiceImpl" class="com.ppq.service.ItemCategoryServiceImpl" autowire="byType">
+    </bean>
+    <bean id="AssociationRulesServiceImpl" class="com.ppq.service.AssociationRulesServiceImpl" autowire="byType">
+    </bean>
+    <bean id="CustomerMemberServiceImpl" class="com.ppq.service.CustomerMemberServiceImpl" autowire="byType">
+    </bean>
+    <bean id="MemberItemServiceImpl" class="com.ppq.service.MemberItemServiceImpl" autowire="byType">
+    </bean>
+    <bean id="SupplyRecordServiceImpl" class="com.ppq.service.SupplyRecordServiceImpl" autowire="byType">
+    </bean>
+
 
 
 </beans>

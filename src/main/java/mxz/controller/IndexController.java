@@ -1,6 +1,5 @@
 package mxz.controller;
 
-import mxz.entity.*;
 import mxz.service.ClientService;
 import mxz.service.ManagerService;
 import mxz.service.ProviderService;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 

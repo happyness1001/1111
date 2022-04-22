@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.CustomerMemberMapper">
+    <select id="selectAllCustomer" resultType="CustomerMember">
+        select * from member_level
+    </select>
+
+    <insert id="insertSelective" parameterType="CustomerMember">
+        insert into member_level (member_level, min_points, max_points)
+        values (#{memberLevel},#{minPoints},#{maxPoints})
+    </insert>
+
+    <select id="selectByPrimaryKey" resultType="CustomerMember" parameterType="java.lang.Integer">
+        select * from member_level where member_id = #{memberId}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="CustomerMember">
+        update member_level
+        set min_points = #{minPoints}, max_points = #{maxPoints}
+        where member_id = #{memberId}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from member_level where member_id = #{memberId}
+    </delete>
+</mapper>

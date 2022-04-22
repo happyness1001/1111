@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.SupplyRecordMapper">
+    <select id="selectAllSupplyRecord" resultType="SupplyRecord">
+        select * from supply_record
+    </select>
+
+    <insert id="insertSelective" parameterType="SupplyRecord">
+        insert into supply_record (supplier_name, supplier_phone, supply_category, quality, price, quantity)
+        values (#{supplierName},#{supplierPhone},#{supplyCategory},#{quality},#{price},#{quantity})
+    </insert>
+
+    <select id="selectByPrimaryKey" resultType="SupplyRecord" parameterType="java.lang.Integer">
+        select * from supply_record where record_id = #{recordId}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="SupplyRecord">
+        update supply_record
+        set supplier_name = #{supplierName}, supplier_phone = #{supplierPhone}, supply_category = #{supplyCategory}
+          , quality = #{quality}, price = #{price}, quantity = #{quantity}
+        where record_id = #{recordId}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from supply_record where record_id = #{recordId}
+    </delete>
+    <select id="selectSupplyRecordByCategory" parameterType="java.lang.String" resultType="SupplyRecord">
+        select *,sum(quality+price+quantity) as total from supply_record
+        where supply_category = #{category} group by record_id order by total desc;
+    </select>
+</mapper>

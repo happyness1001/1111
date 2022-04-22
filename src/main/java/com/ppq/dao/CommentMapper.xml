@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.CommentMapper">
+    <select id="queryAllContent" resultType="String">
+        <!--select content from comment where creationtime between '2020-10-01' and '2020-12-01'-->
+        select * from comment where userId = 14854198525
+                                                or userId = 14853642684
+                                                or userId = 14853846455
+                                                or userId = 14851745460
+                                                or userId = 14853113135
+                                                or userId = 14853938519
+                                                or userId = 14853354542
+    </select>
+    <select id="queryAllComment" resultType="Comment">
+        select * from comment
+    </select>
+    <select id="queryCommentByIdAndDate" resultType="Comment">
+        select * from comment
+        <where>
+            <if test='beginDate != "" '>
+                boughtTime > #{beginDate}
+            </if>
+            <if test='endDate != "" '>
+                and boughtTime &lt; #{endDate}
+            </if>
+            <if test='id != "" '>
+                and referenceName in(select name from id_name where id=#{id})
+            </if>
+        </where>
+        ORDER BY boughtTime DESC
+    </select>
+    <select id="queryAllPositiveContent" resultType="String">
+        select content from comment where starStep = 5
+    </select>
+    <select id="queryAllNegativeContent" resultType="String">
+        select content from comment where starStep &lt; 2
+    </select>
+    <select id="countCommentByIdAndDate" resultType="ResultMap">
+        select
+            DATE_FORMAT(boughtTime,'%Y-%u') weeks,
+            COUNT(userId) counts
+            from comment
+            where boughtTime BETWEEN #{beginDate} AND #{endDate}
+            AND referenceName in(select name from id_name where id=#{id})
+            GROUP BY weeks
+            ORDER BY weeks;
+    </select>
+    <select id="queryCommentByIdAndDateAndWeek" resultType="String">
+        select
+            content
+            from comment
+            where boughtTime BETWEEN #{beginDate} AND #{endDate}
+            AND referenceName in(select name from id_name where id=#{id})
+            AND week(boughtTime) = #{weeks};
+    </select>
+</mapper>

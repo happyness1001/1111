@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.SentimentAnalysisMapper">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sentiment_analysis where text_id = #{textId}
+    </delete>
+    <select id="selectAll" resultType="SentimentAnalysis">
+        select * from sentiment_analysis
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="SentimentAnalysis">
+        select * from sentiment_analysis where text_id = #{textId}
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="SentimentAnalysis">
+        update sentiment_analysis set text = #{text}, text_category = #{textCategory} where text_id = #{textId}
+    </update>
+    <select id="selectByText" resultType="Integer" parameterType="java.lang.String">
+        select count(*) from sentiment_analysis where text = #{text}
+    </select>
+    <insert id="insertSelective" parameterType="SentimentAnalysis">
+        insert into sentiment_analysis (text,text_category) values(#{text},#{textCategory})
+    </insert>
+    <select id="queryAllPositiveContent" resultType="String">
+        select text from sentiment_analysis where text_category = '正面'
+    </select>
+    <select id="queryAllNegativeContent" resultType="String">
+        select text from sentiment_analysis where text_category = '负面'
+    </select>
+</mapper>

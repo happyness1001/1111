@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.TransactionMapper">
+    <select id="selectNumberGroupById" resultType="String">
+        select group_concat(item_number) from transaction
+        <where>
+            <if test='beginDate != "" '>
+                transaction_date > #{beginDate}
+            </if>
+            <if test='endDate != "" '>
+                and transaction_date &lt; #{endDate}
+            </if>
+        </where>
+        group by transaction_id
+    </select>
+    <select id="selectTransaction" resultType="Transaction">
+        select * from transaction
+    </select>
+</mapper>

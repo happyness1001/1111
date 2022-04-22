@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.MemberItemMapper">
+    <select id="selectAllMemberItem" resultType="MemberItem">
+        select * from member_item
+    </select>
+
+    <insert id="insertSelective" parameterType="MemberItem">
+        insert into member_item (item_number, item_name, member_level, member_price)
+        values (#{itemNumber},#{itemName},#{memberLevel},#{memberPrice})
+    </insert>
+
+    <select id="selectByPrimaryKey" resultType="MemberItem" parameterType="java.lang.Integer">
+        select * from member_item where id = #{id}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="MemberItem">
+        update member_item
+        set member_level = #{memberLevel}, member_price = #{memberPrice}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from member_item where id = #{id}
+    </delete>
+</mapper>

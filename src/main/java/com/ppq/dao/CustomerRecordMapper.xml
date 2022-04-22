@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mappper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ppq.dao.CustomerRecordMapper">
+    <select id="selectRecordByPrimaryKey" resultType="java.lang.String">
+        select record from customer_record where customer_id = #{customerId}
+    </select>
+    <insert id="updateByPrimaryKeySelective" parameterType="CustomerRecord">
+        insert into customer_record (customer_id,record) values (#{customerId},#{record}) on duplicate key update record = #{record}
+    </insert>
+</mapper>
