@@ -1,7 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
+<%
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+%>
 <head>
+    <base href="<%=basePath%>">
     <%@include file="../../common/head.jsp" %>
 </head>
 <body class="sidebar-fixed header-fixed">

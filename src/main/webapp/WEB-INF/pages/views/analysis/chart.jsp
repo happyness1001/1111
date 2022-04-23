@@ -1,12 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
+<%
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+%>
 <head>
+    <base href="<%=basePath%>">
     <%@include file="../../common/head.jsp" %>
     <meta charset="utf-8">
     <title>ECharts</title>
     <!-- 引入 echarts.js -->
-    <script src="/static/js/echarts.min.js"></script>
+    <script src="static/js/echarts.min.js"></script>
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="main-container">

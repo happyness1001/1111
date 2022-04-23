@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>ECharts</title>
     <!-- 引入 echarts.js -->
-    <script src="/static/js/echarts.min.js"></script>
+    <script src="static/js/echarts.min.js"></script>
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="main-container">

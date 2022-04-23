@@ -13,7 +13,7 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="/static/images/avatar-1.png" class="avatar avatar-sm" alt="logo">
+                <img src="static/images/avatar-1.png" class="avatar avatar-sm" alt="logo">
                 <span class="ml-1 d-md-down-none">当前账户：${adminUser.username}</span>
             </a>
 
