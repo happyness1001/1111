@@ -19,7 +19,7 @@
 
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">Account</div>
-                <a href="/logout" class="dropdown-item">
+                <a href="logout" class="dropdown-item">
                     <i class="fa fa-lock"></i> 退出系统
                 </a>
             </div>

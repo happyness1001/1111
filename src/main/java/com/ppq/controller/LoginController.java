@@ -72,11 +72,18 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpSession session) {
+    public String logout(HttpSession session,HttpServletResponse response) {
         User adminUser = (User) session.getAttribute("adminUser");
         if (adminUser != null) {
             session.removeAttribute("adminUser");
         }
+        //把没有过期cookie删除
+        Cookie c1=new Cookie("loginAdminAct","1");
+        c1.setMaxAge(0);
+        response.addCookie(c1);
+        Cookie c2=new Cookie("loginAdminPwd","1");
+        c2.setMaxAge(0);
+        response.addCookie(c2);
         return "login";
     }
 }
