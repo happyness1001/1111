@@ -6,9 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>客户管理系统</title>
 <%--标签页前面的小图标--%>
-<%--<link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">--%>
-<link rel="stylesheet" href="/static/vendor/simple-line-icons/css/simple-line-icons.css">
-<link rel="stylesheet" href="/static/vendor/font-awesome/css/fontawesome-all.min.css">
-<link rel="stylesheet" href="/static/css/styles.css">
+<%--<link rel="icon" type="image/x-icon" href="static/images/favicon.ico">--%>
+<link rel="stylesheet" href="static/vendor/simple-line-icons/css/simple-line-icons.css">
+<link rel="stylesheet" href="static/vendor/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="static/css/styles.css">
 
 
