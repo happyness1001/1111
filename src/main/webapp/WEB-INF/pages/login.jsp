@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <%
@@ -7,6 +8,17 @@
 <head>
     <base href="<%=basePath%>">
     <%@include file="common/head.jsp" %>
+    <script>
+        $(function(){
+                $(window).keydown(function (e){
+                    if (e.keyCode==13){
+                        $("#loginBtn").click();
+                    }
+                })
+
+            }
+        )
+    </script>
 </head>
 <body>
 <div class="page-wrapper flex-row align-items-center">
@@ -31,19 +43,29 @@
                         <div class="card-body py-5">
                             <div class="form-group">
                                 <label class="form-control-label">用户名</label>
-                                <input type="text" class="form-control" name="username">
+                                <input type="text" class="form-control" name="username" value="${cookie.loginAdminAct.value}">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-control-label">密码</label>
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" value="${cookie.loginAdminPwd.value}">
                             </div>
-
+                            <div class="checkbox"  style="position: relative;top: 30px; left: 10px;">
+                                <label>
+                                    <c:if test="${not empty cookie.loginAdminAct and not empty cookie.loginAdminPwd}">
+                                        <input type="checkbox" name="isRemPwd" checked>
+                                    </c:if>
+                                    <c:if test="${empty cookie.loginAdminAct or empty cookie.loginAdminPwd}">
+                                        <input type="checkbox" name="isRemPwd">
+                                    </c:if>
+                                    十天内免登录
+                                </label>
+                            </div>
 
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary px-5">登录</button>
+                            <button type="submit" id="loginBtn" class="btn btn-primary px-5">登录</button>
                         </div>
                     </form>
                 </div>
