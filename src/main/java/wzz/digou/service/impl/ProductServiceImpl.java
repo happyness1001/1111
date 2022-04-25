@@ -6,6 +6,7 @@
 
 package wzz.digou.service.impl;
 
+import gsh.service.SearchScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wzz.digou.mapper.ProductMapper;
@@ -31,6 +32,9 @@ public class ProductServiceImpl implements ProductService {
     OrderItemService orderItemService;
     @Autowired
     ReviewService reviewService;
+    @Autowired
+    SearchScoreService searchScoreService;
+
 
     @Override
     public void add(Product p) {
@@ -177,6 +181,18 @@ public class ProductServiceImpl implements ProductService {
             integerList.add(p.getId());
         }
         return integerList;
+    }
+
+    @Override
+    public void setScore(int userId, Product p) {
+        p.setScore(searchScoreService.search_score(userId,p.getId()));
+    }
+
+    @Override
+    public void setScore(int userId, List<Product> ps) {
+        for (Product p : ps) {
+            setScore(userId,p);
+        }
     }
 
 

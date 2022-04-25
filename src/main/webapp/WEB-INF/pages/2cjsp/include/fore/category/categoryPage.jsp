@@ -4,7 +4,6 @@
 <div id="category">
     <div class="categoryPageDiv">
 
-
         <%@include file="productsByCategory.jsp" %>
     </div>
 

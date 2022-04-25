@@ -37,4 +37,8 @@ public interface ProductService {
     //推荐最热
     List<Integer> getGouZuiRe();
 
+    //获取用户对商品评分
+    void setScore(int userId,Product p);
+    //获取用户对商品列表评分
+    void setScore(int userId,List<Product> ps);
 }

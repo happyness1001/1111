@@ -4,6 +4,7 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.github.pagehelper.PageHelper;
+import com.sun.xml.internal.ws.api.model.ExceptionType;
 import gsh.controller.DoStrategyImpl;
 import gsh.pojo.Address;
 import gsh.pojo.NormalBuyingToB;
@@ -157,6 +158,13 @@ public class ForeController {
         Category c = categoryService.get(cid);
         productService.fill(c);
         productService.setSaleAndReviewNumber(c.getProducts());//设置每个商品的销量和评价
+        User user = (User) session.getAttribute("user");
+        if(user!=null){
+            productService.setScore(user.getId(),c.getProducts());
+            sort = "score";
+            Collections.sort(c.getProducts(), new ProductScoreComparator());
+        }
+
         if (null != sort) {
             switch (sort) {
                 case "review"://评价
@@ -243,10 +251,15 @@ public class ForeController {
 
     //搜索
     @RequestMapping("foresearch")
-    public String search(String keyword, Model model) {
+    public String search(String keyword, Model model,HttpSession session) {
         PageHelper.offsetPage(0, 20);
         List<Product> ps = productService.search(keyword);
         productService.setSaleAndReviewNumber(ps);
+        User user = (User) session.getAttribute("user");
+        if(user!=null){
+            productService.setScore(user.getId(),ps);
+            Collections.sort(ps, new ProductScoreComparator());
+        }
         model.addAttribute("ps", ps);
         return "2cjsp/fore/searchResult";
     }

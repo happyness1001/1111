@@ -81,6 +81,12 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-title">更新推荐评分</li>
+            <li class="nav-item ">
+                <a href="${pageContext.request.contextPath}/renew" class="nav-link ">
+                    <i class="icon icon-graph"></i> 更新推荐评分
+                </a>
+            </li>
             <li class="nav-title">会员管理</li>
             <li class="nav-item nav-dropdown">
                 <a href="#" class="nav-link nav-dropdown-toggle">

@@ -36,6 +36,12 @@
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
+    <bean id="gsh-dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.gsh-url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
     <bean id="ppq-dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}"/>
@@ -113,7 +119,11 @@
         <!--        绑定mybatis-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
-
+    <bean id="gsh-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="gsh-dataSource"/>
+        <!--        绑定mybatis-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
 
 
 
@@ -125,6 +135,9 @@
     </bean>
     <bean id="mxz-transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="mxz-dataSource"/>
+    </bean>
+    <bean id="gsh-transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="gsh-dataSource"/>
     </bean>
     <!--声明式事务-->
     <bean id="wzz-transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -140,6 +153,7 @@
     <tx:annotation-driven transaction-manager="ln-transactionManager"/>
     <tx:annotation-driven transaction-manager="wzz-transactionManager"/>
     <tx:annotation-driven transaction-manager="ppq-transactionManager"/>
+    <tx:annotation-driven transaction-manager="gsh-transactionManager"/>
 
 
 
@@ -158,6 +172,12 @@
         <property name="sqlSessionFactoryBeanName" value="mxz-sqlSessionFactory"/>
         <!--        要扫描的包-->
         <property name="basePackage" value="mxz.dao"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--        注入sqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="gsh-sqlSessionFactory"/>
+        <!--        要扫描的包-->
+        <property name="basePackage" value="gsh.dao"/>
     </bean>
   <!--  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="ljy.digou.mapper"/>

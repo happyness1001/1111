@@ -41,6 +41,8 @@ public class Product {
 
     private String measureunit;//计量单位
 
+    private Float score;//用户对商品评分
+
     /*非数据库字段*/
     private Category category;
 
@@ -196,5 +198,13 @@ public class Product {
 
     public void setReviewCount(int reviewCount) {
         this.reviewCount = reviewCount;
+    }
+
+    public Float getScore() {
+        return score;
+    }
+
+    public void setScore(Float score) {
+        this.score = score;
     }
 }

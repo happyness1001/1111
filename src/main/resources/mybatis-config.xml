@@ -14,6 +14,7 @@
         <!--        <package name="ljy.digou.pojo"/>-->
         <package name="wzz.digou.pojo"/>
         <package name="com.ppq.pojo"/>
+        <package name="gsh.pojo"/>
     </typeAliases>
 
 
