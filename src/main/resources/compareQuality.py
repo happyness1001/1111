@@ -12,7 +12,7 @@ import pymysql
 db_shop_ssm = pymysql.connect(host='localhost',
                       user='root',
                       password='root',
-                      database='shop_ssm')
+                      database='2cshop_ssm')
 # 写入权重信息
 db_buying_preference = pymysql.connect(host='localhost',
                                user='root',
@@ -54,11 +54,34 @@ except:
    print ("获取所有商品失败")
 print("系统中存有商品："+str(pid_all))  
 
+# 查询原有用户
+sql_search_now_uid = "SELECT id FROM user_preference"
+try:
+   # 执行SQL语句
+   cursor_buying_preference.execute(sql_search_now_uid)
+   # 获取所有记录列表
+   results_search_now_uid = cursor_buying_preference.fetchall()
+   # uid_all[]记录所有用户
+   uid_now_all = []
+   for row in results_search_now_uid:
+       uid_now_all.append(row[0])
+except:
+   print ("获取当前所有用户失败")
+
+
+
 for i in range (pid_all.__len__()):
     sql_insert_pid ="ALTER TABLE user_preference ADD `%s_weight` FLOAT" % (pid_all[i])
    # 执行SQL语句
     try:
         cursor_buying_preference.execute(sql_insert_pid)
+        for j in range(uid_now_all.__len__()):
+            sql_assign_product = "UPDATE user_preference SET %s_weight = 0 WHERE uid = %s" %(pid_all[i],uid_now_all[j])
+            try:
+                cursor_buying_preference.execute(sql_assign_product)
+                db_buying_preference.commit()
+            except:
+                print("商品赋值失败")
     except:
         print(str(pid_all[i])+"已存在")
 for i in range (uid_all.__len__()):
@@ -66,6 +89,13 @@ for i in range (uid_all.__len__()):
     try:
         cursor_buying_preference.execute(sql_insert_uid)
         db_buying_preference.commit()
+        for j in range(pid_all.__len__()):
+            sql_assign_user = "UPDATE user_preference SET %s_weight = 0 WHERE uid = %s" %(pid_all[j],uid_all[i])
+            try:
+                cursor_buying_preference.execute(sql_assign_user)
+                db_buying_preference.commit()
+            except:
+                print("用户赋值失败")
     except:
         print(str(uid_all[i])+"用户已存在")    
 
